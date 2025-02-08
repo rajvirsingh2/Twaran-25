@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "367668134608",
+    "project_id": "twaran-25",
+    "storage_bucket": "twaran-25.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:367668134608:android:a3feec3227f41db1e4d4d5",
+        "android_client_info": {
+          "package_name": "com.example.twaran25"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCDWJHMOY7zVtH7JoKi4Gp-r6rsBEzSWuI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
