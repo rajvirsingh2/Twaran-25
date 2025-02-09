@@ -23,7 +23,6 @@
             android:layout_width="385dp"
             android:layout_height="406dp"
             android:rotation="14"
-
             android:src="@drawable/leftlight"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
