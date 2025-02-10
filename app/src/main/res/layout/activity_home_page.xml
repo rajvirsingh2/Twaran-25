@@ -34,24 +34,25 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:src="@drawable/baseline_home_24"
-            android:tint="@color/white"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            app:tint="@color/white" />
 
         <!-- Profile Button -->
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/baseline_catching_pokemon_24"
-            android:tint="@color/white"
-            android:layout_weight="1" />
 
         <!-- Settings Button -->
         <ImageView
             android:layout_width="40dp"
             android:layout_height="40dp"
+            android:layout_weight="1"
+            android:src="@drawable/baseline_catching_pokemon_24"
+            app:tint="@color/white" />
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:src="@drawable/baseline_local_phone_24"
-            android:tint="@color/white"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            app:tint="@color/white" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
