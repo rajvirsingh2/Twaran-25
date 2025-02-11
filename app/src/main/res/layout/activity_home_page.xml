@@ -17,7 +17,7 @@
         android:background="@drawable/bg"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/bottomBar" />
-
+\
     <!-- Bottom Bar -->
     <LinearLayout
         android:id="@+id/bottomBar"
@@ -34,8 +34,8 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:src="@drawable/baseline_home_24"
-            android:tint="@color/white"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            app:tint="@color/white" />
 
         <!-- Profile Button -->
         <ImageView
