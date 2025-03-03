@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/log_in_page"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".games.Game">
+
+    <!-- Search Bar -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="6dp"
+        android:hint="Search College"
+        android:textColorHint="@color/white"
+        app:hintTextColor="@color/white"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:endIconMode="clear_text"
+        app:startIconDrawable="@drawable/baseline_search_24"
+        app:boxStrokeColor="@color/white"
+        app:boxStrokeWidthFocused="2dp"
+        app:boxCornerRadiusTopStart="16dp"
+        app:boxCornerRadiusTopEnd="16dp"
+        app:boxCornerRadiusBottomStart="16dp"
+        app:startIconTint="@color/white"
+        app:boxStrokeErrorColor="#9F1616"
+        app:boxStrokeWidth="2dp"
+        android:outlineAmbientShadowColor="@color/white"
+        app:boxCornerRadiusBottomEnd="16dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:padding="10dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:inputType="text" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Horizontal Section (Events + Filter) -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <!-- Left Text: "All Events" -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingEnd="8dp"
+            android:paddingStart="8dp"
+            android:text="All Events"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <!-- Spacer to push the filter section to the right -->
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <!-- Filter (Men/Women) -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/filter_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Women"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <!-- Space between text and image -->
+                <View
+                    android:layout_width="8dp"
+                    android:layout_height="wrap_content" />
+
+                <ImageButton
+                    android:id="@+id/filter"
+                    android:layout_width="30dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/men_women_selector"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="Filter"
+                    android:scaleType="fitCenter"
+                    android:padding="6dp"/>
+
+
+            </LinearLayout>
+
+            <!-- Underline for filter -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="4dp"
+                android:background="@color/white" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Horizontal Divider -->
+    <View
+        android:layout_gravity="end"
+        android:layout_width="80dp"
+        android:layout_height="1dp"
+
+        android:background="@color/white" />
+
+    <!-- RecyclerView -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="6dp"
+        android:scrollbars="vertical" />
+
+</LinearLayout>
