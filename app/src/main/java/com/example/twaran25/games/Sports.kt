@@ -1,5 +1,6 @@
 package com.example.twaran25.games
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageButton
 import android.widget.PopupMenu
@@ -12,6 +13,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.twaran25.R
+import com.example.twaran25.leaderboard.LeaderBoard
 
 class Sports : AppCompatActivity() {
 
@@ -72,7 +74,8 @@ class Sports : AppCompatActivity() {
     private fun updateSportsList(sportsList: List<Game>, category: String = "Men") {
         filterText.text = category
         recyclerView.adapter = GameAdapter(sportsList) {
-            Toast.makeText(this, it.title, Toast.LENGTH_SHORT).show()
+            val intent=Intent(this,LeaderBoard::class.java)
+            this.startActivity(intent)
         }
     }
 }
