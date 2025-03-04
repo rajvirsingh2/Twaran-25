@@ -47,7 +47,7 @@ class LeaderBoard : AppCompatActivity() {
         binding.playerSecondName.text= second?.name ?: ""
         second?.let { binding.playerSecondImage.setImageResource(it.image) }
 
-        binding.playerThirdName.text= second?.name ?: ""
+        binding.playerThirdName.text= third?.name ?: ""
         third?.let { binding.playerThirdImage.setImageResource(it.image) }
 
         binding.filter.setOnClickListener { view->
