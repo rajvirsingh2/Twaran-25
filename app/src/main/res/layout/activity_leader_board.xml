@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:padding="30dp"
+    android:background="@drawable/log_in_page"
+    android:layout_height="match_parent"
+    tools:context=".leaderboard.LeaderBoard">
+    <LinearLayout
+        android:layout_marginEnd="15dp"
+        android:layout_marginStart="15dp"
+        android:layout_width="match_parent"
+        android:layout_gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_height="40dp">
+        <ImageButton
+            android:id="@+id/back_arrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/back_arrow"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"/>
+        <View
+         android:layout_weight="1"
+            android:layout_height="0dp"
+            android:layout_marginTop="4dp"
+            android:background="@color/white"
+            android:layout_width="0dp"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/filter_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cricket"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <!-- Space between text and image -->
+            <View
+                android:layout_width="8dp"
+                android:layout_height="wrap_content" />
+
+            <ImageButton
+                android:id="@+id/filter"
+                android:layout_width="30dp"
+                android:layout_height="40dp"
+                android:src="@drawable/men_women_selector"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Filter"
+                android:scaleType="fitCenter"
+                android:padding="6dp"/>
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+    <View
+        android:layout_gravity="end"
+        android:layout_width="90dp"
+        android:layout_height="1dp"
+android:layout_marginEnd="10dp"
+        android:background="@color/white" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_gravity="bottom"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/player_second_image"
+                android:src="@drawable/avatar_one"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/player_second_name"
+                android:text="Player B"
+                android:layout_gravity="center_horizontal"
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <FrameLayout
+                android:layout_width="100dp"
+                android:layout_height="150dp"
+                android:background="@drawable/second_position_bg"
+                android:layout_margin="5dp">
+
+                <!-- A LinearLayout at the bottom for text alignment -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|center_horizontal"
+                    android:orientation="vertical"
+                    android:paddingBottom="16dp">
+
+                    <!-- First Text (e.g., "1200pts") -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="2nd"
+                        android:layout_gravity="center_horizontal"
+                        android:textColor="@android:color/white"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:gravity="center"/>
+
+                    <!-- Second Text (e.g., "Bottom Text") -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:padding="8dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/points_bg"
+                        android:text="1200pts"
+                        android:textColor="@android:color/white"
+                        android:textSize="14sp"
+                        android:gravity="center"
+                        android:layout_marginTop="4dp"/> <!-- Adjust margin for spacing -->
+
+                </LinearLayout>
+
+            </FrameLayout>
+
+
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_gravity="center_horizontal"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/player_first_image"
+                android:src="@drawable/avater_first"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/player_first_name"
+                android:text="Player A"
+                android:layout_gravity="center_horizontal"
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <FrameLayout
+                android:layout_width="100dp"
+                android:layout_height="180dp"
+                android:background="@drawable/first_position_bg"
+                android:layout_margin="5dp">
+
+                <!-- A LinearLayout at the bottom for text alignment -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|center_horizontal"
+                    android:orientation="vertical"
+                    android:paddingBottom="16dp">
+
+                    <!-- First Text (e.g., "1200pts") -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1st"
+                        android:layout_gravity="center_horizontal"
+                        android:textColor="@android:color/white"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:gravity="center"/>
+
+                    <!-- Second Text (e.g., "Bottom Text") -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:padding="8dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/points_bg"
+                        android:text="1500pts"
+                        android:textColor="@android:color/white"
+                        android:textSize="14sp"
+                        android:gravity="center"
+                        android:layout_marginTop="4dp"/> <!-- Adjust margin for spacing -->
+
+                </LinearLayout>
+
+            </FrameLayout>
+
+
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_gravity="bottom"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/player_third_image"
+                android:src="@drawable/avatar_third"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/player_third_name"
+                android:text="Player C"
+                android:layout_gravity="center_horizontal"
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <FrameLayout
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@drawable/third_position_bg"
+                android:layout_margin="5dp">
+
+                <!-- A LinearLayout at the bottom for text alignment -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|center_horizontal"
+                    android:orientation="vertical"
+                    android:paddingBottom="16dp">
+
+                    <!-- First Text (e.g., "1200pts") -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="3rd"
+                        android:layout_gravity="center_horizontal"
+                        android:textColor="@android:color/white"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:gravity="center"/>
+
+                    <!-- Second Text (e.g., "Bottom Text") -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:padding="8dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/points_bg"
+                        android:text="500pts"
+                        android:textColor="@android:color/white"
+                        android:textSize="14sp"
+                        android:gravity="center"
+                        android:layout_marginTop="4dp"/> <!-- Adjust margin for spacing -->
+
+                </LinearLayout>
+
+            </FrameLayout>
+
+
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:background="@drawable/table_bg"
+    android:layout_marginTop="40dp"
+    android:layout_height="40dp">
+    <TextView
+        android:text="Name"
+        android:layout_marginStart="70dp"
+        android:layout_gravity="center_vertical"
+        android:textColor="@color/white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:text="Place"
+        android:layout_marginStart="70dp"
+        android:layout_gravity="center_vertical"
+        android:textColor="@color/white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:text="College"
+        android:layout_marginStart="60dp"
+        android:layout_gravity="center_vertical"
+        android:textColor="@color/white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+
+        android:layout_height="wrap_content"/>
+</LinearLayout>

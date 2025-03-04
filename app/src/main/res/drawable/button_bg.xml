@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Outer shape with gradient stroke -->
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:startColor="#021A3D"/> <!-- First color -->
+            android:endColor="#00FF00" <!-- Second color -->
+            android:angle="45" />
+            <stroke
+                android:width="2dp"
+                android:color="#01131C" /> <!-- Transparent stroke placeholder -->
+            <corners android:radius="8dp" />
+        </shape>
+    </item>
+    <!-- Inner shape to "cut out" the center, making it transparent -->
+    <item
+        android:top="4dp"
+        android:bottom="4dp"
+        android:left="4dp"
+        android:right="4dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#00000000" /> <!-- Fully transparent -->
+            <corners android:radius="8dp" />
+        </shape>
+    </item>
+</layer-list>
