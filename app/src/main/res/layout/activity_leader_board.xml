@@ -84,11 +84,13 @@ android:layout_marginEnd="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
             <ImageView
+                android:id="@+id/player_second_image"
                 android:src="@drawable/avatar_one"
                 android:layout_gravity="center_horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
             <TextView
+                android:id="@+id/player_second_name"
                 android:text="Player B"
                 android:layout_gravity="center_horizontal"
                 android:textColor="@color/white"
@@ -145,11 +147,13 @@ android:layout_marginEnd="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
             <ImageView
+                android:id="@+id/player_first_image"
                 android:src="@drawable/avater_first"
                 android:layout_gravity="center_horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
             <TextView
+                android:id="@+id/player_first_name"
                 android:text="Player A"
                 android:layout_gravity="center_horizontal"
                 android:textColor="@color/white"
@@ -206,11 +210,13 @@ android:layout_marginEnd="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
             <ImageView
+                android:id="@+id/player_third_image"
                 android:src="@drawable/avatar_third"
                 android:layout_gravity="center_horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
             <TextView
+                android:id="@+id/player_third_name"
                 android:text="Player C"
                 android:layout_gravity="center_horizontal"
                 android:textColor="@color/white"
