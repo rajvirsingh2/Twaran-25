@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/main_background"
+    android:orientation="vertical"
+    android:padding="30dp"
+    tools:context=".contacts.ContactActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:text="Have questions about the events, registrations, or schedules?\n\n
+We’re here to help!"
+        android:textColor="@color/white" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="4dp"
+        android:gravity="center">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:boxBackgroundMode="none">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:id="@+id/student_name"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_edit_textfield"
+                android:padding="8dp"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#AAAAAA"
+                android:hint="Name  "
+                android:singleLine="true"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:gravity="center">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:boxBackgroundMode="none">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:id="@+id/email_id"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_edit_textfield"
+                android:padding="8dp"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#AAAAAA"
+                android:hint="Enter your email"
+                android:singleLine="true"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="4dp"
+        android:gravity="center">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/sports_selectot"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:endIconMode="custom"
+            android:focusable="false"
+            android:clickable="true"
+            app:endIconMinSize="50dp"
+            app:endIconDrawable="@drawable/men_women_selector"
+            app:boxBackgroundMode="none">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:id="@+id/sports_name"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_edit_textfield"
+                android:padding="8dp"
+                android:enabled="false"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#AAAAAA"
+                android:hint="Select Sport"
+                android:singleLine="true"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+    </LinearLayout>
+    <Button
+        android:id="@+id/btn_submit"
+        android:layout_gravity="end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Submit"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/button_border_design"
+        android:padding="12dp"/>
+
+    <View
+        android:layout_width="120dp"
+        android:layout_height="2dp"
+        android:layout_marginTop="40dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@android:color/white"/>
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:textColor="@color/white"
+        android:text="Contact Our Sports In-Charge and Volunteers!"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:id="@+id/contact_list_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:background="@drawable/rounded_card"
+        android:orientation="vertical">
+
+        <!-- Contact 1 -->
+        <LinearLayout
+            android:id="@+id/contact_item_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingVertical="8dp">
+
+            <ImageView
+                android:id="@+id/profile_icon_1"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                app:tint="@android:color/white"
+                android:src="@drawable/user"
+                android:layout_marginEnd="8dp"/>
+
+            <TextView
+                android:id="@+id/contact_name_1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Taun Rai"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"/>
+
+            <ImageButton
+                android:id="@+id/call_icon_1"
+                android:layout_width="17dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:background="@null"
+                android:src="@drawable/baseline_call_24" />
+
+            <TextView
+                android:id="@+id/contact_number_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+91 98765 43210"
+                android:textColor="@android:color/white"
+                android:textSize="14sp"/>
+        </LinearLayout>
+
+        <!-- Contact 2 -->
+        <LinearLayout
+            android:id="@+id/contact_item_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingVertical="8dp">
+
+            <ImageView
+                android:id="@+id/profile_icon_2"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                app:tint="@android:color/white"
+                android:src="@drawable/user"
+                android:layout_marginEnd="8dp"/>
+
+            <TextView
+                android:id="@+id/contact_name_2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Sachin Roy"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"/>
+
+            <ImageButton
+                android:id="@+id/call_icon_2"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/baseline_call_24"
+                android:background="@null"
+                android:layout_marginEnd="8dp"/>
+
+            <TextView
+                android:id="@+id/contact_number_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+91 87654 32109"
+                android:textColor="@android:color/white"
+                android:textSize="14sp"/>
+        </LinearLayout>
+
+        <!-- Contact 3 -->
+        <LinearLayout
+            android:id="@+id/contact_item_3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingVertical="8dp">
+
+            <ImageView
+                android:id="@+id/profile_icon_3"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/user"
+                app:tint="@android:color/white"
+                android:layout_marginEnd="8dp"/>
+
+            <TextView
+                android:id="@+id/contact_name_3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Divyesh Agrawal"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"/>
+
+            <ImageButton
+                android:id="@+id/call_icon_3"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/baseline_call_24"
+                android:background="@null"
+                android:layout_marginEnd="8dp"/>
+
+            <TextView
+                android:id="@+id/contact_number_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+91 76543 21098"
+                android:textColor="@android:color/white"
+                android:textSize="14sp"/>
+        </LinearLayout>
+
+        <!-- Contact 4 -->
+        <LinearLayout
+            android:id="@+id/contact_item_4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingVertical="8dp">
+
+            <ImageView
+                android:id="@+id/profile_icon_4"
+                android:layout_width="24dp"
+                android:src="@drawable/user"
+                android:layout_height="24dp"
+                app:tint="@android:color/white"
+                android:layout_marginEnd="8dp"/>
+
+            <TextView
+                android:id="@+id/contact_name_4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Rakshit Gajjar"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"/>
+
+            <ImageButton
+                android:id="@+id/call_icon_4"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/baseline_call_24"
+                android:layout_marginEnd="8dp"
+                android:background="@null" />
+
+
+            <TextView
+                android:id="@+id/contact_number_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+91 65432 10987"
+                android:textColor="@android:color/white"
+                android:textSize="14sp"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:textColor="@color/white"
+        android:text="Follow Us On "
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_height="wrap_content">
+        <ImageButton
+            android:id="@+id/insta"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/insta"
+            android:layout_marginEnd="8dp"
+            android:background="@null" />
+        <ImageButton
+            android:id="@+id/facebook"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/insta"
+            android:layout_marginEnd="8dp"
+            android:background="@null" />
+        <ImageButton
+            android:id="@+id/x"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            app:srcCompat="@drawable/insta"
+            android:layout_marginEnd="8dp"
+            android:background="@null"/>
+
+
+
+
+    </LinearLayout>
+</LinearLayout>
+
+
+
+
+
