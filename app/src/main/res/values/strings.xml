@@ -1,5 +1,30 @@
 <resources>
     <string name="app_name">Twaran25</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- List of IIITs in India -->
+    <string name="iiit_allahabad">IIIT Allahabad</string>
+    <string name="iiit_gwalior">IIITM Gwalior</string>
+    <string name="iiit_jabalpur">IIITDM Jabalpur</string>
+    <string name="iiit_kancheepuram">IIITDM Kancheepuram</string>
+    <string name="iiit_kurnool">IIITDM Kurnool</string>
+    <string name="iiit_bangalore">IIIT Bangalore</string>
+    <string name="iiit_hyderabad">IIIT Hyderabad</string>
+    <string name="iiit_delhi">IIIT Delhi</string>
+    <string name="iiit_pune">IIIT Pune</string>
+    <string name="iiit_surat">IIIT Surat</string>
+    <string name="iiit_nagpur">IIIT Nagpur</string>
+    <string name="iiit_ranchi">IIIT Ranchi</string>
+    <string name="iiit_senapati">IIIT Manipur</string>
+    <string name="iiit_sri_city">IIIT Sri City</string>
+    <string name="iiit_vadodara">IIIT Vadodara</string>
+    <string name="iiit_bhagalpur">IIIT Bhagalpur</string>
+    <string name="iiit_bhopal">IIIT Bhopal</string>
+    <string name="iiit_dharwad">IIIT Dharwad</string>
+    <string name="iiit_una">IIIT Una</string>
+    <string name="iiit_kota">IIIT Kota</string>
+    <string name="iiit_lucknow">IIIT Lucknow</string>
+    <string name="iiit_tiruchirapalli">IIIT Tiruchirapalli</string>
+    <string name="iiit_kottayam">IIIT Kottayam</string>
+    <string name="iiit_agartala">IIIT Agartala</string>
+
 </resources>
