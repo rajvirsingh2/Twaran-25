@@ -12,6 +12,10 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.twaran25.R
 import com.example.twaran25.databinding.ActivityContactBinding
+import com.example.twaran25.events.GameEventsActivity
+import com.example.twaran25.games.Sports
+import com.example.twaran25.leaderboard.LeaderBoard
+
 class ContactActivity : AppCompatActivity() {
     private lateinit var contactBinding: ActivityContactBinding // Declare lateinit
 
@@ -77,6 +81,23 @@ class ContactActivity : AppCompatActivity() {
             val sportsName=contactBinding.sportsName.text.toString()
             Log.d("student detail","$name $email $sportsName")
             Toast.makeText(this,"Submitted",Toast.LENGTH_SHORT).show()
+        }
+
+        contactBinding.btnContact.setOnClickListener{
+            val intent = Intent(this, ContactActivity::class.java)
+            startActivity(intent)
+        }
+        contactBinding.btnEvents.setOnClickListener{
+            val intent = Intent(this, GameEventsActivity::class.java)
+            startActivity(intent)
+        }
+        contactBinding.btnLeaderboard.setOnClickListener{
+            val intent = Intent(this, LeaderBoard::class.java)
+            startActivity(intent)
+        }
+        contactBinding.btnMatches.setOnClickListener{
+            val intent = Intent(this, Sports::class.java)
+            startActivity(intent)
         }
 
     }

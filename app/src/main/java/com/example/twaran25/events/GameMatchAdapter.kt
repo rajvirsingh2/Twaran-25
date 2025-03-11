@@ -17,6 +17,7 @@ class GameMatchAdapter(private val matchList: List<Event>) :
         val place: TextView = view.findViewById(R.id.place)
         val collegeOne: TextView = view.findViewById(R.id.college_one)
         val collegeTwo: TextView = view.findViewById(R.id.college_two)
+        val verticalLine: View = view.findViewById(R.id.vertical_line) // Added reference to vertical line
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GameMatchViewHolder {
@@ -33,6 +34,13 @@ class GameMatchAdapter(private val matchList: List<Event>) :
         holder.place.text = "Place: ${match.place}"
         holder.collegeOne.text = match.collegeOne
         holder.collegeTwo.text = match.collegeTwo
+
+        // Hide vertical line for the last item
+        if (position == matchList.size - 1) {
+            holder.verticalLine.visibility = View.GONE
+        } else {
+            holder.verticalLine.visibility = View.VISIBLE
+        }
     }
 
     override fun getItemCount(): Int = matchList.size
