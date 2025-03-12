@@ -13,6 +13,9 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.twaran25.R
+import com.example.twaran25.contacts.ContactActivity
+import com.example.twaran25.databinding.ActivitySportsBinding
+import com.example.twaran25.events.GameEventsActivity
 import com.example.twaran25.leaderboard.LeaderBoard
 
 class Sports : AppCompatActivity() {
@@ -37,11 +40,12 @@ class Sports : AppCompatActivity() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var filterText: TextView
-
+    lateinit var binding: ActivitySportsBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding = ActivitySportsBinding.inflate(layoutInflater)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_sports)
+        setContentView(binding.root)
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -52,7 +56,6 @@ class Sports : AppCompatActivity() {
         recyclerView = findViewById(R.id.recyclerView)
         val filterButton = findViewById<ImageButton>(R.id.filter)
         filterText = findViewById(R.id.filter_text)
-
         recyclerView.layoutManager = GridLayoutManager(this, 2)
         updateSportsList(mensSports) // Default: Show Men's Sports
 
@@ -68,6 +71,23 @@ class Sports : AppCompatActivity() {
                 }
             }
             popupMenu.show()
+        }
+
+        binding.btnContact.setOnClickListener{
+            val intent = Intent(this, ContactActivity::class.java)
+            startActivity(intent)
+        }
+        binding.btnEvents.setOnClickListener{
+            val intent = Intent(this, GameEventsActivity::class.java)
+            startActivity(intent)
+        }
+        binding.btnLeaderboard.setOnClickListener{
+            val intent = Intent(this, LeaderBoard::class.java)
+            startActivity(intent)
+    }
+        binding.btnMatches.setOnClickListener{
+            val intent = Intent(this, Sports::class.java)
+            startActivity(intent)
         }
     }
 

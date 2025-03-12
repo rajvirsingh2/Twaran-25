@@ -1,43 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/log_in_page"
+    android:background="@color/black"
     android:orientation="vertical"
-    android:padding="16dp"
     tools:context=".games.Game">
 
     <!-- Search Bar -->
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="6dp"
-        android:hint="Search College"
-        android:textColorHint="@color/white"
-        app:hintTextColor="@color/white"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        app:endIconMode="clear_text"
+        android:layout_height="70dp"
+        app:boxCornerRadiusTopStart="10dp"
+        app:boxCornerRadiusBottomEnd="10dp"
+        app:boxCornerRadiusTopEnd="10dp"
         app:startIconDrawable="@drawable/baseline_search_24"
-        app:boxStrokeColor="@color/white"
-        app:boxStrokeWidthFocused="2dp"
-        app:boxCornerRadiusTopStart="16dp"
-        app:boxCornerRadiusTopEnd="16dp"
-        app:boxCornerRadiusBottomStart="16dp"
-        app:startIconTint="@color/white"
-        app:boxStrokeErrorColor="#9F1616"
-        app:boxStrokeWidth="2dp"
-        android:outlineAmbientShadowColor="@color/white"
-        app:boxCornerRadiusBottomEnd="16dp">
+        app:startIconTint="#737373"
+        app:endIconMode="clear_text"
+        app:boxCornerRadiusBottomStart="10dp"
+        app:boxBackgroundMode="none"
+        android:layout_margin="16dp">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/sports_name"
             android:layout_width="match_parent"
-            android:padding="10dp"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:inputType="text" />
+            android:layout_height="50dp"
+            android:background="@drawable/background"
+            android:padding="8dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#737373"
+            android:hint="Name:  "
+            android:singleLine="true"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <!-- Horizontal Section (Events + Filter) -->
@@ -51,7 +47,6 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingEnd="8dp"
             android:paddingStart="8dp"
             android:text="All Events"
             android:textColor="@color/white"
@@ -68,65 +63,101 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center_horizontal">
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
 
-            <LinearLayout
+            <TextView
+                android:id="@+id/filter_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical">
+                android:text="Women"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/filter_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Women"
-                    android:textColor="@color/white"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
-
-                <!-- Space between text and image -->
-                <View
-                    android:layout_width="8dp"
-                    android:layout_height="wrap_content" />
-
-                <ImageButton
-                    android:id="@+id/filter"
-                    android:layout_width="30dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/men_women_selector"
-                    android:background="?attr/selectableItemBackgroundBorderless"
-                    android:contentDescription="Filter"
-                    android:scaleType="fitCenter"
-                    android:padding="6dp"/>
-
-
-            </LinearLayout>
-
-            <!-- Underline for filter -->
+            <!-- Space between text and image -->
             <View
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginTop="4dp"
-                android:background="@color/white" />
+                android:layout_width="8dp"
+                android:layout_height="wrap_content" />
+
+            <ImageButton
+                android:id="@+id/filter"
+                android:layout_width="30dp"
+                android:layout_height="40dp"
+                android:src="@drawable/men_women_selector"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Filter"
+                android:scaleType="fitCenter"
+                android:padding="6dp"/>
         </LinearLayout>
     </LinearLayout>
 
     <!-- Horizontal Divider -->
     <View
-        android:layout_gravity="end"
         android:layout_width="80dp"
         android:layout_height="1dp"
-
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="-16dp"
         android:background="@color/white" />
 
-    <!-- RecyclerView -->
+    <!-- RecyclerView (Takes Remaining Space) -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:padding="6dp"
+        tools:listitem="@layout/games_design_card"
         android:scrollbars="vertical" />
+
+    <!-- Bottom Navigation Bar -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@drawable/background"
+        android:weightSum="4"
+        android:gravity="center">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_matches"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="50dp"
+            android:text="Matches"
+            android:background="@drawable/navigation_border"
+            android:textColor="@color/white"
+            style="@style/Widget.MaterialComponents.Button.TextButton" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_events"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="50dp"
+            android:text="Events"
+            android:textColor="@color/white"
+            android:background="@drawable/navigation_border"
+            style="@style/Widget.MaterialComponents.Button.TextButton" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_leaderboard"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="50dp"
+            android:background="@drawable/navigation_border"
+            android:text="Ranking"
+            android:textColor="@color/white"
+            style="@style/Widget.MaterialComponents.Button.TextButton" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_contact"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/navigation_border"
+            android:layout_height="50dp"
+            android:text="Contact Us"
+            android:textColor="@color/white"
+            style="@style/Widget.MaterialComponents.Button.TextButton" />
+    </LinearLayout>
 
 </LinearLayout>

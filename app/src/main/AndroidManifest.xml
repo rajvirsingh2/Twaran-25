@@ -21,18 +21,16 @@
         <activity
             android:name=".leaderboard.LeaderBoard"
             android:exported="false" />
-        <activity
-            android:name=".games.GamesDetail"
-            android:exported="false" />
+        <activity android:name=".Events"
+            android:exported="false"/>
+
         <activity
             android:name=".games.Sports"
             android:exported="false" />
         <activity
             android:name=".games.Game"
             android:exported="false" />
-        <activity
-            android:name=".HomePage"
-            android:exported="false" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true">

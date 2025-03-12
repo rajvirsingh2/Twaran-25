@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/main_background"
+    tools:context=".Events">
+
+    <!-- RecyclerView for College List -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/college_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:listitem="@layout/college_list"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal" />
+
+    <!-- Container for Events RecyclerView -->
+    <LinearLayout
+        android:id="@+id/college_match"
+        android:layout_below="@id/college_list"
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <!-- RecyclerView for Event List -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/events_recycler"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:paddingStart="10dp"
+            tools:listitem="@layout/event_layout"/>
+    </LinearLayout>
+
+</RelativeLayout>

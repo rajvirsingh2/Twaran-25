@@ -1,98 +1,184 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:layout_marginStart="4dp"
-    android:layout_marginTop="4dp"
-    android:layout_marginEnd="4dp"
-    android:layout_marginBottom="40dp"
     android:layout_width="match_parent"
+
     android:layout_height="wrap_content">
+
     <LinearLayout
-        android:layout_width="match_parent"
         android:orientation="horizontal"
-        android:gravity="start"
-        android:layout_height="wrap_content">
-        <TextView
-            android:textColor="#DB0808"
-            android:id="@+id/start_time"
-            android:text="8:00 am"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-        <View
-            android:layout_gravity="center_vertical"
-            android:background="@color/white"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:layout_width="180dp"
-            android:layout_height="2dp"/>
-    </LinearLayout>
-    <TextView
-        android:id="@+id/game_name"
-        android:textColor="@color/white"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Game Name"
-        />
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <TextView
+        android:layout_marginStart="4dp"
+
+        android:layout_marginEnd="4dp"
+        >
+
+        <!-- Side Indicator: Circle + Vertical Line -->
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="wrap_content"
-            android:textColor="@color/white"
+            android:layout_marginRight="5dp"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal">
+
+            <!-- Circle View -->
+            <View
+                android:id="@+id/dot"
+
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+
+                android:background="@drawable/circle_view"
+                android:layout_gravity="center_horizontal"/>
+
+            <!-- Vertical Line (Connects Events) -->
+            <View
+                android:id="@+id/vertical_line"
+                android:layout_width="2dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="#fff"
+                android:layout_gravity="center_horizontal"/>
+
+        </LinearLayout>
+
+        <!-- Main Content -->
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Date : 05.03.2025"
-            android:id="@+id/date"
-            />
-        <TextView
-            android:layout_marginStart="40dp"
-            android:textColor="@color/white"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Place : New Ground"
-            android:id="@+id/place"
-            />
+            android:layout_marginBottom="30dp"
+
+           android:layout_marginLeft="11dp"
+            android:background="@drawable/event_card_bg"
+           >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_marginBottom="10dp"
+                android:layout_marginRight="30dp"
+                android:gravity="start"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:textColor="#DB0808"
+                    android:id="@+id/start_time"
+                    android:text="8:00 am"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <View
+                    android:layout_gravity="center_vertical"
+                    android:background="#ffffff"
+                    android:layout_marginStart="20dp"
+
+                    android:alpha="0.5"
+                    android:layout_marginEnd="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"/>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/game_name"
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:text="Foootball"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:textColor="@color/white"
+                    android:layout_height="wrap_content"
+                    android:text="Date: "
+                    android:textStyle="bold"
+                    android:textSize="13dp"
+                   />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:textColor="@color/white"
+                    android:layout_height="wrap_content"
+                    android:text="05.03.2025"
+                    android:textSize="13dp"
+                    android:id="@+id/date"/>
+                <TextView
+                    android:layout_marginStart="40dp"
+                    android:textColor="@color/white"
+                    android:layout_width="wrap_content"
+                    android:textSize="14dp"
+                    android:textStyle="bold"
+                    android:layout_height="wrap_content"
+                    android:text="Place : "
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:textColor="@color/white"
+                    android:layout_height="wrap_content"
+                    android:text="New Ground"
+                    android:textSize="13dp"
+                    android:id="@+id/place"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_marginTop="16dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:id="@+id/college_one_image"
+                        android:background="@drawable/circular_shape"
+                        android:src="@drawable/iiit_pune"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginEnd="4dp"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"/>
+                    <TextView
+                        android:textColor="#C88510"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="IIIT Gwalior"
+                        android:id="@+id/college_one"/>
+                </LinearLayout>
+                <TextView
+                    android:textColor="#008000"
+                    android:id="@+id/score"
+                    android:layout_marginStart="40dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Vs"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="60dp"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:id="@+id/college_two_image"
+                        android:background="@drawable/circular_shape"
+                        android:src="@drawable/iiit_pune"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginEnd="4dp"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"/>
+                    <TextView
+                        android:textColor="#C88510"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="IIIT Gwalior"
+                        android:id="@+id/college_two"/>
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+        </LinearLayout>
     </LinearLayout>
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-        <ImageView
-            android:id="@+id/college_one_image"
-            android:background="@drawable/circular_shape"
-            android:src="@drawable/iiit_pune"
-            android:layout_gravity="center_vertical"
-            android:layout_marginEnd="4dp"
-            android:layout_width="30dp"
-            android:layout_height="30dp"/>
-        <TextView
-            android:textColor="#C88510"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="IIIT Gwalior"
-            android:id="@+id/college_one"
-            />
-        <TextView
-            android:textColor="#008000"
-            android:layout_marginStart="40dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Vs"
-            />
-        <ImageView
-            android:background="@drawable/circular_shape"
-            android:id="@+id/college_two_image"
-            android:src="@drawable/iiit_pune"
-            android:layout_gravity="center_vertical"
-            android:layout_marginStart="8dp"
-            android:layout_width="30dp"
-            android:layout_height="30dp"/>
-        <TextView
-            android:layout_marginStart="20dp"
-            android:textColor="@color/white"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="IIIT Delhi"
-            android:id="@+id/college_two"
-            />
     </LinearLayout>
-</LinearLayout>

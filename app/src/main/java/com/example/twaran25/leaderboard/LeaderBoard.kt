@@ -50,28 +50,7 @@ class LeaderBoard : AppCompatActivity() {
         binding.playerThirdName.text= third?.name ?: ""
         third?.let { binding.playerThirdImage.setImageResource(it.image) }
 
-        binding.filter.setOnClickListener { view->
-            val popupMenu=PopupMenu(this,view).apply {
-                menuInflater.inflate(R.menu.sports_menu,menu)
-                setOnMenuItemClickListener {
-                    when(it.itemId) {
-                        R.id.menu_cricket ->{
-                            binding.filterText.text="Cricket"
-                            true}
-                        R.id.menu_football->{
-                            binding.filterText.text="Football"
-                            true}
-                        R.id.menu_basketball->{
-                            binding.filterText.text="Basketball"
-                            true}
-                        R.id.menu_tennis->{true}
-                        else ->true
-                    }
-                }
-            }
-            popupMenu.show()
 
-        }
 
 
     }

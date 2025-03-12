@@ -15,8 +15,10 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.twaran25.contacts.ContactActivity
 import com.example.twaran25.databinding.ActivityMainBinding
+import com.example.twaran25.events.Event
 import com.example.twaran25.events.GameEventsActivity
 import com.example.twaran25.games.Sports
+import com.example.twaran25.leaderboard.LeaderBoard
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -42,7 +44,7 @@ class MainActivity : AppCompatActivity() {
         startAnimations()
 
         binding.guest.setOnClickListener {
-            val intent = Intent (this , ContactActivity::class.java)
+            val intent = Intent (this , Sports::class.java)
             startActivity(intent)
         }
         binding.admin.setOnClickListener{
