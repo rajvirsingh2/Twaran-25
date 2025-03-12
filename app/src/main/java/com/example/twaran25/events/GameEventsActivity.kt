@@ -8,6 +8,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.twaran25.DataSource
 import com.example.twaran25.R
 import com.example.twaran25.contacts.ContactActivity
 import com.example.twaran25.databinding.ActivityGameEventsBinding
@@ -16,23 +17,6 @@ import com.example.twaran25.leaderboard.LeaderBoard
 
 class GameEventsActivity : AppCompatActivity() {
     lateinit var binding: ActivityGameEventsBinding
-    private val matchList = listOf(
-        Event("8:00 AM", "Football", "05.03.2025", "New Ground", "IIIT Gwalior", "IIIT Delhi"),
-        Event("8:00 AM", "Football", "05.03.2025", "New Ground", "IIIT Gwalior", "IIIT Delhi"),
-        Event("8:00 AM", "Football", "05.03.2025", "New Ground", "IIIT Gwalior", "IIIT Delhi"),
-        Event("8:00 AM", "Football", "05.03.2025", "New Ground", "IIIT Gwalior", "IIIT Delhi"),
-        Event("8:00 AM", "Football", "05.03.2025", "New Ground", "IIIT Gwalior", "IIIT Delhi"),
-        Event("8:00 AM", "Football", "05.03.2025", "New Ground", "IIIT Gwalior", "IIIT Delhi"),
-        Event("8:00 AM", "Football", "05.03.2025", "New Ground", "IIIT Gwalior", "IIIT Delhi"),
-        Event("8:00 AM", "Football", "05.03.2025", "New Ground", "IIIT Gwalior", "IIIT Delhi"),
-        Event("8:00 AM", "Football", "05.03.2025", "New Ground", "IIIT Gwalior", "IIIT Delhi"),
-        Event("8:00 AM", "Football", "05.03.2025", "New Ground", "IIIT Gwalior", "IIIT Delhi"),
-        Event("10:00 AM", "Basketball", "05.03.2025", "Old Ground", "IIIT Hyderabad", "IIIT Bangalore"),
-        Event("2:00 PM", "Cricket", "06.03.2025", "Main Stadium", "IIIT Allahabad", "IIIT Pune")
-    )
-
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityGameEventsBinding.inflate(layoutInflater)
@@ -45,7 +29,7 @@ class GameEventsActivity : AppCompatActivity() {
         }
         val recyclerView: RecyclerView = findViewById(R.id.events_recycler)
         recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = GameMatchAdapter(matchList)
+        recyclerView.adapter = GameMatchAdapter(DataSource.events)
 
         binding.btnContact.setOnClickListener{
             val intent = Intent(this, ContactActivity::class.java)
