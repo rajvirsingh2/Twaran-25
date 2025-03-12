@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
         binding.admin.setOnClickListener{
-            val intent = Intent (this , GameEventsActivity::class.java)
+            val intent = Intent (this , Events::class.java)
             startActivity(intent)
         }
     }
