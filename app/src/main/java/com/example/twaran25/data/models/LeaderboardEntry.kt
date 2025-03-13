@@ -1,4 +1,4 @@
-package com.example.twaran25.data.models.user
+package com.example.twaran25.data.models
 
 data class LeaderboardEntry(
     val collegeName: String,
