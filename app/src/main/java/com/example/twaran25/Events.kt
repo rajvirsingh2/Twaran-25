@@ -1,5 +1,6 @@
 package com.example.twaran25
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -10,9 +11,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.twaran25.DataSource.colleges
 import com.example.twaran25.DataSource.events
+import com.example.twaran25.contacts.ContactActivity
 import com.example.twaran25.databinding.ActivityEventsBinding
 import com.example.twaran25.events.Event
+import com.example.twaran25.events.GameEventsActivity
 import com.example.twaran25.events.GameMatchAdapter
+import com.example.twaran25.games.Sports
+import com.example.twaran25.leaderboard.LeaderBoard
 
 class Events : AppCompatActivity() {
     private lateinit var eventsBinding: ActivityEventsBinding
@@ -41,6 +46,38 @@ class Events : AppCompatActivity() {
         val eventRecyclerView: RecyclerView = eventsBinding.eventsRecycler
         eventRecyclerView.adapter = GameMatchAdapter(events)
         eventRecyclerView.layoutManager = LinearLayoutManager(this)
+
+        eventsBinding.btnContact.setOnClickListener {
+            if (javaClass.simpleName != ContactActivity::class.java.simpleName) {
+                val intent = Intent(this, ContactActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                startActivity(intent)
+            }
+        }
+
+        eventsBinding.btnEvents.setOnClickListener {
+            if (javaClass.simpleName != Events::class.java.simpleName) {
+                val intent = Intent(this, Events::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                startActivity(intent)
+            }
+        }
+
+        eventsBinding.btnLeaderboard.setOnClickListener {
+            if (javaClass.simpleName != LeaderBoard::class.java.simpleName) {
+                val intent = Intent(this, LeaderBoard::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                startActivity(intent)
+            }
+        }
+
+        eventsBinding.btnMatches.setOnClickListener {
+            if (javaClass.simpleName != Sports::class.java.simpleName) {
+                val intent = Intent(this, Sports::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                startActivity(intent)
+            }
+        }
 
 
     }

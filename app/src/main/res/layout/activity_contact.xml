@@ -121,6 +121,7 @@
         android:padding="10dp"
         android:orientation="horizontal">
 
+
         <View
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -400,7 +401,7 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:background="@drawable/navigation_border"
-            android:layout_height="50dp"
+            android:layout_height="55dp"
             android:text="Contact Us"
             android:textColor="@color/white"
             style="@style/Widget.MaterialComponents.Button.TextButton" />

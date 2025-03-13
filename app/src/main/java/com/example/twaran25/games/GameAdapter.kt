@@ -1,6 +1,5 @@
 package com.example.twaran25.games
 
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,10 +9,12 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.twaran25.R
 
-class GameAdapter(private val gameList: List<Game>,
-    private val onSportClick : (Game) -> Unit,
-    ) :
-    RecyclerView.Adapter<GameAdapter.GameViewHolder>() {
+class GameAdapter(
+    private val fullGameList: List<Game>,   // Store original list
+    private val onSportClick: (Game) -> Unit
+) : RecyclerView.Adapter<GameAdapter.GameViewHolder>() {
+
+    private var filteredGameList: MutableList<Game> = fullGameList.toMutableList() // List that updates dynamically
 
     class GameViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val imageView: ImageView = itemView.findViewById(R.id.imageView)
@@ -29,16 +30,32 @@ class GameAdapter(private val gameList: List<Game>,
     }
 
     override fun onBindViewHolder(holder: GameViewHolder, position: Int) {
-        val game = gameList[position]  // Get current game item
+        val game = filteredGameList[position]  // Get current filtered game
 
         holder.textView.text = game.title
         holder.descriptionTextView.text = game.description
         holder.imageView.setImageResource(game.image) // Set correct image
 
         holder.arrowButton.setOnClickListener {
-           onSportClick(game)
+            onSportClick(game)
         }
     }
 
-    override fun getItemCount(): Int = gameList.size
+    override fun getItemCount(): Int = filteredGameList.size
+
+    // 🔹 FILTER FUNCTION 🔹
+    fun filter(query: String) {
+        filteredGameList.clear()
+        if (query.isEmpty()) {
+            filteredGameList.addAll(fullGameList)
+        } else {
+            val lowerCaseQuery = query.lowercase()
+            for (game in fullGameList) {
+                if (game.title.lowercase().contains(lowerCaseQuery)) {
+                    filteredGameList.add(game)
+                }
+            }
+        }
+        notifyDataSetChanged() // Refresh RecyclerView
+    }
 }

@@ -10,6 +10,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.twaran25.Events
 import com.example.twaran25.R
 import com.example.twaran25.databinding.ActivityContactBinding
 import com.example.twaran25.events.GameEventsActivity
@@ -83,22 +84,38 @@ class ContactActivity : AppCompatActivity() {
             Toast.makeText(this,"Submitted",Toast.LENGTH_SHORT).show()
         }
 
-        contactBinding.btnContact.setOnClickListener{
-            val intent = Intent(this, ContactActivity::class.java)
-            startActivity(intent)
+        contactBinding.btnContact.setOnClickListener {
+            if (javaClass.simpleName != ContactActivity::class.java.simpleName) {
+                val intent = Intent(this, ContactActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                startActivity(intent)
+            }
         }
-        contactBinding.btnEvents.setOnClickListener{
-            val intent = Intent(this, GameEventsActivity::class.java)
-            startActivity(intent)
+
+        contactBinding.btnEvents.setOnClickListener {
+            if (javaClass.simpleName != Events::class.java.simpleName) {
+                val intent = Intent(this, Events::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                startActivity(intent)
+            }
         }
-        contactBinding.btnLeaderboard.setOnClickListener{
-            val intent = Intent(this, LeaderBoard::class.java)
-            startActivity(intent)
+
+        contactBinding.btnLeaderboard.setOnClickListener {
+            if (javaClass.simpleName != LeaderBoard::class.java.simpleName) {
+                val intent = Intent(this, LeaderBoard::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                startActivity(intent)
+            }
         }
-        contactBinding.btnMatches.setOnClickListener{
-            val intent = Intent(this, Sports::class.java)
-            startActivity(intent)
+
+        contactBinding.btnMatches.setOnClickListener {
+            if (javaClass.simpleName != Sports::class.java.simpleName) {
+                val intent = Intent(this, Sports::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                startActivity(intent)
+            }
         }
+
 
     }
     private fun dialNumber(number: String) {

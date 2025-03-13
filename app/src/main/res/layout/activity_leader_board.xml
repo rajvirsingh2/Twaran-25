@@ -14,29 +14,21 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:background="@drawable/bg"
-        android:padding="20dp"
         >
 
 
-            <ImageButton
-                android:id="@+id/back_arrow"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:src="@drawable/back_arrow"
-                android:background="?android:attr/selectableItemBackgroundBorderless"
-                android:clickable="true"
-                android:focusable="true"/>
     <LinearLayout
         android:layout_width="wrap_content"
         android:orientation="horizontal"
         android:layout_gravity="center"
         android:layout_marginTop="25dp"
+        android:padding="10dp"
         android:layout_height="wrap_content">
         <LinearLayout
             android:layout_gravity="bottom"
             android:orientation="vertical"
             android:layout_width="wrap_content"
+            android:padding="10dp"
             android:layout_height="wrap_content">
             <ImageView
                 android:id="@+id/player_second_image"
@@ -99,6 +91,7 @@
         <LinearLayout
             android:layout_gravity="center_horizontal"
             android:orientation="vertical"
+            android:padding="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
             <ImageView
@@ -162,6 +155,7 @@
         <LinearLayout
             android:layout_gravity="bottom"
             android:orientation="vertical"
+            android:padding="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
             <ImageView
@@ -237,7 +231,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintBottom_toTopOf="@id/recycler_view"
                 android:background="@drawable/background"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="0dp"
                 android:weightSum="3">
 
                 <!-- Name at Start -->
@@ -280,6 +274,7 @@
                 app:layout_constraintBottom_toTopOf="@id/bottombar"
                 android:paddingBottom="60dp"
                 tools:listitem="@layout/player_info_design"/>
+
 
             <LinearLayout
                 android:id="@+id/bottombar"
@@ -327,7 +322,7 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:background="@drawable/navigation_border"
-                    android:layout_height="50dp"
+                    android:layout_height="55dp"
                     android:text="Contact Us"
                     android:textColor="@color/white"
                     style="@style/Widget.MaterialComponents.Button.TextButton" />
