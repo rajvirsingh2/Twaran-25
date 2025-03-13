@@ -1,12 +1,15 @@
 package com.example.twaran25.leaderboard
 
+import android.content.Intent
 import android.os.Bundle
-import android.widget.PopupMenu
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.twaran25.Events
 import com.example.twaran25.R
+import com.example.twaran25.contacts.ContactActivity
 import com.example.twaran25.databinding.ActivityLeaderBoardBinding
+import com.example.twaran25.games.Sports
 
 class LeaderBoard : AppCompatActivity() {
     private lateinit var binding: ActivityLeaderBoardBinding
@@ -50,6 +53,37 @@ class LeaderBoard : AppCompatActivity() {
         binding.playerThirdName.text= third?.name ?: ""
         third?.let { binding.playerThirdImage.setImageResource(it.image) }
 
+        binding.btnContact.setOnClickListener {
+            if (javaClass.simpleName != ContactActivity::class.java.simpleName) {
+                val intent = Intent(this, ContactActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                startActivity(intent)
+            }
+        }
+
+        binding.btnEvents.setOnClickListener {
+            if (javaClass.simpleName != Events::class.java.simpleName) {
+                val intent = Intent(this, Events::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                startActivity(intent)
+            }
+        }
+
+        binding.btnLeaderboard.setOnClickListener {
+            if (javaClass.simpleName != LeaderBoard::class.java.simpleName) {
+                val intent = Intent(this, LeaderBoard::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                startActivity(intent)
+            }
+        }
+
+        binding.btnMatches.setOnClickListener {
+            if (javaClass.simpleName != Sports::class.java.simpleName) {
+                val intent = Intent(this, Sports::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                startActivity(intent)
+            }
+        }
 
 
 

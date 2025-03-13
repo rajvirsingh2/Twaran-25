@@ -123,7 +123,7 @@
     <!-- Timeline and RecyclerView Container -->
     <LinearLayout
         android:layout_below="@+id/buttons_row"
-        android:layout_above="@+id/bottom_navigation"
+
         android:layout_marginTop="30dp"
         android:id="@+id/college_match"
         android:layout_width="match_parent"
@@ -139,57 +139,4 @@
             android:layout_weight="1"
             android:paddingStart="10dp"/>
     </LinearLayout>
-
-    <!-- Bottom Navigation Bar -->
-    <LinearLayout
-        android:id="@+id/bottom_navigation"
-        android:layout_alignParentBottom="true"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="@drawable/background"
-        android:weightSum="4"
-        android:gravity="center">
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_matches"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="50dp"
-            android:text="Matches"
-            android:background="@drawable/navigation_border"
-            android:textColor="@color/white"
-            style="@style/Widget.MaterialComponents.Button.TextButton" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_events"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="50dp"
-            android:text="Events"
-            android:textColor="@color/white"
-            android:background="@drawable/navigation_border"
-            style="@style/Widget.MaterialComponents.Button.TextButton" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_leaderboard"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="50dp"
-            android:background="@drawable/navigation_border"
-            android:text="Ranking"
-            android:textColor="@color/white"
-            style="@style/Widget.MaterialComponents.Button.TextButton" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_contact"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:background="@drawable/navigation_border"
-            android:layout_height="50dp"
-            android:text="Contact Us"
-            android:textColor="@color/white"
-            style="@style/Widget.MaterialComponents.Button.TextButton" />
-    </LinearLayout>
-
 </RelativeLayout>

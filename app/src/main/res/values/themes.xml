@@ -3,7 +3,7 @@
     <style name="Base.Theme.Twaran25" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- Example font family for the entire app -->
-        <item name="android:fontFamily">@font/larkeneueregular</item>
+        <item name="android:fontFamily">@font/larkeNeueRegular</item>
 
         <!-- You can also specify individual text-related attributes if needed -->
         <!-- <item name="android:textColor">@color/primaryTextColor</item> -->
