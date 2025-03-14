@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:id="@+id/main"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+        <ImageView
+            android:id="@+id/forward_button"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:padding="48dp"
+            android:layout_gravity="start"
+            android:src="@drawable/baseline_arrow_back_24"
+            android:contentDescription="Forward"
+            app:tint="@color/black"
+            android:clickable="true"
+            android:focusable="true"/>
+
+        <!-- Sports Name (Non-editable) -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:boxBackgroundMode="none">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/sport_name"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/background"
+                android:padding="8dp"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#fff"
+                android:hint="Sports Name:"
+                android:text="Test"
+                android:singleLine="true"
+                android:focusable="false"
+                android:enabled="false"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Team A (Non-editable) -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:boxBackgroundMode="none">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/team_a"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/background"
+                android:padding="8dp"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#fff"
+                android:hint="Team A:"
+                android:text="Test"
+                android:singleLine="true"
+                android:focusable="false"
+                android:enabled="false"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Team B (Non-editable) -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:boxBackgroundMode="none">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/team_b"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/background"
+                android:padding="8dp"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#fff"
+                android:hint="Team B:"
+                android:text="Test"
+                android:singleLine="true"
+                android:focusable="false"
+                android:enabled="false"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Day (Non-editable) -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:boxBackgroundMode="none">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/day"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/background"
+                android:padding="8dp"
+
+                android:textColor="#FFFFFF"
+                android:textColorHint="#fff"
+                android:hint="Day:"
+                android:text="Test"
+                android:singleLine="true"
+                android:focusable="false"
+                android:enabled="false"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Time (Non-editable) -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:boxBackgroundMode="none">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/time"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/background"
+                android:padding="8dp"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#fff"
+                android:hint="Time:"
+                android:text="Test"
+                android:singleLine="true"
+                android:focusable="false"
+                android:enabled="false"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Team A Score (Editable) -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content"
+            app:boxBackgroundMode="none">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/team_a_score"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/background"
+                android:padding="8dp"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#fff"
+                android:hint="Team A Score:"
+                android:text="0"
+                android:singleLine="true"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Team B Score (Editable) -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:boxBackgroundMode="none">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/team_b_score"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/background"
+                android:padding="8dp"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#fff"
+                android:hint="Team B Score:"
+                android:text="0"
+                android:singleLine="true"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Team A Result (Editable) -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content"
+            app:boxBackgroundMode="none">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/team_a_result"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/background"
+                android:padding="8dp"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#fff"
+                android:hint="Team A Result:"
+                android:text="0"
+                android:singleLine="true"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Team B Result (Editable) -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content"
+            app:boxBackgroundMode="none">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/team_b_result"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/background"
+                android:padding="8dp"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#fff"
+                android:hint="Team B Result:"
+                android:text="0"
+                android:singleLine="true"/>
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            app:boxCornerRadiusTopStart="25dp"
+            app:boxCornerRadiusBottomEnd="25dp"
+            app:boxCornerRadiusTopEnd="25dp"
+
+            app:boxCornerRadiusBottomStart="25dp"
+            android:layout_gravity="end"
+            android:layout_marginTop="20dp"
+            app:boxBackgroundMode="none">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounder_btn_bg"
+            android:clickable="true"
+            android:id="@+id/btnSubmit"
+            android:cursorVisible="false"
+            android:focusable="false"
+            android:gravity="center"
+            android:padding="8dp"
+            android:singleLine="true"
+            android:text="Submit"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#737373" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+</ScrollView>

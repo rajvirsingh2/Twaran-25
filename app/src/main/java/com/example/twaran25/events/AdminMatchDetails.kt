@@ -1,11 +1,13 @@
 package com.example.twaran25.events
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.twaran25.AddMatch
 import com.example.twaran25.DataSource
 import com.example.twaran25.R
 import com.example.twaran25.databinding.ActivityAdminMatchDetailsBinding
@@ -24,11 +26,16 @@ class AdminMatchDetails : AppCompatActivity() {
         }
 
         binding.eventsRecycler.layoutManager = LinearLayoutManager(this)
-        binding.eventsRecycler.adapter = AdminMatchesAdapter(DataSource.events)
+        binding.eventsRecycler.adapter = AdminMatchesAdapter(this,
+            DataSource.events)
 
 
         binding.backarrow.setOnClickListener {
             finish()
+        }
+        binding.addmatch.setOnClickListener {
+            val intent: Intent = Intent(this, AddMatch::class.java)
+            startActivity(intent)
         }
     }
 }

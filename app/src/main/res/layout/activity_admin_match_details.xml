@@ -8,28 +8,40 @@
     tools:context=".events.GameEventsActivity">
 
     <!-- Day Selection Buttons -->
+
     <LinearLayout
         android:id="@+id/buttons_row"
         android:layout_marginTop="30dp"
         android:layout_width="match_parent"
         android:layout_gravity="end"
         android:gravity="end"
+        android:weightSum="5"
         android:orientation="horizontal"
         android:layout_height="wrap_content">
+
+
+
 
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/backarrow"
+            android:layout_weight="1"
             android:backgroundTint="@color/black"
             android:src="@drawable/back_arrow"/>
 
-        <!-- Spacer to push buttons to the right -->
-        <View
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:layout_weight="1" />
 
+
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="60dp"
+            android:backgroundTint="@color/black"
+            android:text="Add Match"
+            android:layout_weight="1"
+            android:textColor="@color/white"
+            android:id="@+id/addmatch"
+            android:textSize="14sp"
+            android:textStyle="bold"/>
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="100dp"
             android:layout_height="50dp"
@@ -57,9 +69,7 @@
                 android:textAlignment="center"/>
         </com.google.android.material.textfield.TextInputLayout>
 
-        <View
-            android:layout_width="10dp"
-            android:layout_height="0dp"/>
+
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="100dp"
@@ -67,6 +77,7 @@
             app:boxCornerRadiusTopStart="25dp"
             app:boxCornerRadiusBottomEnd="25dp"
             app:boxCornerRadiusTopEnd="25dp"
+            android:layout_weight="1"
             app:boxCornerRadiusBottomStart="25dp"
             android:layout_gravity="end"
             android:layout_marginTop="20dp"
@@ -88,9 +99,7 @@
                 android:textAlignment="center"/>
         </com.google.android.material.textfield.TextInputLayout>
 
-        <View
-            android:layout_width="10dp"
-            android:layout_height="0dp"/>
+
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="100dp"
@@ -98,6 +107,7 @@
             app:boxCornerRadiusTopStart="25dp"
             app:boxCornerRadiusBottomEnd="25dp"
             app:boxCornerRadiusTopEnd="25dp"
+            android:layout_weight="1"
             app:boxCornerRadiusBottomStart="25dp"
             android:layout_gravity="end"
             android:layout_marginTop="20dp"

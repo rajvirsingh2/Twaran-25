@@ -43,7 +43,7 @@ class AdminEvents : AppCompatActivity() {
         }
 
         val eventRecyclerView: RecyclerView = eventsBinding.eventsRecycler
-        eventRecyclerView.adapter = AdminMatchesAdapter(events)
+        eventRecyclerView.adapter = AdminMatchesAdapter(this,events)
         eventRecyclerView.layoutManager = LinearLayoutManager(this)
         navigation()
     }
