@@ -1,0 +1,154 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/main_background"
+    tools:context=".events.GameEventsActivity">
+
+    <!-- Day Selection Buttons -->
+
+    <LinearLayout
+        android:id="@+id/buttons_row"
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_gravity="end"
+        android:gravity="end"
+        android:weightSum="5"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+
+
+
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/backarrow"
+            android:layout_weight="1"
+            android:backgroundTint="@color/black"
+            android:src="@drawable/back_arrow"/>
+
+
+
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="60dp"
+            android:backgroundTint="@color/black"
+            android:text="Add Match"
+            android:layout_weight="1"
+            android:textColor="@color/white"
+            android:id="@+id/addmatch"
+            android:textSize="14sp"
+            android:textStyle="bold"/>
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            app:boxCornerRadiusTopStart="25dp"
+            app:boxCornerRadiusBottomEnd="25dp"
+            app:boxCornerRadiusTopEnd="25dp"
+            app:boxCornerRadiusBottomStart="25dp"
+            android:layout_gravity="end"
+            android:layout_marginTop="20dp"
+            app:boxBackgroundMode="none">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:focusable="false"
+                android:clickable="true"
+                android:cursorVisible="false"
+                android:text="Day 1"
+                android:background="@drawable/rounder_btn_bg"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#737373"
+                android:singleLine="true"
+                android:gravity="center"
+                android:textAlignment="center"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            app:boxCornerRadiusTopStart="25dp"
+            app:boxCornerRadiusBottomEnd="25dp"
+            app:boxCornerRadiusTopEnd="25dp"
+            android:layout_weight="1"
+            app:boxCornerRadiusBottomStart="25dp"
+            android:layout_gravity="end"
+            android:layout_marginTop="20dp"
+            app:boxBackgroundMode="none">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:focusable="false"
+                android:clickable="true"
+                android:cursorVisible="false"
+                android:text="Day 2"
+                android:background="@drawable/rounder_btn_bg"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#737373"
+                android:singleLine="true"
+                android:gravity="center"
+                android:textAlignment="center"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            app:boxCornerRadiusTopStart="25dp"
+            app:boxCornerRadiusBottomEnd="25dp"
+            app:boxCornerRadiusTopEnd="25dp"
+            android:layout_weight="1"
+            app:boxCornerRadiusBottomStart="25dp"
+            android:layout_gravity="end"
+            android:layout_marginTop="20dp"
+            app:boxBackgroundMode="none">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/day3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:focusable="false"
+                android:clickable="true"
+                android:cursorVisible="false"
+                android:text="Day 3"
+                android:background="@drawable/rounder_btn_bg"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#737373"
+                android:singleLine="true"
+                android:gravity="center"
+                android:textAlignment="center"/>
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
+
+    <!-- Timeline and RecyclerView Container -->
+    <LinearLayout
+        android:layout_below="@+id/buttons_row"
+
+        android:layout_marginTop="30dp"
+        android:id="@+id/college_match"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <!-- RecyclerView for Event List -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/events_recycler"
+            android:layout_width="0dp"
+            tools:listitem="@layout/adminmatchdetails"
+            android:layout_height="match_parent"
+            android:nestedScrollingEnabled="false"
+            android:layout_weight="1"
+            android:paddingStart="10dp"/>
+    </LinearLayout>
+</RelativeLayout>

@@ -1,5 +1,6 @@
 package com.example.twaran25
 
+import com.example.twaran25.contacts.SportItem
 import com.example.twaran25.events.Event
 import com.example.twaran25.games.Game
 
@@ -54,5 +55,11 @@ object DataSource {
         Game("Women Cricket", "Smash boundaries, seize glory!", R.drawable.cricket),
         Game("Women Tennis", "Serve, smash, and conquer!", R.drawable.tennis),
         Game("Women Table Tennis", "Fast hands, quick wins!", R.drawable.table_tennis),
+    )
+    val sportss = listOf(
+        SportItem("Football"),
+        SportItem("Basketball"),
+        SportItem("Cricket"),
+        SportItem("Tennis")
     )
 }

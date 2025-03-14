@@ -43,7 +43,7 @@
                 android:padding="8dp"
                 android:textColor="#FFFFFF"
                 android:textColorHint="#737373"
-                android:hint="Name:  "
+                android:hint="College Name:  "
                 android:singleLine="true"/>
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -78,46 +78,32 @@
 
     </LinearLayout>
 
-    <LinearLayout
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="4dp"
-        android:gravity="center">
+        android:layout_height="120dp"
+        app:boxCornerRadiusTopStart="10dp"
+        app:boxCornerRadiusBottomEnd="10dp"
+        app:boxCornerRadiusTopEnd="10dp"
+        app:boxCornerRadiusBottomStart="10dp"
+        app:boxBackgroundMode="none">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/sports_selectot"
+        <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:endIconMode="custom"
-            app:boxCornerRadiusTopStart="10dp"
-            app:boxCornerRadiusBottomEnd="10dp"
-            app:boxCornerRadiusTopEnd="10dp"
-            app:boxCornerRadiusBottomStart="10dp"
-            android:clickable="true"
-            app:endIconMinSize="50dp"
-            app:endIconDrawable="@drawable/men_women_selector"
-            app:boxBackgroundMode="none">
+            android:id="@+id/query"
+            android:layout_height="120dp"
+            android:background="@drawable/background"
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:id="@+id/sports_name"
-                android:layout_height="wrap_content"
-                android:background="@drawable/background"
-                android:padding="8dp"
-                android:enabled="false"
-                android:textColor="#FFFFFF"
-                android:textColorHint="#737373"
-                android:hint="Enter your query: "
-                android:singleLine="true"/>
-        </com.google.android.material.textfield.TextInputLayout>
-
-
-    </LinearLayout>
+            android:padding="8dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#737373"
+            android:hint="Enter your query:  "
+            android:singleLine="true"/>
+    </com.google.android.material.textfield.TextInputLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clickable="true"
-        android:id="@+id/btnSubmit"
+
         android:padding="10dp"
         android:orientation="horizontal">
 
@@ -126,11 +112,34 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_weight="1"/>
-        <include
-            layout="@layout/button"
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            app:boxCornerRadiusTopStart="25dp"
+            app:boxCornerRadiusBottomEnd="25dp"
+            app:boxCornerRadiusTopEnd="25dp"
 
-            android:onClick="onIncludeClick"
-            />
+            app:boxCornerRadiusBottomStart="25dp"
+            android:layout_gravity="end"
+            android:layout_marginTop="20dp"
+            app:boxBackgroundMode="none">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounder_btn_bg"
+                android:clickable="true"
+                android:id="@+id/btnSubmit"
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:gravity="center"
+                android:padding="8dp"
+                android:singleLine="true"
+                android:text="Submit"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#737373" />
+        </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
 
     <View

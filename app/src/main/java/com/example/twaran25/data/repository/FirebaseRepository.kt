@@ -1,22 +1,32 @@
 package com.example.twaran25.data.repository
 
 import android.util.Log
+import android.widget.Toast
 import com.example.twaran25.data.models.Contact
 import com.example.twaran25.data.models.LeaderboardEntry
 import com.example.twaran25.data.models.Matches
-import com.google.firebase.database.*
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+
 
 class FirebaseRepository {
     private val db = FirebaseDatabase.getInstance().reference
 
     //add contact to db
     fun contactRequest(contact: Contact) {
-        db.child("contacts").child(contact.email).setValue(contact)
+        contact.id.takeIf { it.isNotEmpty() }?.let { id ->
+            db.child("contacts").child(id).setValue(contact)
+        }
+    }
+    fun generateUniqueId(): String? {
+        return db.child("contacts").push().key  // Generate unique ID
     }
 
     //fetch contacts from db
     fun fetchContact(onResult: (List<Contact>) -> Unit){
-        db.child("contacts").addListenerForSingleValueEvent(object : ValueEventListener{
+        db.child("contacts").addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val contact = snapshot.children.mapNotNull { it.getValue(Contact::class.java) }
                 onResult(contact)
