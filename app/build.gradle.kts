@@ -49,6 +49,7 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
+    implementation(libs.firebase.database.ktx)
     testImplementation ("junit:junit:4.13.2")
     testImplementation ("org.mockito:mockito-core:4.3.1")
     testImplementation ("org.mockito.kotlin:mockito-kotlin:4.0.0")

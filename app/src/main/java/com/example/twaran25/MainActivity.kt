@@ -1,7 +1,5 @@
 package com.example.twaran25
 
-import android.animation.Animator
-import android.animation.AnimatorListenerAdapter
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.content.Intent
@@ -13,12 +11,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.twaran25.contacts.ContactActivity
 import com.example.twaran25.databinding.ActivityMainBinding
-import com.example.twaran25.events.Event
-import com.example.twaran25.events.GameEventsActivity
+import com.example.twaran25.games.AdminMatches
 import com.example.twaran25.games.Sports
-import com.example.twaran25.leaderboard.LeaderBoard
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -47,8 +42,15 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent (this , Sports::class.java)
             startActivity(intent)
         }
-        binding.admin.setOnClickListener{
-            val intent = Intent (this , Events::class.java)
+       binding.btnAdmin.setOnClickListener {
+            binding.cardLogin.visibility = View.VISIBLE
+
+       }
+        binding.backButton.setOnClickListener {
+            binding.cardLogin.visibility = View.GONE
+        }
+        binding.btnSubmit.setOnClickListener {
+            val intent = Intent (this , AdminMatches::class.java)
             startActivity(intent)
         }
     }

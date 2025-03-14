@@ -1,25 +1,28 @@
 package com.example.twaran25.contacts
 
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.util.Log
-import android.widget.PopupMenu
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.twaran25.Events
 import com.example.twaran25.R
+import com.example.twaran25.data.models.Contact
+import com.example.twaran25.data.viewmodel.FirebaseViewModel
 import com.example.twaran25.databinding.ActivityContactBinding
-import com.example.twaran25.events.GameEventsActivity
 import com.example.twaran25.games.Sports
 import com.example.twaran25.leaderboard.LeaderBoard
 
-class ContactActivity : AppCompatActivity() {
-    private lateinit var contactBinding: ActivityContactBinding // Declare lateinit
 
+
+class ContactActivity : AppCompatActivity() {
+    lateinit var contactBinding: ActivityContactBinding
+    lateinit var contact: Contact
+    private val viewModel: FirebaseViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -33,57 +36,17 @@ class ContactActivity : AppCompatActivity() {
             insets
         }
 
-        contactBinding.sportsSelectot.setEndIconOnClickListener { view ->
-            val popupMenu = PopupMenu(this, view).apply {
-                menuInflater.inflate(R.menu.sports_menu, menu)
-                setOnMenuItemClickListener { item ->
-                    when (item.itemId) {
-                        R.id.menu_cricket -> {
-                            contactBinding.sportsSelectot.editText?.setText(item.title)
-                            true
-                        }
-
-                        R.id.menu_football -> {
-                            contactBinding.sportsSelectot.editText?.setText(item.title)
-                            true
-                        }
-
-                        R.id.menu_basketball -> {
-                            contactBinding.sportsSelectot.editText?.setText(item.title)
-                            true
-                        }
-
-                        R.id.menu_tennis -> {
-                            contactBinding.sportsSelectot.editText?.setText(item.title)
-                            true
-                        }
-
-                        else -> false
-                    }
-                }
-            }
-            popupMenu.show()
-        }
-        contactBinding.callIcon1.setOnClickListener {
-           dialNumber (contactBinding.contactNumber1.text.toString())
-        }
-        contactBinding.callIcon2.setOnClickListener {
-            dialNumber(contactBinding.contactNumber2.text.toString())
-        }
-        contactBinding.callIcon3.setOnClickListener {
-            dialNumber(contactBinding.contactNumber3.text.toString())
-        }
-        contactBinding.callIcon4.setOnClickListener {
-            dialNumber(contactBinding.contactNumber4.text.toString())
-        }
         contactBinding.btnSubmit.setOnClickListener {
-            val name=contactBinding.studentName.text.toString()
-            val email=contactBinding.emailId.text.toString()
-            val sportsName=contactBinding.sportsName.text.toString()
-            Log.d("student detail","$name $email $sportsName")
-            Toast.makeText(this,"Submitted",Toast.LENGTH_SHORT).show()
+            Log.d("ContactActivity", "Submit button clicked!")
+            saveContactToDatabase()
         }
 
+        navigation()
+
+    val contacttest = Contact("test","test","test")
+    viewModel.contactRequest(contacttest)
+    }
+    private fun navigation(){
         contactBinding.btnContact.setOnClickListener {
             if (javaClass.simpleName != ContactActivity::class.java.simpleName) {
                 val intent = Intent(this, ContactActivity::class.java)
@@ -115,13 +78,30 @@ class ContactActivity : AppCompatActivity() {
                 startActivity(intent)
             }
         }
-
-
     }
-    private fun dialNumber(number: String) {
-        val intent = Intent(Intent.ACTION_DIAL).apply {
-            data = Uri.parse("tel:$number")
+
+
+    private fun saveContactToDatabase() {
+        val name = contactBinding.studentName.text.toString().trim()
+        val phoneNo = contactBinding.emailId.text.toString().trim()
+        val query = contactBinding.query.text.toString().trim()
+
+        if (name.isEmpty() || phoneNo.isEmpty() || query.isEmpty()) {
+            Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show()
+            return
         }
-        startActivity(intent)
+
+        val contact = Contact(name = name, phoneno = phoneNo, queryAndCollege = query)
+
+        // Save to Firebase via ViewModel
+        viewModel.contactRequest(contact)
+
+        // Clear input fields after submission
+        contactBinding.studentName.text?.clear()
+        contactBinding.emailId.text?.clear()
+        contactBinding.query.text?.clear()
+
+        Toast.makeText(this, "Submitted successfully!", Toast.LENGTH_SHORT).show()
     }
+
 }
