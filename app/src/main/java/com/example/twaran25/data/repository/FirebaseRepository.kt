@@ -28,8 +28,11 @@ class FirebaseRepository {
     fun fetchContact(onResult: (List<Contact>) -> Unit){
         db.child("contacts").addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                val contact = snapshot.children.mapNotNull { it.getValue(Contact::class.java) }
-                onResult(contact)
+                val contacts = snapshot.children.mapNotNull {
+                    val contact = it.getValue(Contact::class.java)
+                    contact?.takeIf { it.id.isNotEmpty() }
+                }
+                onResult(contacts)
             }
 
             override fun onCancelled(error: DatabaseError) {

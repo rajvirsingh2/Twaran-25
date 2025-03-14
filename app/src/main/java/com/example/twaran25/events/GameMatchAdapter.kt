@@ -10,6 +10,37 @@ import com.example.twaran25.R
 class GameMatchAdapter(private val matchList: List<Event>) :
     RecyclerView.Adapter<GameMatchAdapter.GameMatchViewHolder>() {
 
+    val mappedEntries = mapOf(
+        R.drawable.iiitgwalior to "IIIT Gwalior",
+        R.drawable.iiituna to "IIIT Una",
+        R.drawable.iiitkota to "IIIT Kota",
+        R.drawable.iiitpune to "IIIT Pune",
+        R.drawable.iiitsurat to "IIIT Surat",
+        R.drawable.iiit_kalyani to "IIIT Kalyani",
+        R.drawable.iiitagartala to "IIIT Agartala",
+        R.drawable.iiitallahabad to "IIIT Allahabad",
+        R.drawable.iiitbhagalpur to "IIIT Bhagalpur",
+        R.drawable.iiitbhopal to "IIIT Bhopal",
+        R.drawable.iiitdharwad to "IIIT Dharwad",
+        R.drawable.iiitguwahati to "IIIT Guwahati",
+        R.drawable.iiithyderabad to "IIIT Hyderabad",
+        R.drawable.iiitjabalpur to "IIIT Jabalpur",
+        R.drawable.iiitkancheepuram to "IIIT Kancheepuram",
+        R.drawable.iiitkottatam to "IIIT Kottayam",
+        R.drawable.iiitlucknow to "IIIT Lucknow",
+        R.drawable.iiitmanipur to "IIIT Manipur",
+        R.drawable.iiitnagpur to "IIIT Nagpur",
+        R.drawable.iiitraichur to "IIIT Raichur",
+        R.drawable.iiitranchi to "IIIT Ranchi",
+        R.drawable.iiitsonepat to "IIIT Sonepat",
+        R.drawable.iiittiruchirappalli to "IIIT Tiruchirappalli",
+        R.drawable.iiitvadodra to "IIIT Vadodara"
+    )
+
+    fun imageMatch(collegeName: String): Int?{
+        return mappedEntries.entries.find { it.value == collegeName }?.key
+    }
+
     class GameMatchViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val startTime: TextView = view.findViewById(R.id.start_time)
         val gameName: TextView = view.findViewById(R.id.game_name)

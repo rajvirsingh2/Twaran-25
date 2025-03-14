@@ -1,4 +1,4 @@
-package com.example.twaran25.viewmodels
+package com.example.twaran25.data.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.ViewModel

@@ -1,12 +1,10 @@
-package com.example.twaran25.viewmodels
+package com.example.twaran25.data.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.example.twaran25.data.models.Contact
 import com.example.twaran25.data.repository.FirebaseRepository
-import kotlinx.coroutines.launch
 
 class ContactViewModel: ViewModel() {
     private val repository = FirebaseRepository()
