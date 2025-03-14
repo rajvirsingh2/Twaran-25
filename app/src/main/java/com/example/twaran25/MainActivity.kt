@@ -7,24 +7,47 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.View
+import android.widget.Button
+import android.widget.EditText
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.credentials.PasswordCredential
 import com.example.twaran25.databinding.ActivityMainBinding
 import com.example.twaran25.games.AdminMatches
 import com.example.twaran25.games.Sports
+import com.google.firebase.auth.FirebaseAuth
+import kotlin.math.log
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-
+    private lateinit var auth: FirebaseAuth
+    private lateinit var emailEditText: EditText
+    private lateinit var passwordEditText: EditText
+    private lateinit var loginButton:   Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        auth = FirebaseAuth.getInstance()
+        emailEditText = findViewById(R.id.email_id)
+        passwordEditText = findViewById(R.id.password)
+        loginButton = findViewById(R.id.btnSubmit)
         // Initialize binding and layout
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        loginButton.setOnClickListener {
+            val email = emailEditText.text.toString().trim()
+            val password = passwordEditText.text.toString().trim()
+
+            if(email.isNotEmpty() && password.isNotEmpty()) {
+                loginUser(email, password)
+            }else {
+                Toast.makeText(this, "Please enter email and password", Toast.LENGTH_SHORT).show()
+            }
+        }
         // Enable edge-to-edge layout
         enableEdgeToEdge()
 
@@ -44,17 +67,31 @@ class MainActivity : AppCompatActivity() {
         }
        binding.btnAdmin.setOnClickListener {
             binding.cardLogin.visibility = View.VISIBLE
-
        }
         binding.backButton.setOnClickListener {
             binding.cardLogin.visibility = View.GONE
         }
+
+        //remove this afterwards
         binding.btnSubmit.setOnClickListener {
             val intent = Intent (this , AdminMatches::class.java)
             startActivity(intent)
         }
     }
 
+    private fun loginUser(email: String, password: String){
+        auth.signInWithEmailAndPassword(email,password)
+            .addOnCompleteListener { task->
+                if(task.isSuccessful){
+                    Toast.makeText(this, "Login Done", Toast.LENGTH_SHORT).show()
+                    val intent = Intent (this , AdminMatches::class.java)
+                    startActivity(intent)
+                    finish()
+                }else {
+                    Toast.makeText(this, "Login Failed: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
+                }
+            }
+    }
     // Start all animations in sequence
     private fun startAnimations() {
         // Hide all views initially
