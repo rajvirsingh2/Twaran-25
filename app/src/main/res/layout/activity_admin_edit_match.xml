@@ -47,7 +47,11 @@
         <!-- Team A (Non-editable) -->
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
+            android:id="@+id/team_a_selector"
+            app:endIconTint="@color/white"
             android:layout_height="wrap_content"
+            app:endIconDrawable="@drawable/men_women_selector"
+            app:endIconMode="custom"
             android:layout_marginTop="10dp"
             app:boxBackgroundMode="none">
 
@@ -63,13 +67,17 @@
                 android:text="Test"
                 android:singleLine="true"
                 android:focusable="false"
-                android:enabled="false"/>
+                android:clickable="false"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Team B (Non-editable) -->
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
+            android:id="@+id/team_b_selector"
+            app:endIconTint="@color/white"
             android:layout_height="wrap_content"
+            app:endIconDrawable="@drawable/men_women_selector"
+            app:endIconMode="custom"
             android:layout_marginTop="10dp"
             app:boxBackgroundMode="none">
 
@@ -85,55 +93,64 @@
                 android:text="Test"
                 android:singleLine="true"
                 android:focusable="false"
-                android:enabled="false"/>
+                android:clickable="false"/>
         </com.google.android.material.textfield.TextInputLayout>
+
 
         <!-- Day (Non-editable) -->
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
+            android:id="@+id/day_selector"
+            app:endIconTint="@color/white"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            app:boxBackgroundMode="none">
+            app:endIconDrawable="@drawable/calendar"
+        app:endIconMode="custom"
+        android:layout_marginTop="10dp"
+        app:boxBackgroundMode="none">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/day"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="@drawable/background"
-                android:padding="8dp"
-
-                android:textColor="#FFFFFF"
-                android:textColorHint="#fff"
-                android:hint="Day:"
-                android:text="Test"
-                android:singleLine="true"
-                android:focusable="false"
-                android:enabled="false"/>
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <!-- Time (Non-editable) -->
-        <com.google.android.material.textfield.TextInputLayout
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/day"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            app:boxBackgroundMode="none">
+            android:layout_height="50dp"
+            android:background="@drawable/background"
+            android:padding="8dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#fff"
+            android:hint="Day"
+            android:text="Test"
+            android:singleLine="true"
+            android:focusable="false"
+            android:clickable="true"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/time"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="@drawable/background"
-                android:padding="8dp"
-                android:textColor="#FFFFFF"
-                android:textColorHint="#fff"
-                android:hint="Time:"
-                android:text="Test"
-                android:singleLine="true"
-                android:focusable="false"
-                android:enabled="false"/>
-        </com.google.android.material.textfield.TextInputLayout>
+    <!-- Time (Non-editable) -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:id="@+id/time_selector"
+        app:endIconTint="@color/white"
+        android:layout_height="wrap_content"
+        app:endIconDrawable="@drawable/clock"
+    app:endIconMode="custom"
+    android:layout_marginTop="10dp"
+    app:boxBackgroundMode="none">
 
-        <!-- Team A Score (Editable) -->
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/time"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/background"
+        android:padding="8dp"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#fff"
+        android:hint="Time"
+        android:text="Test"
+        android:singleLine="true"
+        android:focusable="false"
+        android:clickable="true"/>
+</com.google.android.material.textfield.TextInputLayout>
+
+
+    <!-- Team A Score (Editable) -->
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_marginTop="10dp"
