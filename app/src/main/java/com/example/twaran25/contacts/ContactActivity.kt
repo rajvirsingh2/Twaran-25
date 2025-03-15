@@ -43,8 +43,7 @@ class ContactActivity : AppCompatActivity() {
 
         navigation()
 
-    val contacttest = Contact("test","test","test")
-    viewModel.contactRequest(contacttest)
+
     }
     private fun navigation(){
         contactBinding.btnContact.setOnClickListener {

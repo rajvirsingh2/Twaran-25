@@ -20,12 +20,13 @@ class FirebaseRepository {
             db.child("contacts").child(id).setValue(contact)
         }
     }
+
     fun generateUniqueId(): String? {
         return db.child("contacts").push().key  // Generate unique ID
     }
 
     //fetch contacts from db
-    fun fetchContact(onResult: (List<Contact>) -> Unit){
+    fun fetchContact(onResult: (List<Contact>) -> Unit) {
         db.child("contacts").addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val contacts = snapshot.children.mapNotNull {
@@ -41,11 +42,66 @@ class FirebaseRepository {
 
         })
     }
+    fun fetchContact(contactId: String, onResult: (Contact?) -> Unit) {
+        db.child("contacts").child(contactId).addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val contact = snapshot.getValue(Contact::class.java)
+                onResult(contact)
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                onResult(null) // Return null if the fetch fails
+            }
+        })
+    }
+
 
     //add matches to db
     fun addMatch(match: Matches) {
         db.child("matches").child(match.matchId).setValue(match)
     }
+
+    fun addLeaderboard(entry: LeaderboardEntry) {
+        db.child("leaderboard").child(entry.collegeName).setValue(entry)
+    }
+
+    fun fetchMatch(matchId: String, onResult: (Matches?) -> Unit) {
+        db.child("matches").child(matchId)
+            .addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    val match = snapshot.getValue(Matches::class.java)
+                    onResult(match) // Returning a single match instead of a list
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    Log.e("MatchRepository", "Error fetching match: ${error.message}")
+                    onResult(null)
+                }
+            })
+    }
+    fun fetchLeaderboardEntry(collegeName: String, onResult: (LeaderboardEntry?) -> Unit) {
+        Log.d("FirebaseRepository", "Fetching leaderboard entry for: $collegeName")
+
+        db.child("leaderboard").child(collegeName)
+            .addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    if (snapshot.exists()) {
+                        val leaderboardEntry = snapshot.getValue(LeaderboardEntry::class.java)
+                        Log.d("FirebaseRepository", "Fetched: $leaderboardEntry")
+                        onResult(leaderboardEntry)
+                    } else {
+                        Log.e("FirebaseRepository", "No data found for: $collegeName")
+                        onResult(null)
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    Log.e("FirebaseRepository", "Firebase error: ${error.message}")
+                    onResult(null)
+                }
+            })
+    }
+
 
     //fetch matches from db
     fun fetchMatches(onResult: (List<Matches>) -> Unit) {
@@ -61,11 +117,132 @@ class FirebaseRepository {
         })
     }
 
+    fun fetchMatchesBySport(sportName: String, onResult: (List<Matches>) -> Unit) {
+        db.child("matches").addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val matchList = snapshot.children.mapNotNull { matchSnapshot ->
+                    val match = matchSnapshot.getValue(Matches::class.java)
+                    if (match?.sportsName == sportName) match else null
+                }
+
+                Log.d(
+                    "FirebaseRepository",
+                    "Fetched ${matchList.size} matches for sport: $sportName"
+                )
+                onResult(matchList)
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.e("FirebaseRepository", "Error fetching matches: ${error.message}")
+            }
+        })
+    }
+
+
+    // Fetch matches by Day
+    fun fetchMatchesByDay(day: Int, onResult: (List<Matches>) -> Unit) {
+        db.child("matches").addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val matchList = snapshot.children.mapNotNull {
+                    it.getValue(Matches::class.java)
+                }.filter { it.day == day }
+
+                Log.d("FirebaseRepository", "Fetched ${matchList.size} matches for Day $day")
+                onResult(matchList)
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.e("FirebaseRepository", "Error fetching matches by day: ${error.message}")
+            }
+        })
+    }
+
+    // Fetch matches by Team
+    fun fetchMatchesByTeam(teamName: String, onResult: (List<Matches>) -> Unit) {
+        db.child("matches").addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val matchList = snapshot.children.mapNotNull {
+                    it.getValue(Matches::class.java)
+                }.filter { it.teamA == teamName || it.teamB == teamName }
+
+                Log.d("FirebaseRepository", "Fetched ${matchList.size} matches for team: $teamName")
+                onResult(matchList)
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.e("FirebaseRepository", "Error fetching matches by team: ${error.message}")
+            }
+        })
+    }
+
+    fun deleteContact(contactId: String, onResult: (Boolean) -> Unit) {
+        db.child("contacts").child(contactId).removeValue()
+            .addOnSuccessListener {
+                Log.d("FirebaseRepository", "Query deleted successfully.")
+                onResult(true)
+            }
+            .addOnFailureListener { error ->
+                Log.e("FirebaseRepository", "Error deleting query: ${error.message}")
+                onResult(false)
+            }
+    }
+
+
+    // Fetch matches by Team and Day
+    fun fetchMatchesByTeamAndDay(teamName: String, day: Int, onResult: (List<Matches>) -> Unit) {
+        db.child("matches").addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val matchList = snapshot.children.mapNotNull {
+                    it.getValue(Matches::class.java)
+                }.filter { (it.teamA == teamName || it.teamB == teamName) && it.day == day }
+
+                Log.d(
+                    "FirebaseRepository",
+                    "Fetched ${matchList.size} matches for team: $teamName on Day $day"
+                )
+                onResult(matchList)
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.e(
+                    "FirebaseRepository",
+                    "Error fetching matches by team and day: ${error.message}"
+                )
+            }
+        })
+    }
+
+    // Fetch matches by Sport and Day
+    fun fetchMatchesBySportAndDay(sportName: String, day: Int, onResult: (List<Matches>) -> Unit) {
+        db.child("matches").addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val matchList = snapshot.children.mapNotNull {
+                    it.getValue(Matches::class.java)
+                }.filter { it.sportsName == sportName && it.day == day }
+
+                Log.d(
+                    "FirebaseRepository",
+                    "Fetched ${matchList.size} matches for sport: $sportName on Day $day"
+                )
+                onResult(matchList)
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.e(
+                    "FirebaseRepository",
+                    "Error fetching matches by sport and day: ${error.message}"
+                )
+            }
+        })
+    }
+
+
     //fetch leaderboard info
     fun fetchLeaderboard(onResult: (List<LeaderboardEntry>) -> Unit) {
         db.child("leaderboard").addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                val leaderboard = snapshot.children.mapNotNull { it.getValue(LeaderboardEntry::class.java) }
+                val leaderboard =
+                    snapshot.children.mapNotNull { it.getValue(LeaderboardEntry::class.java) }
                 onResult(leaderboard)
             }
 
@@ -75,36 +252,42 @@ class FirebaseRepository {
         })
     }
 
-    //update medals count
-    fun updateMedalCount(entry: LeaderboardEntry) {
-        val collegeReference = db.child("leaderboard").child(entry.collegeName)
-        val updates = mapOf(
-            "goldCount" to entry.goldCount,
-            "silverCount" to entry.silverCount,
-            "bronzeCount" to entry.bronzeCount,
-            "points" to entry.points
-        )
-        collegeReference.addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                if (snapshot.exists()) {
-                    val currentEntry = snapshot.getValue(LeaderboardEntry::class.java)
-                    currentEntry?.let {
-                        val updatedEntry = mapOf(
-                            "goldCount" to (it.goldCount + entry.goldCount),
-                            "silverCount" to (it.silverCount + entry.silverCount),
-                            "bronzeCount" to (it.bronzeCount + entry.bronzeCount),
-                            "points" to (it.points + entry.points)
-                        )
-                        collegeReference.updateChildren(updatedEntry)
-                    }
-                } else {
-                    db.child("leaderboard").child(entry.collegeName).updateChildren(updates)
-                }
-            }
 
-            override fun onCancelled(error: DatabaseError) {
-                Log.e("FirebaseRepository", "Error: ${error.message}")
-            }
-        })
+
+
+
+    //update medals count
+        fun updateMedalCount(entry: LeaderboardEntry) {
+            val collegeReference = db.child("leaderboard").child(entry.collegeName)
+            val updates = mapOf(
+                "goldCount" to entry.goldCount,
+                "silverCount" to entry.silverCount,
+                "bronzeCount" to entry.bronzeCount,
+                "points" to entry.points
+            )
+            collegeReference.addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    if (snapshot.exists()) {
+                        val currentEntry = snapshot.getValue(LeaderboardEntry::class.java)
+                        currentEntry?.let {
+                            val updatedEntry = mapOf(
+                                "goldCount" to (it.goldCount + entry.goldCount),
+                                "silverCount" to (it.silverCount + entry.silverCount),
+                                "bronzeCount" to (it.bronzeCount + entry.bronzeCount),
+                                "points" to (it.points + entry.points)
+                            )
+                            collegeReference.updateChildren(updatedEntry)
+                        }
+                    } else {
+                        db.child("leaderboard").child(entry.collegeName).updateChildren(updates)
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    Log.e("FirebaseRepository", "Error: ${error.message}")
+                }
+            })
+        }
+
+
     }
-}

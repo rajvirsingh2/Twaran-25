@@ -1,16 +1,28 @@
 package com.example.twaran25.events
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.twaran25.R
+import com.example.twaran25.data.models.Matches
 
-class GameMatchAdapter(private val matchList: List<Event>) :
+class GameMatchAdapter(private var matchList: MutableList<Matches>) :
     RecyclerView.Adapter<GameMatchAdapter.GameMatchViewHolder>() {
 
-    val mappedEntries = mapOf(
+    private val TAG = "GameMatchAdapter"
+
+    fun updateData(newList: List<Matches>) {
+        Log.d(TAG, "Updating adapter data: ${newList.size} matches received")
+        matchList.clear()
+        matchList.addAll(newList)
+        notifyDataSetChanged()
+    }
+
+    private val mappedEntries = mapOf(
         R.drawable.iiitgwalior to "IIIT Gwalior",
         R.drawable.iiituna to "IIIT Una",
         R.drawable.iiitkota to "IIIT Kota",
@@ -37,7 +49,7 @@ class GameMatchAdapter(private val matchList: List<Event>) :
         R.drawable.iiitvadodra to "IIIT Vadodara"
     )
 
-    fun imageMatch(collegeName: String): Int?{
+    private fun getImageResource(collegeName: String): Int? {
         return mappedEntries.entries.find { it.value == collegeName }?.key
     }
 
@@ -48,7 +60,9 @@ class GameMatchAdapter(private val matchList: List<Event>) :
         val place: TextView = view.findViewById(R.id.place)
         val collegeOne: TextView = view.findViewById(R.id.college_one)
         val collegeTwo: TextView = view.findViewById(R.id.college_two)
-        val verticalLine: View = view.findViewById(R.id.vertical_line) // Added reference to vertical line
+        val logoOne: ImageView = view.findViewById(R.id.college_one_image)
+        val logoTwo: ImageView = view.findViewById(R.id.college_two_image)
+        val verticalLine: View = view.findViewById(R.id.vertical_line)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GameMatchViewHolder {
@@ -59,19 +73,36 @@ class GameMatchAdapter(private val matchList: List<Event>) :
 
     override fun onBindViewHolder(holder: GameMatchViewHolder, position: Int) {
         val match = matchList[position]
-        holder.startTime.text = match.startTime
-        holder.gameName.text = match.gameName
-        holder.date.text = "Date: ${match.date}"
-        holder.place.text = "Place: ${match.place}"
-        holder.collegeOne.text = match.collegeOne
-        holder.collegeTwo.text = match.collegeTwo
+
+        Log.d(TAG, "Binding match at position $position: ${match.sportsName} (${match.teamA} vs ${match.teamB})")
+
+        holder.startTime.text = match.time
+        holder.gameName.text = match.sportsName
+        holder.date.text = match.date
+        holder.place.text = match.venue
+        holder.collegeOne.text = match.teamA
+        holder.collegeTwo.text = match.teamB
+
+        // Set images safely and log
+        val teamAImage = getImageResource(match.teamA)
+        val teamBImage = getImageResource(match.teamB)
+
+        if (teamAImage != null) {
+            holder.logoOne.setImageResource(teamAImage)
+        } else {
+            Log.w(TAG, "No image found for Team A: ${match.teamA}")
+        }
+
+        if (teamBImage != null) {
+            holder.logoTwo.setImageResource(teamBImage)
+        } else {
+            Log.w(TAG, "No image found for Team B: ${match.teamB}")
+        }
 
         // Hide vertical line for the last item
-        if (position == matchList.size - 1) {
-            holder.verticalLine.visibility = View.GONE
-        } else {
-            holder.verticalLine.visibility = View.VISIBLE
-        }
+        val isLastItem = position == matchList.size - 1
+        holder.verticalLine.visibility = if (isLastItem) View.GONE else View.VISIBLE
+        Log.d(TAG, "Vertical line visibility set to: ${if (isLastItem) "GONE" else "VISIBLE"}")
     }
 
     override fun getItemCount(): Int = matchList.size

@@ -2,71 +2,63 @@ package com.example.twaran25.leaderboard
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.twaran25.Events
+import com.example.twaran25.AddMatch
 import com.example.twaran25.R
 import com.example.twaran25.contacts.AdminContact
-import com.example.twaran25.contacts.ContactActivity
 import com.example.twaran25.databinding.ActivityAdminLeaderboardBinding
 import com.example.twaran25.events.AdminEvents
 import com.example.twaran25.games.AdminMatches
-import com.example.twaran25.games.Sports
+import com.example.twaran25.data.viewmodel.LeaderboardViewModel
 
 class AdminLeaderboard : AppCompatActivity() {
     private lateinit var binding: ActivityAdminLeaderboardBinding
+    private val leaderboardViewModel: LeaderboardViewModel by viewModels()
+    private lateinit var adapter: AdminLeaderboardAdapter
 
-    val players = listOf(
-        PlayerInfo(R.drawable.avatar_one, "Rezaul", 1, "IIIT GWALIOR"),
-        PlayerInfo(R.drawable.avatar_third, "Owais", 2, "IIIT GWALIOR"),
-        PlayerInfo(R.drawable.avatar_third, "Rajat ", 3, "IIIT GWALIOR"),
-        PlayerInfo(R.drawable.avatar_one, "John Doe", 4, "IIIT GWALIOR"),
-        PlayerInfo(R.drawable.avatar_one, "John Doe", 5, "IIIT GWALIOR"),
-        PlayerInfo(R.drawable.avatar_one, "John Doe", 6, "IIIT GWALIOR")
-    )
-    val first = players.find {
-        it.place == 1
-    }
-    val second = players.find {
-        it.place == 2
-    }
-    val third = players.find {
-        it.place == 3
-    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         binding = ActivityAdminLeaderboardBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
+
+        // Initialize RecyclerView
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
-        binding.recyclerView.adapter = PlayerAdapter(players)
+        adapter = AdminLeaderboardAdapter(){
+            val intent = Intent(this, AdminUpdateLeaderboardData::class.java)
+            intent.putExtra("collegeName", it.collegeName)
 
-        binding.playerFirstName.text= first?.name ?: ""
-        first?.let { binding.playerFirstImage.setImageResource(it.image) }
-
-        binding.playerSecondName.text= second?.name ?: ""
-        second?.let { binding.playerSecondImage.setImageResource(it.image) }
-
-        binding.playerThirdName.text= third?.name ?: ""
-        third?.let { binding.playerThirdImage.setImageResource(it.image) }
-
-        binding.btnContact.setOnClickListener {
-            if (javaClass.simpleName != ContactActivity::class.java.simpleName) {
-                val intent = Intent(this, ContactActivity::class.java)
-                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                startActivity(intent)
-            }
+            startActivity(intent)
         }
+        binding.recyclerView.adapter = adapter
+
+        // Observe LiveData from ViewModel
+        leaderboardViewModel.leaderboardLiveData.observe(this) { leaderboardEntries ->
+            adapter.updateData(leaderboardEntries)
+
+            // Assign top 3 colleges dynamically
+            binding.playerFirstName.text = leaderboardEntries.getOrNull(0)?.collegeName ?: ""
+            binding.playerSecondName.text = leaderboardEntries.getOrNull(1)?.collegeName ?: ""
+            binding.playerThirdName.text = leaderboardEntries.getOrNull(2)?.collegeName ?: ""
+
+            binding.playerFirstImage.setImageResource(getImageResource(leaderboardEntries.getOrNull(0)?.collegeName))
+            binding.playerSecondImage.setImageResource(getImageResource(leaderboardEntries.getOrNull(1)?.collegeName))
+            binding.playerThirdImage.setImageResource(getImageResource(leaderboardEntries.getOrNull(2)?.collegeName))
+        }
+
+        binding.addmatch.setOnClickListener {
+            val intent = Intent(this, AdminAddLeaderboardCollege::class.java)
+            startActivity(intent)
+        }
+
+        // Fetch leaderboard data
+        leaderboardViewModel.fetchLeaderboard()
+
         navigation()
     }
+
     private fun navigation(){
         binding.btnContact.setOnClickListener {
             if (javaClass.simpleName != AdminContact::class.java.simpleName) {
@@ -100,4 +92,38 @@ class AdminLeaderboard : AppCompatActivity() {
             }
         }
     }
+
+    // Function to fetch college image from a predefined map
+    private fun getImageResource(collegeName: String?): Int {
+        val mappedEntries = mapOf(
+            "IIIT Gwalior" to R.drawable.iiitgwalior,
+            "IIIT Una" to R.drawable.iiituna,
+            "IIIT Kota" to R.drawable.iiitkota,
+            "IIIT Pune" to R.drawable.iiitpune,
+            "IIIT Surat" to R.drawable.iiitsurat,
+            "IIIT Kalyani" to R.drawable.iiit_kalyani,
+            "IIIT Agartala" to R.drawable.iiitagartala,
+            "IIIT Allahabad" to R.drawable.iiitallahabad,
+            "IIIT Bhagalpur" to R.drawable.iiitbhagalpur,
+            "IIIT Bhopal" to R.drawable.iiitbhopal,
+            "IIIT Dharwad" to R.drawable.iiitdharwad,
+            "IIIT Guwahati" to R.drawable.iiitguwahati,
+            "IIIT Hyderabad" to R.drawable.iiithyderabad,
+            "IIIT Jabalpur" to R.drawable.iiitjabalpur,
+            "IIIT Kancheepuram" to R.drawable.iiitkancheepuram,
+            "IIIT Kottayam" to R.drawable.iiitkottatam,
+            "IIIT Lucknow" to R.drawable.iiitlucknow,
+            "IIIT Manipur" to R.drawable.iiitmanipur,
+            "IIIT Nagpur" to R.drawable.iiitnagpur,
+            "IIIT Raichur" to R.drawable.iiitraichur,
+            "IIIT Ranchi" to R.drawable.iiitranchi,
+            "IIIT Sonepat" to R.drawable.iiitsonepat,
+            "IIIT Tiruchirappalli" to R.drawable.iiittiruchirappalli,
+            "IIIT Vadodara" to R.drawable.iiitvadodra
+        )
+        return mappedEntries[collegeName] ?: R.drawable.iiitgwalior
+    }
+
 }
+
+

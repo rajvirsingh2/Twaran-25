@@ -1,9 +1,12 @@
 package com.example.twaran25.data.models
 
 data class LeaderboardEntry(
-    val collegeName: String,
-    val goldCount: Int = 0,
-    val silverCount: Int = 0,
-    val bronzeCount: Int = 0,
-    val points: Int = 0
-)
+    var collegeName: String = "",
+    var goldCount: Int = 0,
+    var silverCount: Int = 0,
+    var bronzeCount: Int = 0,
+    var points: Int = 0
+) {
+    // Required empty constructor for Firebase
+    constructor() : this("", 0, 0, 0, 0)
+}

@@ -1,5 +1,6 @@
 package com.example.twaran25.games
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,10 +9,12 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.twaran25.R
+import com.example.twaran25.events.GameEventsActivity
+
 
 class GameAdapter(
     private val fullGameList: List<Game>,   // Store original list
-    private val onSportClick: (Game) -> Unit
+    private val onSportClick: (String) -> Unit
 ) : RecyclerView.Adapter<GameAdapter.GameViewHolder>() {
 
     private var filteredGameList: MutableList<Game> = fullGameList.toMutableList() // List that updates dynamically
@@ -37,7 +40,10 @@ class GameAdapter(
         holder.imageView.setImageResource(game.image) // Set correct image
 
         holder.arrowButton.setOnClickListener {
-            onSportClick(game)
+            val context = holder.itemView.context
+            val intent = Intent(context, GameEventsActivity::class.java) // Replace with your target activity
+            intent.putExtra("SPORT_NAME", game.title) // Pass sport name via intent
+            context.startActivity(intent)
         }
     }
 

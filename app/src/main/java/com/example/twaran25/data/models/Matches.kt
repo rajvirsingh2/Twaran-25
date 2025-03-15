@@ -13,5 +13,6 @@ data class Matches(
     val venue: String = "",
     val teamAScore: Int = 0,
     val teamBScore: Int = 0,
-    val winner: Int = -1
+    val teamAResult: Int = 0,
+    val teamBResult: Int = 0,
 )
