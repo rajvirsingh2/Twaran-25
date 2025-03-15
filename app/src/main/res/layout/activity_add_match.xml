@@ -51,7 +51,12 @@
             <!-- Team A -->
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
+                android:id="@+id/team_a_selector"
+                app:endIconTint="@color/white"
                 android:layout_height="wrap_content"
+                app:endIconDrawable="@drawable/men_women_selector"
+                app:endIconMode="custom"
+                android:layout_marginTop="10dp"
                 app:boxBackgroundMode="none">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -63,13 +68,21 @@
                     android:textColor="#FFFFFF"
                     android:textColorHint="#fff"
                     android:hint="Team A:"
-                    android:singleLine="true"/>
+                    android:text=""
+                    android:singleLine="true"
+                    android:focusable="false"
+                    android:clickable="false"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <!-- Team B -->
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
+                android:id="@+id/team_b_selector"
+                app:endIconTint="@color/white"
                 android:layout_height="wrap_content"
+                app:endIconDrawable="@drawable/men_women_selector"
+                app:endIconMode="custom"
+                android:layout_marginTop="10dp"
                 app:boxBackgroundMode="none">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -81,7 +94,10 @@
                     android:textColor="#FFFFFF"
                     android:textColorHint="#fff"
                     android:hint="Team B:"
-                    android:singleLine="true"/>
+                    android:text=""
+                    android:singleLine="true"
+                    android:focusable="false"
+                    android:clickable="false"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <!-- Day -->
@@ -105,7 +121,12 @@
             <!-- Time -->
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
+                android:id="@+id/time_selector"
+                app:endIconTint="@color/white"
                 android:layout_height="wrap_content"
+                app:endIconDrawable="@drawable/clock"
+                app:endIconMode="custom"
+                android:layout_marginTop="10dp"
                 app:boxBackgroundMode="none">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -117,13 +138,23 @@
                     android:textColor="#FFFFFF"
                     android:textColorHint="#fff"
                     android:hint="Time:"
-                    android:singleLine="true"/>
+                    android:text=""
+                    android:singleLine="true"
+                    android:focusable="false"
+                    android:clickable="true"/>
             </com.google.android.material.textfield.TextInputLayout>
+
+
 
             <!-- Date -->
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
+                android:id="@+id/day_selector"
+                app:endIconTint="@color/white"
                 android:layout_height="wrap_content"
+                app:endIconDrawable="@drawable/calendar"
+                app:endIconMode="custom"
+                android:layout_marginTop="10dp"
                 app:boxBackgroundMode="none">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -135,8 +166,12 @@
                     android:textColor="#FFFFFF"
                     android:textColorHint="#fff"
                     android:hint="Date:"
-                    android:singleLine="true"/>
+                    android:text=""
+                    android:singleLine="true"
+                    android:focusable="false"
+                    android:clickable="true"/>
             </com.google.android.material.textfield.TextInputLayout>
+
 
             <!-- Venue -->
             <com.google.android.material.textfield.TextInputLayout

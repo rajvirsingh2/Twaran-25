@@ -2,35 +2,22 @@ package com.example.twaran25.leaderboard
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.twaran25.Events
 import com.example.twaran25.R
 import com.example.twaran25.contacts.ContactActivity
+import com.example.twaran25.data.models.LeaderboardEntry
+import com.example.twaran25.data.viewmodel.LeaderboardViewModel
 import com.example.twaran25.databinding.ActivityLeaderBoardBinding
 import com.example.twaran25.games.Sports
 
 class LeaderBoard : AppCompatActivity() {
     private lateinit var binding: ActivityLeaderBoardBinding
-
-    val players = listOf(
-        PlayerInfo(R.drawable.avatar_one, "Rezaul", 1, "IIIT GWALIOR"),
-        PlayerInfo(R.drawable.avatar_third, "Owais", 2, "IIIT GWALIOR"),
-        PlayerInfo(R.drawable.avatar_third, "Rajat ", 3, "IIIT GWALIOR"),
-        PlayerInfo(R.drawable.avatar_one, "John Doe", 4, "IIIT GWALIOR"),
-        PlayerInfo(R.drawable.avatar_one, "John Doe", 5, "IIIT GWALIOR"),
-        PlayerInfo(R.drawable.avatar_one, "John Doe", 6, "IIIT GWALIOR")
-    )
-    val first = players.find {
-        it.place == 1
-    }
-    val second = players.find {
-        it.place == 2
-    }
-    val third = players.find {
-        it.place == 3
-    }
+    private val leaderboardViewModel: LeaderboardViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,17 +29,85 @@ class LeaderBoard : AppCompatActivity() {
 
         // Setup RecyclerView
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
-        binding.recyclerView.adapter = PlayerAdapter(players)
 
-        binding.playerFirstName.text= first?.name ?: ""
-        first?.let { binding.playerFirstImage.setImageResource(it.image) }
+        // Fetch leaderboard from Firebase
+        leaderboardViewModel.fetchLeaderboard()
 
-        binding.playerSecondName.text= second?.name ?: ""
-        second?.let { binding.playerSecondImage.setImageResource(it.image) }
+        // Observe LiveData and update UI
+        leaderboardViewModel.leaderboardLiveData.observe(this) { leaderboard ->
+            if (leaderboard.isNotEmpty()) {
+                updateUI(leaderboard)
+            } else {
+                Log.e("LeaderBoard", "Leaderboard is empty!")
+            }
+        }
 
-        binding.playerThirdName.text= third?.name ?: ""
-        third?.let { binding.playerThirdImage.setImageResource(it.image) }
+        // Navigation Button Listeners
+        navigation()
+    }
 
+    private fun updateUI(leaderboard: List<LeaderboardEntry>) {
+        // Sort by points in descending order
+        val sortedLeaderboard = leaderboard.sortedByDescending { it.points }
+
+        // Set Top 3 Colleges
+        binding.collegeFirstName.text = sortedLeaderboard.getOrNull(0)?.collegeName ?: ""
+        binding.collegeFirstImage.setImageResource(
+            getImageResource(sortedLeaderboard.getOrNull(0)?.collegeName)
+        )
+
+        binding.collegeSecondName.text = sortedLeaderboard.getOrNull(1)?.collegeName ?: ""
+        binding.collegeSecondImage.setImageResource(
+            getImageResource(sortedLeaderboard.getOrNull(1)?.collegeName)
+        )
+
+        binding.collegeThirdName.text = sortedLeaderboard.getOrNull(2)?.collegeName ?: ""
+        binding.collegeThirdImage.setImageResource(
+            getImageResource(sortedLeaderboard.getOrNull(2)?.collegeName)
+        )
+
+        // Update RecyclerView Adapter
+        val adapter = binding.recyclerView.adapter as? LeaderboardAdapter
+        if (adapter == null) {
+            binding.recyclerView.adapter = LeaderboardAdapter().apply { updateData(sortedLeaderboard) }
+        } else {
+            adapter.updateData(sortedLeaderboard)
+        }
+    }
+
+
+    private fun getImageResource(collegeName: String?): Int {
+        val mappedEntries = mapOf(
+            "IIIT Gwalior" to R.drawable.iiitgwalior,
+            "IIIT Una" to R.drawable.iiituna,
+            "IIIT Kota" to R.drawable.iiitkota,
+            "IIIT Pune" to R.drawable.iiitpune,
+            "IIIT Surat" to R.drawable.iiitsurat,
+            "IIIT Kalyani" to R.drawable.iiit_kalyani,
+            "IIIT Agartala" to R.drawable.iiitagartala,
+            "IIIT Allahabad" to R.drawable.iiitallahabad,
+            "IIIT Bhagalpur" to R.drawable.iiitbhagalpur,
+            "IIIT Bhopal" to R.drawable.iiitbhopal,
+            "IIIT Dharwad" to R.drawable.iiitdharwad,
+            "IIIT Guwahati" to R.drawable.iiitguwahati,
+            "IIIT Hyderabad" to R.drawable.iiithyderabad,
+            "IIIT Jabalpur" to R.drawable.iiitjabalpur,
+            "IIIT Kancheepuram" to R.drawable.iiitkancheepuram,
+            "IIIT Kottayam" to R.drawable.iiitkottatam,
+            "IIIT Lucknow" to R.drawable.iiitlucknow,
+            "IIIT Manipur" to R.drawable.iiitmanipur,
+            "IIIT Nagpur" to R.drawable.iiitnagpur,
+            "IIIT Raichur" to R.drawable.iiitraichur,
+            "IIIT Ranchi" to R.drawable.iiitranchi,
+            "IIIT Sonepat" to R.drawable.iiitsonepat,
+            "IIIT Tiruchirappalli" to R.drawable.iiittiruchirappalli,
+            "IIIT Vadodara" to R.drawable.iiitvadodra
+        )
+        return mappedEntries[collegeName] ?: R.drawable.iiitgwalior
+    }
+
+
+    private fun navigation(){
         binding.btnContact.setOnClickListener {
             if (javaClass.simpleName != ContactActivity::class.java.simpleName) {
                 val intent = Intent(this, ContactActivity::class.java)
@@ -84,8 +139,6 @@ class LeaderBoard : AppCompatActivity() {
                 startActivity(intent)
             }
         }
-
-
-
     }
+
 }

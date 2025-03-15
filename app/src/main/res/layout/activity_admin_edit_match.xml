@@ -96,7 +96,22 @@
                 android:clickable="false"/>
         </com.google.android.material.textfield.TextInputLayout>
 
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:boxBackgroundMode="none">
 
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/day"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/background"
+                android:padding="8dp"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#fff"
+                android:hint="Day:"
+                android:singleLine="true"/>
+        </com.google.android.material.textfield.TextInputLayout>
         <!-- Day (Non-editable) -->
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
@@ -109,14 +124,14 @@
         app:boxBackgroundMode="none">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/day"
+            android:id="@+id/date"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@drawable/background"
             android:padding="8dp"
             android:textColor="#FFFFFF"
             android:textColorHint="#fff"
-            android:hint="Day"
+            android:hint="Date"
             android:text="Test"
             android:singleLine="true"
             android:focusable="false"
@@ -148,6 +163,23 @@
         android:focusable="false"
         android:clickable="true"/>
 </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:boxBackgroundMode="none">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/venue"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/background"
+                android:padding="8dp"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#fff"
+                android:hint="Venue:"
+                android:singleLine="true"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
 
     <!-- Team A Score (Editable) -->

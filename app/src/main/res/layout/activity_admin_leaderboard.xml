@@ -158,6 +158,17 @@
                 android:padding="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
+                <Button
+                    android:layout_width="100dp"
+                    android:layout_height="60dp"
+                    android:backgroundTint="@color/white"
+                    android:text="Add College"
+                    android:clickable="true"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"
+                    android:id="@+id/addmatch"
+                    android:textSize="14sp"
+                    android:textStyle="bold"/>
                 <ImageView
                     android:id="@+id/player_third_image"
                     android:src="@drawable/avatar_third"
@@ -216,6 +227,7 @@
 
 
             </LinearLayout>
+
 
         </LinearLayout>
 

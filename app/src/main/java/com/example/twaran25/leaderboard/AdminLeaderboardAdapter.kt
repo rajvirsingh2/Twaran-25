@@ -9,13 +9,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.twaran25.R
 import com.example.twaran25.data.models.LeaderboardEntry
 
-class LeaderboardAdapter : RecyclerView.Adapter<LeaderboardAdapter.LeaderboardViewHolder>() {
+class AdminLeaderboardAdapter(
+    private val onItemClick: (LeaderboardEntry) -> Unit // Callback for item clicks
+) : RecyclerView.Adapter<AdminLeaderboardAdapter.LeaderboardViewHolder>() {
 
     private val leaderboardList = mutableListOf<LeaderboardEntry>()
 
     fun updateData(newList: List<LeaderboardEntry>) {
         leaderboardList.clear()
-        leaderboardList.addAll(newList.sortedByDescending { it.points }) // Sort before adding
+        leaderboardList.addAll(newList.sortedByDescending { it.points }) // Sort by points
         notifyDataSetChanged()
     }
 
@@ -50,13 +52,26 @@ class LeaderboardAdapter : RecyclerView.Adapter<LeaderboardAdapter.LeaderboardVi
         return mappedEntries[collegeName] ?: R.drawable.iiitgwalior
     }
 
-    class LeaderboardViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val imageView: ImageView = itemView.findViewById(R.id.image)
-        val name: TextView = itemView.findViewById(R.id.name)
-        val goldText: TextView = itemView.findViewById(R.id.gold_amount)
-        val silverText: TextView = itemView.findViewById(R.id.silver_amount)
-        val bronzeText: TextView = itemView.findViewById(R.id.brnz_amount)
-        val positionText: TextView = itemView.findViewById(R.id.position)
+    inner class LeaderboardViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        private val imageView: ImageView = itemView.findViewById(R.id.image)
+        private val name: TextView = itemView.findViewById(R.id.name)
+        private val goldText: TextView = itemView.findViewById(R.id.gold_amount)
+        private val silverText: TextView = itemView.findViewById(R.id.silver_amount)
+        private val bronzeText: TextView = itemView.findViewById(R.id.brnz_amount)
+        private val positionText: TextView = itemView.findViewById(R.id.position)
+
+        fun bind(entry: LeaderboardEntry, position: Int) {
+            name.text = entry.collegeName
+            imageView.setImageResource(getImageResource(entry.collegeName))
+            goldText.text = entry.goldCount.toString()
+            silverText.text = entry.silverCount.toString()
+            bronzeText.text = entry.bronzeCount.toString()
+            positionText.text = (position + 1).toString()
+
+            itemView.setOnClickListener {
+                onItemClick(entry) // Handle item click
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LeaderboardViewHolder {
@@ -67,13 +82,7 @@ class LeaderboardAdapter : RecyclerView.Adapter<LeaderboardAdapter.LeaderboardVi
 
     override fun onBindViewHolder(holder: LeaderboardViewHolder, position: Int) {
         val entry = leaderboardList[position]
-
-        holder.name.text = entry.collegeName
-        holder.imageView.setImageResource(getImageResource(entry.collegeName))
-        holder.goldText.text = entry.goldCount.toString()
-        holder.silverText.text = entry.silverCount.toString()
-        holder.bronzeText.text = entry.bronzeCount.toString()
-        holder.positionText.text = (position + 1).toString()
+        holder.bind(entry, position)
     }
 
     override fun getItemCount(): Int = leaderboardList.size
