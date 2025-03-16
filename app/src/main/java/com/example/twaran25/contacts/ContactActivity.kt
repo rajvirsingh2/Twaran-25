@@ -3,6 +3,8 @@ package com.example.twaran25.contacts
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.ImageButton
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
@@ -16,7 +18,7 @@ import com.example.twaran25.data.viewmodel.FirebaseViewModel
 import com.example.twaran25.databinding.ActivityContactBinding
 import com.example.twaran25.games.Sports
 import com.example.twaran25.leaderboard.LeaderBoard
-
+import androidx.core.net.toUri
 
 
 class ContactActivity : AppCompatActivity() {
@@ -46,6 +48,12 @@ class ContactActivity : AppCompatActivity() {
 
     }
     private fun navigation(){
+
+        setUpCall(contactBinding.callIcon1,contactBinding.contactNumber1)
+        setUpCall(contactBinding.callIcon2,contactBinding.contactNumber2)
+        setUpCall(contactBinding.callIcon3,contactBinding.contactNumber3)
+        setUpCall(contactBinding.callIcon4,contactBinding.contactNumber4)
+
         contactBinding.btnContact.setOnClickListener {
             if (javaClass.simpleName != ContactActivity::class.java.simpleName) {
                 val intent = Intent(this, ContactActivity::class.java)
@@ -101,6 +109,23 @@ class ContactActivity : AppCompatActivity() {
         contactBinding.query.text?.clear()
 
         Toast.makeText(this, "Submitted successfully!", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun setUpCall(callIcon: ImageButton, contactNumber: TextView){
+        callIcon.setOnClickListener {
+            val phnNum = contactNumber.text.toString().trim()
+            val intent = Intent(Intent.ACTION_DIAL).apply {
+                data = "tel:$phnNum".toUri()
+            }
+            startActivity(intent)
+        }
+        contactNumber.setOnClickListener {
+            val phnNum = contactNumber.text.toString().trim()
+            val intent = Intent(Intent.ACTION_DIAL).apply {
+                data = "tel:$phnNum".toUri()
+            }
+            startActivity(intent)
+        }
     }
 
 }
