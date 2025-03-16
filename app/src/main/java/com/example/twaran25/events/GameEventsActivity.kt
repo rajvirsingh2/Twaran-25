@@ -60,6 +60,8 @@ class GameEventsActivity : AppCompatActivity() {
             viewModel.fetchMatchesBySportAndDay(sportName , 2)}
         binding.day3.setOnClickListener {
             viewModel.fetchMatchesBySportAndDay(sportName , 3)}
+        binding.day4.setOnClickListener {
+            viewModel.fetchMatchesBySportAndDay(sportName , 3)}
         binding.bakcbtn.setOnClickListener {
             finish()
         }

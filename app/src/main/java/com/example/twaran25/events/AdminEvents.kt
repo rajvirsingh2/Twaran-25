@@ -2,8 +2,10 @@ package com.example.twaran25.events
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -16,6 +18,7 @@ import com.example.twaran25.Events
 import com.example.twaran25.R
 import com.example.twaran25.contacts.AdminContact
 import com.example.twaran25.contacts.ContactActivity
+import com.example.twaran25.data.viewmodel.MatchViewModel
 import com.example.twaran25.databinding.ActivityAdminEventsBinding
 import com.example.twaran25.games.AdminMatches
 import com.example.twaran25.games.Sports
@@ -24,6 +27,8 @@ import com.example.twaran25.leaderboard.LeaderBoard
 
 class AdminEvents : AppCompatActivity() {
     lateinit var eventsBinding: ActivityAdminEventsBinding
+    private val viewModel: MatchViewModel by viewModels()
+    private lateinit var adapter: AdminMatchesAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -39,12 +44,26 @@ class AdminEvents : AppCompatActivity() {
         collegeRow.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         collegeRow.adapter = CollegeAdapter(colleges) { collegeName ->
             //Refresh the list when a college icon is clicked
-            Toast.makeText(this, "Clicked on $collegeName", Toast.LENGTH_SHORT).show()
+            viewModel.fetchMatchesByTeam(collegeName)
         }
 
+        eventsBinding.eventsRecycler.layoutManager = LinearLayoutManager(this)
+        // Initialize RecyclerView
         val eventRecyclerView: RecyclerView = eventsBinding.eventsRecycler
-        eventRecyclerView.adapter = AdminMatchesAdapter(this,events)
         eventRecyclerView.layoutManager = LinearLayoutManager(this)
+
+        adapter = AdminMatchesAdapter(this , mutableListOf())
+        eventRecyclerView.adapter = adapter
+
+        // Observe LiveData and update RecyclerView
+        viewModel.matches.observe(this) { matches ->
+            Log.d("EventsActivity", "Fetched ${matches.size} matches")
+            adapter.updateData(matches)
+        }
+
+        // Fetch all matches from ViewModel
+        viewModel.fetchMatches()
+
         navigation()
     }
 

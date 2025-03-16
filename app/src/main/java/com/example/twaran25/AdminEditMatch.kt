@@ -35,6 +35,7 @@ class AdminEditMatch : AppCompatActivity() {
             finish()
         }
 
+        binding.sportName.setOnClickListener { setupSportsPopup(it, binding.sportName) }
         binding.teamA.setOnClickListener { setupCollegePopupMenu(it, binding.teamA) }
         binding.teamB.setOnClickListener { setupCollegePopupMenu(it, binding.teamB) }
         binding.daySelector.setEndIconOnClickListener { showDatePicker() }
@@ -53,7 +54,8 @@ class AdminEditMatch : AppCompatActivity() {
                 binding.sportName.setText(it.sportsName)
                 binding.teamA.setText(it.teamA)
                 binding.teamB.setText(it.teamB)
-                binding.day.setText(it.date)
+                binding.day.setText(it.day.toString())
+                binding.date.setText(it.date)
                 binding.time.setText(it.time)
                 binding.venue.setText(it.venue)
                 binding.teamAScore.setText(it.teamAScore.toString())
@@ -64,6 +66,52 @@ class AdminEditMatch : AppCompatActivity() {
         })
     }
 
+    private fun setupSportsPopup(view: View, editText: android.widget.EditText) {
+        val popupMenu = PopupMenu(view.context, view)
+
+        // Men's sports
+        popupMenu.menu.add("Athletics")
+        popupMenu.menu.add("Badminton")
+        popupMenu.menu.add("Basketball")
+        popupMenu.menu.add("Carrom")
+        popupMenu.menu.add("Cricket")
+        popupMenu.menu.add("Kabaddi")
+        popupMenu.menu.add("Football")
+        popupMenu.menu.add("Powerlifting")
+        popupMenu.menu.add("Table Tennis")
+        popupMenu.menu.add("Lawn Tennis")
+        popupMenu.menu.add("Volleyball")
+        popupMenu.menu.add("Squash")
+        popupMenu.menu.add("Aquatics")
+        popupMenu.menu.add("Tug of War")
+        popupMenu.menu.add("Kho-Kho")
+
+        // Women's sports (with "(Women)" suffix)
+        popupMenu.menu.add("Athletics (Women)")
+        popupMenu.menu.add("Badminton (Women)")
+        popupMenu.menu.add("Basketball (Women)")
+        popupMenu.menu.add("Carrom (Women)")
+        popupMenu.menu.add("Powerlifting (Women)")
+        popupMenu.menu.add("Table Tennis (Women)")
+        popupMenu.menu.add("Lawn Tennis (Women)")
+        popupMenu.menu.add("Volleyball (Women)")
+        popupMenu.menu.add("Squash (Women)")
+        popupMenu.menu.add("Aquatics (Women)")
+        popupMenu.menu.add("Tug of War (Women)")
+        popupMenu.menu.add("Kabaddi (Women)")
+        popupMenu.menu.add("Kho-Kho (Women)")
+
+        // Combined sports (Men & Women Combined)
+        popupMenu.menu.add("Chess (Men & Women Combined)")
+
+        // Handle menu item click
+        popupMenu.setOnMenuItemClickListener { item ->
+            editText.setText(item.title.toString())
+            true
+        }
+
+        popupMenu.show()
+    }
     private fun updateMatchDetails() {
         if (currentMatch == null) return
 

@@ -27,6 +27,9 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:endIconDrawable="@drawable/men_women_selector"
+            app:endIconMode="custom"
+            android:id="@+id/sportselector"
             app:boxBackgroundMode="none">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -40,7 +43,7 @@
                 android:hint="Sports Name:"
                 android:text="Test"
                 android:singleLine="true"
-                android:focusable="false"
+                android:focusable="true"
                 android:enabled="false"/>
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -66,7 +69,7 @@
                 android:hint="Team A:"
                 android:text="Test"
                 android:singleLine="true"
-                android:focusable="false"
+                android:focusable="true"
                 android:clickable="false"/>
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -92,7 +95,7 @@
                 android:hint="Team B:"
                 android:text="Test"
                 android:singleLine="true"
-                android:focusable="false"
+                android:focusable="true"
                 android:clickable="false"/>
         </com.google.android.material.textfield.TextInputLayout>
 
