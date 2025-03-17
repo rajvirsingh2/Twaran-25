@@ -32,7 +32,7 @@
                 android:layout_height="wrap_content">
                 <ImageView
                     android:id="@+id/player_second_image"
-                    android:src="@drawable/avatar_one"
+                    android:src="@drawable/iiit_kalyani"
                     android:layout_gravity="center_horizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>

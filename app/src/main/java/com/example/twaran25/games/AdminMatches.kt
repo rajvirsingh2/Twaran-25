@@ -47,7 +47,7 @@ class AdminMatches : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var filterText: TextView
     private lateinit var searchBar: TextInputEditText
-    private lateinit var adapter: GameAdapter
+    private lateinit var adapter: AdminGameAdapter
     private var currentSportsList: List<Game> = mensSports // Default to men's sports
 
     lateinit var binding: ActivityAdminMatchesBinding
@@ -138,7 +138,7 @@ class AdminMatches : AppCompatActivity() {
     private fun updateSportsList(sportsList: List<Game>, category: String) {
         filterText.text = category
         currentSportsList = sportsList // Update the active sports list
-        adapter = GameAdapter(currentSportsList) {
+        adapter = AdminGameAdapter(currentSportsList) {
             val intent = Intent(this, AdminMatchDetails::class.java)
             startActivity(intent)
         }

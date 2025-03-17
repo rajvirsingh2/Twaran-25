@@ -17,18 +17,9 @@
         android:orientation="horizontal"
         android:layout_height="wrap_content">
 
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/bakcbtn"
-            android:backgroundTint="@color/black"
-            android:src="@drawable/back_arrow"/>
 
-        <!-- Spacer to push buttons to the right -->
-        <View
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:layout_weight="1" />
+
+
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="100dp"
@@ -59,7 +50,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <View
-            android:layout_width="10dp"
+            android:layout_width="8dp"
             android:layout_height="0dp"/>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -91,7 +82,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <View
-            android:layout_width="10dp"
+            android:layout_width="8dp"
             android:layout_height="0dp"/>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -121,9 +112,51 @@
                 android:gravity="center"
                 android:textAlignment="center"/>
         </com.google.android.material.textfield.TextInputLayout>
+        <View
+            android:layout_width="8dp"
+            android:layout_height="0dp"/>
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            app:boxCornerRadiusTopStart="25dp"
+            app:boxCornerRadiusBottomEnd="25dp"
+            app:boxCornerRadiusTopEnd="25dp"
+            app:boxCornerRadiusBottomStart="25dp"
+            android:layout_gravity="end"
+            android:layout_marginTop="20dp"
+            app:boxBackgroundMode="none">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:focusable="false"
+                android:id="@+id/day4"
+                android:clickable="true"
+                android:cursorVisible="false"
+                android:text="Day 4"
+                android:background="@drawable/rounder_btn_bg"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#737373"
+                android:singleLine="true"
+                android:gravity="center"
+                android:textAlignment="center"/>
+        </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
 
     <!-- Timeline and RecyclerView Container -->
+    <ImageButton
+        android:id="@+id/bakcbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@color/black"
+        android:src="@drawable/back_arrow" />
+
     <LinearLayout
         android:layout_below="@+id/buttons_row"
 

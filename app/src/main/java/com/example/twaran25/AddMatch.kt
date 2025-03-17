@@ -4,6 +4,7 @@ import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.os.Bundle
 import android.view.View
+import android.widget.EditText
 import android.widget.PopupMenu
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
@@ -33,7 +34,8 @@ class AddMatch : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        binding.sportName.setOnClickListener { setupPopupMenu(it, binding.sportName) }
+
+        binding.sportName.setOnClickListener { setupSportsPopup(it, binding.sportName) }
         binding.teamA.setOnClickListener { setupCollegePopupMenu(it, binding.teamA) }
         binding.teamB.setOnClickListener { setupCollegePopupMenu(it, binding.teamB) }
         binding.daySelector.setEndIconOnClickListener {
@@ -91,9 +93,58 @@ class AddMatch : AppCompatActivity() {
         }
         popupMenu.show()
     }
+
+    private fun setupSportsPopup(view: View, editText: android.widget.EditText) {
+        val popupMenu = PopupMenu(view.context, view)
+
+        // Men's sports
+        popupMenu.menu.add("Athletics")
+        popupMenu.menu.add("Badminton")
+        popupMenu.menu.add("Basketball")
+        popupMenu.menu.add("Carrom")
+        popupMenu.menu.add("Cricket")
+        popupMenu.menu.add("Kabaddi")
+        popupMenu.menu.add("Football")
+        popupMenu.menu.add("Powerlifting")
+        popupMenu.menu.add("Table Tennis")
+        popupMenu.menu.add("Lawn Tennis")
+        popupMenu.menu.add("Volleyball")
+        popupMenu.menu.add("Squash")
+        popupMenu.menu.add("Aquatics")
+        popupMenu.menu.add("Tug of War")
+        popupMenu.menu.add("Kho-Kho")
+
+        // Women's sports (with "(Women)" suffix)
+        popupMenu.menu.add("Athletics (Women)")
+        popupMenu.menu.add("Badminton (Women)")
+        popupMenu.menu.add("Basketball (Women)")
+        popupMenu.menu.add("Carrom (Women)")
+        popupMenu.menu.add("Powerlifting (Women)")
+        popupMenu.menu.add("Table Tennis (Women)")
+        popupMenu.menu.add("Lawn Tennis (Women)")
+        popupMenu.menu.add("Volleyball (Women)")
+        popupMenu.menu.add("Squash (Women)")
+        popupMenu.menu.add("Aquatics (Women)")
+        popupMenu.menu.add("Tug of War (Women)")
+        popupMenu.menu.add("Kabaddi (Women)")
+        popupMenu.menu.add("Kho-Kho (Women)")
+
+        // Combined sports (Men & Women Combined)
+        popupMenu.menu.add("Chess (Men & Women Combined)")
+
+        // Handle menu item click
+        popupMenu.setOnMenuItemClickListener { item ->
+            editText.setText(item.title.toString())
+            true
+        }
+
+        popupMenu.show()
+    }
+
+
     private fun setupCollegePopupMenu(view: View, editText: android.widget.EditText) {
         val colleges = listOf(
-            "IIIT Gwalior", "IIIT Hyderabad", "IIIT Allahabad", "IIIT Jabalpur", "IIIT Kancheepuram",
+            "ALL","IIIT Gwalior", "IIIT Hyderabad", "IIIT Allahabad", "IIIT Jabalpur", "IIIT Kancheepuram",
             "IIIT Guwahati", "IIIT Vadodara", "IIIT Kota", "IIIT Kalyani", "IIIT Una",
             "IIIT Sonepat", "IIIT Lucknow", "IIIT Dharwad", "IIIT Kottayam", "IIIT Manipur",
             "IIIT Tiruchirappalli", "IIIT Nagpur", "IIIT Pune", "IIIT Ranchi", "IIIT Bhagalpur",
