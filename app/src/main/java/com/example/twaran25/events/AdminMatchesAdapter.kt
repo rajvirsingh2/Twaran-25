@@ -12,6 +12,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.twaran25.AdminEditMatch
 import com.example.twaran25.R
 import com.example.twaran25.data.models.Matches
+import java.text.ParseException
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 
 class AdminMatchesAdapter(private val context: Context, private var matchList: MutableList<Matches>) :
@@ -19,14 +23,29 @@ class AdminMatchesAdapter(private val context: Context, private var matchList: M
 
     private val TAG = "AdminMatchesAdapter"
 
+
     fun updateData(newList: List<Matches>) {
         Log.d(TAG, "Updating adapter data: ${newList.size} matches received")
+
+        val dateFormat = SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault())
+
+        val sortedList = newList.sortedWith(compareBy { match ->
+            try {
+                val dateTimeString = "${match.date.trim()} ${match.time.trim()}"
+                dateFormat.parse(dateTimeString) ?: Date() // Default to current date if parsing fails
+            } catch (e: ParseException) {
+                Log.e(TAG, "Error parsing date/time for match: ${match.date} ${match.time}", e)
+                Date() // Default fallback
+            }
+        })
+
         matchList.clear()
-        matchList.addAll(newList)
+        matchList.addAll(sortedList)
         notifyDataSetChanged()
     }
 
     private val mappedEntries = mapOf(
+        R.drawable.college to "All",
         R.drawable.iiitgwalior to "IIIT Gwalior",
         R.drawable.iiituna to "IIIT Una",
         R.drawable.iiitkota to "IIIT Kota",

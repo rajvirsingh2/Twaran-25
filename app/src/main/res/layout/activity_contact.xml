@@ -156,7 +156,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
             android:orientation="vertical">
 
     <TextView
@@ -185,8 +184,16 @@
         android:layout_marginTop="10dp"
         android:background="@drawable/background"
         android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Event Queries:"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"/>
 
-        <!-- Contact 1 -->
+
         <LinearLayout
             android:id="@+id/contact_item_1"
             android:layout_width="match_parent"
@@ -199,8 +206,8 @@
                 android:id="@+id/profile_icon_1"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                app:tint="@android:color/white"
                 android:src="@drawable/user"
+                app:tint="@android:color/white"
                 android:layout_marginEnd="8dp"/>
 
             <TextView
@@ -208,29 +215,29 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Taun Rai"
+                android:text="Purav Suluja"
                 android:textColor="@android:color/white"
                 android:textSize="16sp"
                 android:textStyle="bold"/>
 
             <ImageButton
                 android:id="@+id/call_icon_1"
-                android:layout_width="17dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/baseline_call_24"
                 android:background="@null"
-                android:src="@drawable/baseline_call_24" />
+                android:layout_marginEnd="8dp"/>
 
             <TextView
                 android:id="@+id/contact_number_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=" +91 98765 43210"
+                android:text="+91 78885 19807"
                 android:textColor="@android:color/white"
                 android:textSize="14sp"/>
         </LinearLayout>
 
-        <!-- Contact 2 -->
+        <!-- Contact 4 -->
         <LinearLayout
             android:id="@+id/contact_item_2"
             android:layout_width="match_parent"
@@ -242,9 +249,9 @@
             <ImageView
                 android:id="@+id/profile_icon_2"
                 android:layout_width="24dp"
+                android:src="@drawable/user"
                 android:layout_height="24dp"
                 app:tint="@android:color/white"
-                android:src="@drawable/user"
                 android:layout_marginEnd="8dp"/>
 
             <TextView
@@ -252,7 +259,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Sachin Roy"
+                android:text="Nilay Shrivastav"
                 android:textColor="@android:color/white"
                 android:textSize="16sp"
                 android:textStyle="bold"/>
@@ -262,19 +269,19 @@
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:src="@drawable/baseline_call_24"
-                android:background="@null"
-                android:layout_marginEnd="8dp"/>
+                android:layout_marginEnd="8dp"
+                android:background="@null" />
+
 
             <TextView
                 android:id="@+id/contact_number_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="+91 87654 32109"
+                android:text="+91 63910 58103"
                 android:textColor="@android:color/white"
                 android:textSize="14sp"/>
         </LinearLayout>
 
-        <!-- Contact 3 -->
         <LinearLayout
             android:id="@+id/contact_item_3"
             android:layout_width="match_parent"
@@ -296,7 +303,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Divyesh Agrawal"
+                android:text="Anupam Shukla"
                 android:textColor="@android:color/white"
                 android:textSize="16sp"
                 android:textStyle="bold"/>
@@ -313,10 +320,20 @@
                 android:id="@+id/contact_number_3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="+91 76543 21098"
+                android:text="+91 81828 39576"
                 android:textColor="@android:color/white"
                 android:textSize="14sp"/>
         </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Accomodation Queries:"
+            android:layout_marginTop="5dp"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"/>
 
         <!-- Contact 4 -->
         <LinearLayout
@@ -340,7 +357,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Rakshit Gajjar"
+                android:text="Jasleen Kaur"
                 android:textColor="@android:color/white"
                 android:textSize="16sp"
                 android:textStyle="bold"/>
@@ -358,10 +375,112 @@
                 android:id="@+id/contact_number_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="+91 65432 10987"
+                android:text="+91 99919 64475"
                 android:textColor="@android:color/white"
                 android:textSize="14sp"/>
         </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Application Queries:"
+            android:layout_marginTop="5dp"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"/>
+
+
+        <!-- Contact 1 -->
+        <LinearLayout
+            android:id="@+id/contact_item_5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingVertical="8dp">
+
+            <ImageView
+                android:id="@+id/profile_icon_5"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                app:tint="@android:color/white"
+                android:src="@drawable/user"
+                android:layout_marginEnd="8dp"/>
+
+            <TextView
+                android:id="@+id/contact_name_5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Taun Rai"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"/>
+
+            <ImageButton
+                android:id="@+id/call_icon_5"
+                android:layout_width="17dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:background="@null"
+                android:src="@drawable/baseline_call_24" />
+
+            <TextView
+                android:id="@+id/contact_number_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" +91 91733 56284"
+                android:textColor="@android:color/white"
+                android:textSize="14sp"/>
+        </LinearLayout>
+
+        <!-- Contact 2 -->
+        <LinearLayout
+            android:id="@+id/contact_item_6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingVertical="8dp">
+
+            <ImageView
+                android:id="@+id/profile_icon_6"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                app:tint="@android:color/white"
+                android:src="@drawable/user"
+                android:layout_marginEnd="8dp"/>
+
+            <TextView
+                android:id="@+id/contact_name_6"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Rajveer Singh"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"/>
+
+            <ImageButton
+                android:id="@+id/call_icon_6"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/baseline_call_24"
+                android:background="@null"
+                android:layout_marginEnd="8dp"/>
+
+            <TextView
+                android:id="@+id/contact_number_6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+91 90417 51873"
+                android:textColor="@android:color/white"
+                android:textSize="14sp"/>
+        </LinearLayout>
+
+        <!-- Contact 3 -->
+
 
     </LinearLayout>
         </LinearLayout>

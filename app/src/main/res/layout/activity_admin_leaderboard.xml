@@ -21,6 +21,7 @@
             android:layout_width="wrap_content"
             android:orientation="horizontal"
             android:layout_gravity="center"
+
             android:layout_marginTop="25dp"
             android:padding="10dp"
             android:layout_height="wrap_content">
@@ -46,6 +47,7 @@
                 <FrameLayout
                     android:layout_width="100dp"
                     android:layout_height="150dp"
+                    android:id="@+id/secondframe"
                     android:background="@drawable/second_position_bg"
                     android:layout_margin="5dp">
 
@@ -74,7 +76,8 @@
                             android:padding="8dp"
                             android:layout_height="wrap_content"
                             android:background="@drawable/points_bg"
-                            android:text="1200pts"
+                            android:text="0pts"
+                            android:id="@+id/playerSecondPoints"
                             android:textColor="@android:color/white"
                             android:textSize="14sp"
                             android:gravity="center"
@@ -110,6 +113,7 @@
                 <FrameLayout
                     android:layout_width="100dp"
                     android:layout_height="180dp"
+                    android:id="@+id/firstframe"
                     android:background="@drawable/first_position_bg"
                     android:layout_margin="5dp">
 
@@ -138,7 +142,8 @@
                             android:padding="8dp"
                             android:layout_height="wrap_content"
                             android:background="@drawable/points_bg"
-                            android:text="1500pts"
+                            android:text="0pts"
+                            android:id="@+id/playerFirstPoints"
                             android:textColor="@android:color/white"
                             android:textSize="14sp"
                             android:gravity="center"
@@ -185,6 +190,7 @@
                 <FrameLayout
                     android:layout_width="100dp"
                     android:layout_height="100dp"
+                    android:id="@+id/thirdframe"
                     android:background="@drawable/third_position_bg"
                     android:layout_margin="5dp">
 
@@ -212,8 +218,9 @@
                             android:layout_width="wrap_content"
                             android:padding="8dp"
                             android:layout_height="wrap_content"
+                            android:id="@+id/playerThirdPoints"
                             android:background="@drawable/points_bg"
-                            android:text="500pts"
+                            android:text="0pts"
                             android:textColor="@android:color/white"
                             android:textSize="14sp"
                             android:gravity="center"

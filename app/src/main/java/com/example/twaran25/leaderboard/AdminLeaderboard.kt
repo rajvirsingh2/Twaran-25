@@ -46,6 +46,11 @@ class AdminLeaderboard : AppCompatActivity() {
             binding.playerFirstImage.setImageResource(getImageResource(leaderboardEntries.getOrNull(0)?.collegeName))
             binding.playerSecondImage.setImageResource(getImageResource(leaderboardEntries.getOrNull(1)?.collegeName))
             binding.playerThirdImage.setImageResource(getImageResource(leaderboardEntries.getOrNull(2)?.collegeName))
+
+            binding.playerFirstPoints.text = leaderboardEntries.getOrNull(0)?.points.toString()
+            binding.playerSecondPoints.text = leaderboardEntries.getOrNull(1)?.points.toString()
+            binding.playerThirdPoints.text = leaderboardEntries.getOrNull(2)?.points.toString()
+
         }
 
         binding.addmatch.setOnClickListener {
