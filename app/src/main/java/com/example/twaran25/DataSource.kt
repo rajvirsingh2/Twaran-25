@@ -49,22 +49,43 @@ object DataSource {
         ),
         Event("2:00 PM", "Cricket", "06.03.2025", "Main Stadium", "IIIT Allahabad", "IIIT Pune")
     )
-     val mensSports = listOf(
-        Game("Swimming", "Make a splash, chase the dash!", R.drawable.swimming),
-        Game("Football", "Kick hard, play smart, win big!", R.drawable.football),
+    val mensSports = listOf(
         Game("Athletics", "Run fast, jump high, break limits!", R.drawable.atheletic),
+        Game("Badminton", "Swift moves, sharp smashes!", R.drawable.badminton),
+        Game("Basketball", "Dribble, shoot, dominate!", R.drawable.basketball),
+        Game("Carrom", "Strike, pocket, and win!", R.drawable.carrom),
         Game("Cricket", "Smash boundaries, seize glory!", R.drawable.cricket),
-        Game("Tennis", "Serve, smash, and conquer!", R.drawable.tennis),
+        Game("Kabaddi", "Tag fast, defend strong!", R.drawable.kabaddi),
+        Game("Football", "Kick hard, play smart, win big!", R.drawable.football),
+        Game("Powerlifting", "Lift heavy, stay strong!", R.drawable.powerlifting),
         Game("Table Tennis", "Fast hands, quick wins!", R.drawable.table_tennis),
+        Game("Lawn Tennis", "Serve, smash, and conquer!", R.drawable.tennis),
+        Game("Volleyball", "Set high, spike hard!", R.drawable.vollyball),
+        Game("Squash", "Hit hard, move fast!", R.drawable.squash),
+        Game("Aquatics", "Make a splash, chase the dash!", R.drawable.swimming),
+        Game("Tug of War", "Pull hard, win strong!", R.drawable.tug_of_war),
+        Game("Kho-Kho", "Run, dodge, and tag fast!", R.drawable.kho_kho)
     )
 
-     val womenSports = listOf(
-        Game("Women Swimming", "Make a splash, chase the dash!", R.drawable.swimming),
-        Game("Women Football", "Kick hard, play smart, win big!", R.drawable.football),
-        Game("Women Athletics", "Run fast, jump high, break limits!", R.drawable.atheletic),
-        Game("Women Cricket", "Smash boundaries, seize glory!", R.drawable.cricket),
-        Game("Women Tennis", "Serve, smash, and conquer!", R.drawable.tennis),
-        Game("Women Table Tennis", "Fast hands, quick wins!", R.drawable.table_tennis),
+    val womenSports = listOf(
+        Game("Athletics", "Run fast, jump high, break limits!", R.drawable.atheletic),
+        Game("Badminton", "Swift moves, sharp smashes!", R.drawable.badminton),
+        Game("Basketball", "Dribble, shoot, dominate!", R.drawable.basketball),
+        Game("Carrom", "Strike, pocket, and win!", R.drawable.carrom),
+        Game("Powerlifting", "Lift heavy, stay strong!", R.drawable.powerlifting),
+        Game("Table Tennis", "Fast hands, quick wins!", R.drawable.table_tennis),
+        Game("Lawn Tennis", "Serve, smash, and conquer!", R.drawable.tennis),
+        Game("Volleyball", "Set high, spike hard!", R.drawable.vollyball),
+        Game("Squash", "Hit hard, move fast!", R.drawable.squash),
+        Game("Aquatics", "Make a splash, chase the dash!", R.drawable.swimming),
+        Game("Tug of War", "Pull hard, win strong!", R.drawable.tug_of_war),
+        Game("Kabaddi", "Tag fast, defend strong!", R.drawable.kabaddi),
+        Game("Kho-Kho", "Run, dodge, and tag fast!", R.drawable.kho_kho)
     )
+
+    val combinedSports = listOf(
+        Game("Chess", "Think deep, move wisely!", R.drawable.chess)
+    )
+
 
 }

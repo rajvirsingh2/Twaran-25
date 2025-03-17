@@ -6,4 +6,7 @@
     <item
         android:id="@+id/filter_women"
         android:title="Women" />
+    <item
+        android:id="@+id/combined"
+        android:title="Combined" />
 </menu>
