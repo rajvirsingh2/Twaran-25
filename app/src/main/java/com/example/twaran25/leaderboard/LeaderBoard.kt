@@ -3,6 +3,7 @@ package com.example.twaran25.leaderboard
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -66,9 +67,22 @@ class LeaderBoard : AppCompatActivity() {
             getImageResource(sortedLeaderboard.getOrNull(2)?.collegeName)
         )
 
-        binding.collegeFirstPoints.text = "${sortedLeaderboard.getOrNull(0)?.points ?: 0}"
-        binding.collegeSecondPoints.text = "${sortedLeaderboard.getOrNull(1)?.points ?: 0}"
-        binding.collegeThirdPoints.text = "${sortedLeaderboard.getOrNull(2)?.points ?: 0}"
+        val firstPoints = sortedLeaderboard.getOrNull(0)?.points ?: 0
+        val secondPoints = sortedLeaderboard.getOrNull(1)?.points ?: 0
+        val thirdPoints = sortedLeaderboard.getOrNull(2)?.points ?: 0
+
+        binding.collegeFirstPoints.text = "$firstPoints"
+        binding.collegeSecondPoints.text = "$secondPoints"
+        binding.collegeThirdPoints.text = "$thirdPoints"
+
+        binding.firstCollege.visibility = if(firstPoints == 0) View.GONE else View.VISIBLE
+        binding.secondCollege.visibility = if(secondPoints == 0) View.GONE else View.VISIBLE
+        binding.thirdCollege.visibility = if(thirdPoints == 0) View.GONE else View.VISIBLE
+
+        binding.collegeFirstImage.visibility = if(firstPoints == 0) View.GONE else View.VISIBLE
+        binding.collegeSecondImage.visibility = if(secondPoints == 0) View.GONE else View.VISIBLE
+        binding.collegeThirdImage.visibility = if(thirdPoints == 0) View.GONE else View.VISIBLE
+
         // Update RecyclerView Adapter
         val adapter = binding.recyclerView.adapter as? LeaderboardAdapter
         if (adapter == null) {

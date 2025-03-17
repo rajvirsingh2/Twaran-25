@@ -45,6 +45,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
             <FrameLayout
+                android:id="@+id/second_college"
                 android:layout_width="100dp"
                 android:layout_height="150dp"
                 android:background="@drawable/second_position_bg"
@@ -110,6 +111,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
             <FrameLayout
+                android:id="@+id/first_college"
                 android:layout_width="100dp"
                 android:layout_height="180dp"
                 android:background="@drawable/first_position_bg"
@@ -175,6 +177,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
             <FrameLayout
+                android:id="@+id/third_college"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:background="@drawable/third_position_bg"
