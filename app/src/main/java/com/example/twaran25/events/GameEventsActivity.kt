@@ -2,6 +2,8 @@ package com.example.twaran25.events
 
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
@@ -33,6 +35,8 @@ class GameEventsActivity : AppCompatActivity() {
         }
 
         val recyclerView: RecyclerView = findViewById(R.id.events_recycler)
+        val progressBar: ProgressBar = findViewById(R.id.progress_bar)
+        progressBar.visibility = View.VISIBLE
         recyclerView.layoutManager = LinearLayoutManager(this)
 
         // Initialize adapter with an empty list
@@ -46,10 +50,12 @@ class GameEventsActivity : AppCompatActivity() {
         // Observe the matches LiveData
         viewModel.matches.observe(this) { matches ->
             Log.d("matcheslist", "Final matches list: $matches")
+            progressBar.visibility = View.GONE
             adapter.updateData(matches) // Update adapter with new data
         }
 
         // Fetch matches from ViewModel
+        progressBar.visibility = View.VISIBLE
         viewModel.fetchMatchesBySport(sportName)
 
         binding.day1.setOnClickListener {
@@ -57,7 +63,10 @@ class GameEventsActivity : AppCompatActivity() {
 
         }
         binding.day2.setOnClickListener {
-            viewModel.fetchMatchesBySportAndDay(sportName , 2)}
+            progressBar.visibility = View.VISIBLE
+            viewModel.fetchMatchesBySportAndDay(sportName , 2)
+            progressBar.visibility = View.GONE
+        }
         binding.day3.setOnClickListener {
             viewModel.fetchMatchesBySportAndDay(sportName , 3)}
         binding.day4.setOnClickListener {

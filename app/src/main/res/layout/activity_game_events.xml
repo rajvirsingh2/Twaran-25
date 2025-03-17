@@ -167,12 +167,23 @@
         android:orientation="horizontal">
 
         <!-- RecyclerView for Event List -->
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/events_recycler"
-            android:layout_width="0dp"
-            tools:listitem="@layout/event_layout"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:paddingStart="10dp"/>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:id="@+id/progress_bar"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:visibility="gone"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/events_recycler"
+                android:layout_width="match_parent"
+                tools:listitem="@layout/event_layout"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:paddingStart="10dp"/>
+
+        </FrameLayout>
     </LinearLayout>
 </RelativeLayout>

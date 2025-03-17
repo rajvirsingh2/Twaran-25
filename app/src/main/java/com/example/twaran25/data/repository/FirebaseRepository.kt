@@ -217,8 +217,9 @@ class FirebaseRepository {
         db.child("matches").addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val matchList = snapshot.children.mapNotNull {
-                    it.getValue(Matches::class.java)
-                }.filter { it.sportsName == sportName && it.day == day }
+                    val match = it.getValue(Matches::class.java)
+                    if(match?.sportsName == sportName && match.day == day) match else null
+                }
 
                 Log.d(
                     "FirebaseRepository",
@@ -259,26 +260,31 @@ class FirebaseRepository {
     //update medals count
         fun updateMedalCount(entry: LeaderboardEntry) {
             val collegeReference = db.child("leaderboard").child(entry.collegeName)
-            val updates = mapOf(
-                "goldCount" to entry.goldCount,
-                "silverCount" to entry.silverCount,
-                "bronzeCount" to entry.bronzeCount,
-                "points" to entry.points
-            )
             collegeReference.addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     if (snapshot.exists()) {
                         val currentEntry = snapshot.getValue(LeaderboardEntry::class.java)
                         currentEntry?.let {
+                            val gold = it.goldCount + entry.goldCount
+                            val silver = it.silverCount + entry.silverCount
+                            val bronze = it.bronzeCount + entry.bronzeCount
+                            val points = gold*3 + silver*2 + bronze*1
                             val updatedEntry = mapOf(
-                                "goldCount" to (it.goldCount + entry.goldCount),
-                                "silverCount" to (it.silverCount + entry.silverCount),
-                                "bronzeCount" to (it.bronzeCount + entry.bronzeCount),
-                                "points" to (it.points + entry.points)
+                                "goldCount" to gold,
+                                "silverCount" to silver,
+                                "bronzeCount" to bronze,
+                                "points" to points
                             )
                             collegeReference.updateChildren(updatedEntry)
                         }
                     } else {
+                        val points = entry.goldCount*3 + entry.silverCount*2 + entry.bronzeCount*1
+                        val updates = mapOf(
+                            "goldCount" to entry.goldCount,
+                            "silverCount" to entry.silverCount,
+                            "bronzeCount" to entry.bronzeCount,
+                            "points" to points
+                        )
                         db.child("leaderboard").child(entry.collegeName).updateChildren(updates)
                     }
                 }

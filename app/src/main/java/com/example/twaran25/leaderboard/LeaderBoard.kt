@@ -66,6 +66,9 @@ class LeaderBoard : AppCompatActivity() {
             getImageResource(sortedLeaderboard.getOrNull(2)?.collegeName)
         )
 
+        binding.collegeFirstPoints.text = "${sortedLeaderboard.getOrNull(0)?.points ?: 0}"
+        binding.collegeSecondPoints.text = "${sortedLeaderboard.getOrNull(1)?.points ?: 0}"
+        binding.collegeThirdPoints.text = "${sortedLeaderboard.getOrNull(2)?.points ?: 0}"
         // Update RecyclerView Adapter
         val adapter = binding.recyclerView.adapter as? LeaderboardAdapter
         if (adapter == null) {
