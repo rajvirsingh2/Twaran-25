@@ -13,6 +13,9 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.twaran25.DataSource.mensSports
+import com.example.twaran25.DataSource.womenSports
+import com.example.twaran25.DataSource.combinedSports
 import com.example.twaran25.Events
 import com.example.twaran25.R
 import com.example.twaran25.contacts.ContactActivity
@@ -23,23 +26,7 @@ import com.google.android.material.textfield.TextInputEditText
 
 class Sports : AppCompatActivity() {
 
-    private val mensSports = listOf(
-        Game("Swimming", "Make a splash, chase the dash!", R.drawable.swimming),
-        Game("Football", "Kick hard, play smart, win big!", R.drawable.football),
-        Game("Athletics", "Run fast, jump high, break limits!", R.drawable.atheletic),
-        Game("Cricket", "Smash boundaries, seize glory!", R.drawable.cricket),
-        Game("Tennis", "Serve, smash, and conquer!", R.drawable.tennis),
-        Game("Table Tennis", "Fast hands, quick wins!", R.drawable.table_tennis),
-    )
 
-    private val womenSports = listOf(
-        Game("Women Swimming", "Make a splash, chase the dash!", R.drawable.swimming),
-        Game("Women Football", "Kick hard, play smart, win big!", R.drawable.football),
-        Game("Women Athletics", "Run fast, jump high, break limits!", R.drawable.atheletic),
-        Game("Women Cricket", "Smash boundaries, seize glory!", R.drawable.cricket),
-        Game("Women Tennis", "Serve, smash, and conquer!", R.drawable.tennis),
-        Game("Women Table Tennis", "Fast hands, quick wins!", R.drawable.table_tennis),
-    )
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var filterText: TextView
@@ -77,6 +64,7 @@ class Sports : AppCompatActivity() {
                     when (it.itemId) {
                         R.id.filter_men -> updateSportsList(mensSports, "Men")
                         R.id.filter_women -> updateSportsList(womenSports, "Women")
+                        R.id.combined -> updateSportsList(combinedSports, "Combined")
                     }
                     true
                 }
