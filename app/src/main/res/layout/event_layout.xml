@@ -30,7 +30,7 @@
                 android:layout_height="10dp"
 
                 android:layout_gravity="center_horizontal"
-                android:background="@drawable/circle_view" />
+                android:background="@drawable/circular_shape" />
 
             <!-- Vertical Line (Connects Events) -->
             <View
@@ -62,7 +62,7 @@
                 android:gravity="start"
                 android:layout_height="wrap_content">
                 <TextView
-                    android:textColor="#DB0808"
+                    android:textColor="#fff"
                     android:id="@+id/start_time"
                     android:text="8:00 am"
                     android:layout_width="wrap_content"
@@ -142,14 +142,15 @@
                         android:layout_width="25dp"
                         android:layout_height="25dp"/>
                     <TextView
-                        android:textColor="#C88510"
+                        android:textColor="#fff"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+
                         android:text="IIIT Gwalior"
                         android:id="@+id/college_one"/>
                 </LinearLayout>
                 <TextView
-                    android:textColor="#008000"
+                    android:textColor="#fff"
                     android:id="@+id/score"
                     android:layout_marginStart="40dp"
                     android:layout_width="wrap_content"
@@ -169,7 +170,7 @@
                         android:layout_width="25dp"
                         android:layout_height="25dp"/>
                     <TextView
-                        android:textColor="#C88510"
+                        android:textColor="#fff"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="IIIT Gwalior"

@@ -72,27 +72,7 @@ class AddMatch : AppCompatActivity() {
             finish()
         }
     }
-    private fun setupPopupMenu(view: View, editText: android.widget.EditText) {
-        val popupMenu = PopupMenu(view.context, view).apply {
-            menuInflater.inflate(R.menu.sports_menu, menu)
-            setOnMenuItemClickListener { item ->
-                editText.setText(
-                    when (item.itemId) {
-                        R.id.menu_cricket -> "Cricket"
-                        R.id.menu_football -> "Football"
-                        R.id.menu_basketball -> "Basketball"
-                        R.id.menu_tennis -> "Tennis"
-                        R.id.menu_volleyball -> "Volleyball"
-                        R.id.menu_boxing -> "Boxing"
-                        R.id.menu_wrestling -> "Wrestling"
-                        else -> ""
-                    }
-                )
-                true
-            }
-        }
-        popupMenu.show()
-    }
+
 
     private fun setupSportsPopup(view: View, editText: android.widget.EditText) {
         val popupMenu = PopupMenu(view.context, view)
@@ -115,22 +95,22 @@ class AddMatch : AppCompatActivity() {
         popupMenu.menu.add("Kho-Kho")
 
         // Women's sports (with "(Women)" suffix)
-        popupMenu.menu.add("Athletics (Women)")
-        popupMenu.menu.add("Badminton (Women)")
-        popupMenu.menu.add("Basketball (Women)")
-        popupMenu.menu.add("Carrom (Women)")
-        popupMenu.menu.add("Powerlifting (Women)")
-        popupMenu.menu.add("Table Tennis (Women)")
-        popupMenu.menu.add("Lawn Tennis (Women)")
-        popupMenu.menu.add("Volleyball (Women)")
-        popupMenu.menu.add("Squash (Women)")
-        popupMenu.menu.add("Aquatics (Women)")
-        popupMenu.menu.add("Tug of War (Women)")
-        popupMenu.menu.add("Kabaddi (Women)")
-        popupMenu.menu.add("Kho-Kho (Women)")
+        popupMenu.menu.add("Athletics Women")
+        popupMenu.menu.add("Badminton Women")
+        popupMenu.menu.add("Basketball Women")
+        popupMenu.menu.add("Carrom Women")
+        popupMenu.menu.add("Powerlifting Women")
+        popupMenu.menu.add("Table Tennis Women")
+        popupMenu.menu.add("Lawn Tennis Women")
+        popupMenu.menu.add("Volleyball Women")
+        popupMenu.menu.add("Squash Women")
+        popupMenu.menu.add("Aquatics Women")
+        popupMenu.menu.add("Tug of War Women")
+        popupMenu.menu.add("Kabaddi Women")
+        popupMenu.menu.add("Kho-Kho Women")
 
         // Combined sports (Men & Women Combined)
-        popupMenu.menu.add("Chess (Men & Women Combined)")
+        popupMenu.menu.add("Chess Men Combined")
 
         // Handle menu item click
         popupMenu.setOnMenuItemClickListener { item ->
@@ -144,7 +124,7 @@ class AddMatch : AppCompatActivity() {
 
     private fun setupCollegePopupMenu(view: View, editText: android.widget.EditText) {
         val colleges = listOf(
-            "ALL","IIIT Gwalior", "IIIT Hyderabad", "IIIT Allahabad", "IIIT Jabalpur", "IIIT Kancheepuram",
+            "All","IIIT Gwalior", "IIIT Hyderabad", "IIIT Allahabad", "IIIT Jabalpur", "IIIT Kancheepuram",
             "IIIT Guwahati", "IIIT Vadodara", "IIIT Kota", "IIIT Kalyani", "IIIT Una",
             "IIIT Sonepat", "IIIT Lucknow", "IIIT Dharwad", "IIIT Kottayam", "IIIT Manipur",
             "IIIT Tiruchirappalli", "IIIT Nagpur", "IIIT Pune", "IIIT Ranchi", "IIIT Bhagalpur",
@@ -182,7 +162,7 @@ class AddMatch : AppCompatActivity() {
 
         val datePicker = DatePickerDialog(this, { _, selectedYear, selectedMonth, selectedDay ->
             val formattedDate = String.format("%02d/%02d/%04d", selectedDay, selectedMonth + 1, selectedYear)
-            binding.day.setText(formattedDate) // Set selected date
+            binding.date.setText(formattedDate) // Set selected date
         }, year, month, day)
 
         datePicker.show()

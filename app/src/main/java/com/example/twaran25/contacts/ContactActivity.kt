@@ -53,6 +53,8 @@ class ContactActivity : AppCompatActivity() {
         setUpCall(contactBinding.callIcon2,contactBinding.contactNumber2)
         setUpCall(contactBinding.callIcon3,contactBinding.contactNumber3)
         setUpCall(contactBinding.callIcon4,contactBinding.contactNumber4)
+        setUpCall(contactBinding.callIcon5,contactBinding.contactNumber5)
+        setUpCall(contactBinding.callIcon6,contactBinding.contactNumber6)
 
         contactBinding.btnContact.setOnClickListener {
             if (javaClass.simpleName != ContactActivity::class.java.simpleName) {
