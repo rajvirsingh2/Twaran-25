@@ -127,6 +127,17 @@ class GameMatchAdapter(private var matchList: MutableList<Matches>) :
                 else -> ContextCompat.getColor(context, R.color.white)
             }
         )
+        if (match.sportsName.equals("Aquatics", ignoreCase = true) ||
+        match.sportsName.equals("Athletics", ignoreCase = true) ||
+        match.sportsName.equals("Powerlifting", ignoreCase = true || match.sportsName.equals("Athletics Women" , ignoreCase = true) || match.sportsName.equals("Aquatics Women", ignoreCase = true) || match.sportsName.equals("Powerlifting Women", ignoreCase = true) )) {
+        
+        // Make the sportsType TextView visible
+        holder.sportsType.visibility = View.VISIBLE
+        holder.sportsType.text = match.sportsType  // Set the sportsType text (you should ensure match has this field)
+    } else {
+        // Hide the sportsType TextView if not applicable
+        holder.sportsType.visibility = View.INVISIBLE
+    }
 
         try {
             val matchTime = dateFormat.parse(match.time)
