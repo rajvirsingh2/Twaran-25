@@ -113,6 +113,17 @@ class AdminMatchesAdapter(private val context: Context, private var matchList: M
 
             context.startActivity(intent)
         }
+         if (match.sportsName.equals("Aquatics", ignoreCase = true) ||
+        match.sportsName.equals("Athletics", ignoreCase = true) ||
+        match.sportsName.equals("Powerlifting", ignoreCase = true || match.sportsName.equals("Athletics Women" , ignoreCase = true) || match.sportsName.equals("Aquatics Women", ignoreCase = true) || match.sportsName.equals("Powerlifting Women", ignoreCase = true) )) {
+        
+        // Make the sportsType TextView visible
+        holder.sportsType.visibility = View.VISIBLE
+        holder.sportsType.text = match.sportsType  // Set the sportsType text (you should ensure match has this field)
+    } else {
+        // Hide the sportsType TextView if not applicable
+        holder.sportsType.visibility = View.INVISIBLE
+    }
 
         // Set images safely and log
         val teamAImage = getImageResource(match.teamA)
