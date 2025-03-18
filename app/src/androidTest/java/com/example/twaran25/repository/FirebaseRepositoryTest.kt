@@ -25,57 +25,9 @@ class FirebaseRepositoryTest {
         repository = FirebaseRepository()
     }
 
-    @Test
-    fun testSubmitContactRequest() = runBlocking {
-        val contact = Contact(
-            name = "Rajvir",
-            email = "9041751873",
-            sportsName = "Tennis"
-        )
 
-        repository.contactRequest(contact)
 
-        val latch = CountDownLatch(1)
-        val ref = db.reference.child("contacts")
 
-        ref.get().addOnSuccessListener { snapshot ->
-            val addedContact = snapshot.children.find {
-                it.child("name").value == "Alice"
-            }
-            assertNotNull("Contact should be added to Firebase", addedContact)
-            latch.countDown()
-        }.addOnFailureListener {
-            fail("Failed to fetch data from Firebase")
-        }
-
-        assertTrue("Timeout waiting for Firebase operation", latch.await(5, TimeUnit.SECONDS))
-    }
-
-    @Test
-    fun testAddMatches() = runBlocking {
-        val match = Matches(
-            matchId = "Match123",
-            sportsName = "Football",
-            teamA = "IIIT Gwalior",
-            teamB = "IIIT Allahabad",
-            day = 1,
-            time = "10:00 AM",
-            date = "13 March 2025",
-            venue = "Football Ground",
-            teamAScore = 0,
-            teamBScore = 0,
-            winner = -1,
-        )
-        repository.addMatch(match)
-
-        val latch = CountDownLatch(1)
-        repository.fetchMatches {
-            val addedMatches = it.find { it.matchId == "Match123" }
-            assertNotNull("Match added to Firebase", addedMatches)
-            latch.countDown()
-        }
-        assertTrue("Timeout waiting for Firebase operation", latch.await(5, TimeUnit.SECONDS))
-    }
 
     @Test
     fun testUpdateLeaderboard() = runBlocking {

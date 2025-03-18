@@ -68,23 +68,23 @@ object DataSource {
     )
 
     val womenSports = listOf(
-        Game("Athletics", "Run fast, jump high, break limits!", R.drawable.atheletic),
-        Game("Badminton", "Swift moves, sharp smashes!", R.drawable.badminton),
-        Game("Basketball", "Dribble, shoot, dominate!", R.drawable.basketball),
-        Game("Carrom", "Strike, pocket, and win!", R.drawable.carrom),
-        Game("Powerlifting", "Lift heavy, stay strong!", R.drawable.powerlifting),
-        Game("Table Tennis", "Fast hands, quick wins!", R.drawable.table_tennis),
-        Game("Lawn Tennis", "Serve, smash, and conquer!", R.drawable.tennis),
-        Game("Volleyball", "Set high, spike hard!", R.drawable.vollyball),
-        Game("Squash", "Hit hard, move fast!", R.drawable.squash),
-        Game("Aquatics", "Make a splash, chase the dash!", R.drawable.swimming),
-        Game("Tug of War", "Pull hard, win strong!", R.drawable.tug_of_war),
-        Game("Kabaddi", "Tag fast, defend strong!", R.drawable.kabaddi),
-        Game("Kho-Kho", "Run, dodge, and tag fast!", R.drawable.kho_kho)
+        Game("Athletics Women", "Run fast, jump high, break limits!", R.drawable.atheletic),
+        Game("Badminton Women", "Swift moves, sharp smashes!", R.drawable.badminton),
+        Game("Basketball Women", "Dribble, shoot, dominate!", R.drawable.basketball),
+        Game("Carrom Women", "Strike, pocket, and win!", R.drawable.carrom),
+        Game("Powerlifting Women", "Lift heavy, stay strong!", R.drawable.powerlifting),
+        Game("Table Tennis Women", "Fast hands, quick wins!", R.drawable.table_tennis),
+        Game("Lawn Tennis Women", "Serve, smash, and conquer!", R.drawable.tennis),
+        Game("Volleyball Women", "Set high, spike hard!", R.drawable.vollyball),
+        Game("Squash Women", "Hit hard, move fast!", R.drawable.squash),
+        Game("Aquatics Women", "Make a splash, chase the dash!", R.drawable.swimming),
+        Game("Tug of War Women", "Pull hard, win strong!", R.drawable.tug_of_war),
+        Game("Kabaddi Women", "Tag fast, defend strong!", R.drawable.kabaddi),
+        Game("Kho-Kho Women", "Run, dodge, and tag fast!", R.drawable.kho_kho)
     )
 
     val combinedSports = listOf(
-        Game("Chess", "Think deep, move wisely!", R.drawable.chess)
+        Game("Chess Combined", "Think deep, move wisely!", R.drawable.chess)
     )
 
 

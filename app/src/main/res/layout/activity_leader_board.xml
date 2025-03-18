@@ -21,6 +21,8 @@
         android:layout_width="wrap_content"
         android:orientation="horizontal"
         android:layout_gravity="center"
+        android:id="@+id/leaderboard"
+        android:visibility="gone"
         android:layout_marginTop="25dp"
         android:padding="10dp"
         android:layout_height="wrap_content">
@@ -45,6 +47,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
             <FrameLayout
+                android:id="@+id/second_college"
                 android:layout_width="100dp"
                 android:layout_height="150dp"
                 android:background="@drawable/second_position_bg"
@@ -75,7 +78,7 @@
                         android:padding="8dp"
                         android:layout_height="wrap_content"
                         android:background="@drawable/points_bg"
-                        android:text="1200pts"
+                        android:text="0pts"
                         android:id="@+id/college_second_points"
                         android:textColor="@android:color/white"
                         android:textSize="14sp"
@@ -110,6 +113,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
             <FrameLayout
+                android:id="@+id/first_college"
                 android:layout_width="100dp"
                 android:layout_height="180dp"
                 android:background="@drawable/first_position_bg"
@@ -140,7 +144,7 @@
                         android:padding="8dp"
                         android:layout_height="wrap_content"
                         android:background="@drawable/points_bg"
-                        android:text="1500pts"
+                        android:text="0pts"
                         android:id="@+id/college_first_points"
                         android:textColor="@android:color/white"
                         android:textSize="14sp"
@@ -175,6 +179,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
             <FrameLayout
+                android:id="@+id/third_college"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:background="@drawable/third_position_bg"
@@ -205,7 +210,7 @@
                         android:padding="8dp"
                         android:layout_height="wrap_content"
                         android:background="@drawable/points_bg"
-                        android:text="500pts"
+                        android:text="0pts"
                         android:id="@+id/college_third_points"
                         android:textColor="@android:color/white"
                         android:textSize="14sp"
@@ -230,6 +235,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:id="@+id/nameplate"
+                android:visibility="gone"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

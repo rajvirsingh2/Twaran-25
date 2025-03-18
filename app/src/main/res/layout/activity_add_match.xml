@@ -45,6 +45,8 @@
                     android:textColor="#FFFFFF"
                     android:textColorHint="#fff"
                     android:hint="Sports Name:"
+                    android:clickable="false"
+                    android:focusable="false"
                     android:singleLine="true"/>
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -103,19 +105,27 @@
             <!-- Day -->
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
+                android:id="@+id/day_selector"
+                app:endIconTint="@color/white"
                 android:layout_height="wrap_content"
+                app:endIconDrawable="@drawable/calendar"
+                app:endIconMode="custom"
+                android:layout_marginTop="10dp"
                 app:boxBackgroundMode="none">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/day"
+                    android:id="@+id/date"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:background="@drawable/background"
                     android:padding="8dp"
                     android:textColor="#FFFFFF"
                     android:textColorHint="#fff"
-                    android:hint="Day:"
-                    android:singleLine="true"/>
+                    android:hint="Date:"
+                    android:text=""
+                    android:singleLine="true"
+                    android:focusable="false"
+                    android:clickable="true"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <!-- Time -->
@@ -149,28 +159,21 @@
             <!-- Date -->
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:id="@+id/day_selector"
-                app:endIconTint="@color/white"
                 android:layout_height="wrap_content"
-                app:endIconDrawable="@drawable/calendar"
-                app:endIconMode="custom"
-                android:layout_marginTop="10dp"
                 app:boxBackgroundMode="none">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/date"
+                    android:id="@+id/day"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:background="@drawable/background"
                     android:padding="8dp"
                     android:textColor="#FFFFFF"
                     android:textColorHint="#fff"
-                    android:hint="Date:"
-                    android:text=""
-                    android:singleLine="true"
-                    android:focusable="false"
-                    android:clickable="true"/>
+                    android:hint="Day:"
+                    android:singleLine="true"/>
             </com.google.android.material.textfield.TextInputLayout>
+
 
 
             <!-- Venue -->

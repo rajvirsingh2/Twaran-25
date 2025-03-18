@@ -87,19 +87,19 @@ class AdminEditMatch : AppCompatActivity() {
         popupMenu.menu.add("Kho-Kho")
 
         // Women's sports (with "(Women)" suffix)
-        popupMenu.menu.add("Athletics (Women)")
-        popupMenu.menu.add("Badminton (Women)")
-        popupMenu.menu.add("Basketball (Women)")
-        popupMenu.menu.add("Carrom (Women)")
-        popupMenu.menu.add("Powerlifting (Women)")
-        popupMenu.menu.add("Table Tennis (Women)")
-        popupMenu.menu.add("Lawn Tennis (Women)")
-        popupMenu.menu.add("Volleyball (Women)")
-        popupMenu.menu.add("Squash (Women)")
-        popupMenu.menu.add("Aquatics (Women)")
-        popupMenu.menu.add("Tug of War (Women)")
-        popupMenu.menu.add("Kabaddi (Women)")
-        popupMenu.menu.add("Kho-Kho (Women)")
+        popupMenu.menu.add("Athletics Women")
+        popupMenu.menu.add("Badminton Women")
+        popupMenu.menu.add("Basketball Women")
+        popupMenu.menu.add("Carrom Women")
+        popupMenu.menu.add("Powerlifting Women")
+        popupMenu.menu.add("Table Tennis Women")
+        popupMenu.menu.add("Lawn Tennis Women")
+        popupMenu.menu.add("Volleyball Women")
+        popupMenu.menu.add("Squash Women")
+        popupMenu.menu.add("Aquatics Women")
+        popupMenu.menu.add("Tug of War Women")
+        popupMenu.menu.add("Kabaddi Women")
+        popupMenu.menu.add("Kho-Kho Women")
 
         // Combined sports (Men & Women Combined)
         popupMenu.menu.add("Chess (Men & Women Combined)")
@@ -119,13 +119,14 @@ class AdminEditMatch : AppCompatActivity() {
             sportsName = binding.sportName.text.toString(),
             teamA = binding.teamA.text.toString(),
             teamB = binding.teamB.text.toString(),
-            date = binding.day.text.toString(),
+            day = binding.day.text.toString().toIntOrNull() ?:0,
+            date = binding.date.text.toString(),
             time = binding.time.text.toString(),
             venue = binding.venue.text.toString(),
             teamAScore = binding.teamAScore.text.toString().toIntOrNull() ?: 0,
             teamBScore = binding.teamBScore.text.toString().toIntOrNull() ?: 0,
-            teamAResult = binding.teamAScore.text.toString().toIntOrNull() ?: 0,
-            teamBResult = binding.teamBScore.text.toString().toIntOrNull() ?: 0,
+            teamAResult = binding.teamAResult.text.toString().toIntOrNull() ?: 0,
+            teamBResult = binding.teamBResult.text.toString().toIntOrNull() ?: 0,
         )
 
         viewModel.addMatch(updatedMatch)
@@ -135,7 +136,7 @@ class AdminEditMatch : AppCompatActivity() {
 
     private fun setupCollegePopupMenu(view: View, editText: android.widget.EditText) {
         val colleges = listOf(
-            "IIIT Gwalior", "IIIT Hyderabad", "IIIT Allahabad", "IIIT Jabalpur", "IIIT Kancheepuram",
+            "All","IIIT Gwalior", "IIIT Hyderabad", "IIIT Allahabad", "IIIT Jabalpur", "IIIT Kancheepuram",
             "IIIT Guwahati", "IIIT Vadodara", "IIIT Kota", "IIIT Kalyani", "IIIT Una",
             "IIIT Sonepat", "IIIT Lucknow", "IIIT Dharwad", "IIIT Kottayam", "IIIT Manipur",
             "IIIT Tiruchirappalli", "IIIT Nagpur", "IIIT Pune", "IIIT Ranchi", "IIIT Bhagalpur",
@@ -173,7 +174,7 @@ class AdminEditMatch : AppCompatActivity() {
 
         val datePicker = DatePickerDialog(this, { _, selectedYear, selectedMonth, selectedDay ->
             val formattedDate = String.format("%02d/%02d/%04d", selectedDay, selectedMonth + 1, selectedYear)
-            binding.day.setText(formattedDate)
+            binding.date.setText(formattedDate)
         }, year, month, day)
 
         datePicker.show()

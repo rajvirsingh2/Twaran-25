@@ -40,7 +40,7 @@
                 android:id="@+id/day1"
                 android:clickable="true"
                 android:cursorVisible="false"
-                android:text="Day 1"
+                android:text="Day 0"
                 android:background="@drawable/rounder_btn_bg"
                 android:textColor="#FFFFFF"
                 android:textColorHint="#737373"
@@ -72,7 +72,7 @@
                 android:id="@+id/day2"
                 android:clickable="true"
                 android:cursorVisible="false"
-                android:text="Day 2"
+                android:text="Day 1"
                 android:background="@drawable/rounder_btn_bg"
                 android:textColor="#FFFFFF"
                 android:textColorHint="#737373"
@@ -104,7 +104,7 @@
                 android:focusable="false"
                 android:clickable="true"
                 android:cursorVisible="false"
-                android:text="Day 3"
+                android:text="Day 2"
                 android:background="@drawable/rounder_btn_bg"
                 android:textColor="#FFFFFF"
                 android:textColorHint="#737373"
@@ -134,7 +134,7 @@
                 android:id="@+id/day4"
                 android:clickable="true"
                 android:cursorVisible="false"
-                android:text="Day 4"
+                android:text="Day 3"
                 android:background="@drawable/rounder_btn_bg"
                 android:textColor="#FFFFFF"
                 android:textColorHint="#737373"
@@ -167,12 +167,23 @@
         android:orientation="horizontal">
 
         <!-- RecyclerView for Event List -->
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/events_recycler"
-            android:layout_width="0dp"
-            tools:listitem="@layout/event_layout"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:paddingStart="10dp"/>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:id="@+id/progress_bar"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:visibility="gone"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/events_recycler"
+                android:layout_width="match_parent"
+                tools:listitem="@layout/event_layout"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:paddingStart="10dp"/>
+
+        </FrameLayout>
     </LinearLayout>
 </RelativeLayout>

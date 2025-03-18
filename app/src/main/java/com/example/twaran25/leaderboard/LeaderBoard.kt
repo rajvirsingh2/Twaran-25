@@ -3,6 +3,7 @@ package com.example.twaran25.leaderboard
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -17,6 +18,10 @@ import com.example.twaran25.games.Sports
 
 class LeaderBoard : AppCompatActivity() {
     private lateinit var binding: ActivityLeaderBoardBinding
+
+    private var firstPoints: Int = 0
+    private var secondPoints: Int = 0
+    private var thirdPoints: Int = 0
     private val leaderboardViewModel: LeaderboardViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,6 +41,7 @@ class LeaderBoard : AppCompatActivity() {
         // Observe LiveData and update UI
         leaderboardViewModel.leaderboardLiveData.observe(this) { leaderboard ->
             if (leaderboard.isNotEmpty()) {
+                binding.leaderboard.visibility = View.VISIBLE
                 updateUI(leaderboard)
             } else {
                 Log.e("LeaderBoard", "Leaderboard is empty!")
@@ -55,16 +61,39 @@ class LeaderBoard : AppCompatActivity() {
         binding.collegeFirstImage.setImageResource(
             getImageResource(sortedLeaderboard.getOrNull(0)?.collegeName)
         )
+        binding.collegeFirstPoints.text = sortedLeaderboard.getOrNull(0)?.points?.toString() ?: ""
 
         binding.collegeSecondName.text = sortedLeaderboard.getOrNull(1)?.collegeName ?: ""
         binding.collegeSecondImage.setImageResource(
             getImageResource(sortedLeaderboard.getOrNull(1)?.collegeName)
         )
+        binding.collegeSecondPoints.text = sortedLeaderboard.getOrNull(1)?.points?.toString() ?: ""
 
         binding.collegeThirdName.text = sortedLeaderboard.getOrNull(2)?.collegeName ?: ""
         binding.collegeThirdImage.setImageResource(
             getImageResource(sortedLeaderboard.getOrNull(2)?.collegeName)
         )
+        binding.collegeThirdPoints.text = sortedLeaderboard.getOrNull(2)?.points?.toString() ?: ""
+
+        firstPoints = sortedLeaderboard.getOrNull(0)?.points ?: 0
+        secondPoints = sortedLeaderboard.getOrNull(1)?.points ?: 0
+        thirdPoints = sortedLeaderboard.getOrNull(2)?.points ?: 0
+
+        binding.collegeFirstPoints.text = "$firstPoints"
+        binding.collegeSecondPoints.text = "$secondPoints"
+        binding.collegeThirdPoints.text = "$thirdPoints"
+
+        binding.firstCollege.visibility = if (firstPoints == 0) View.GONE else View.VISIBLE
+        binding.secondCollege.visibility = if (secondPoints == 0) View.GONE else View.VISIBLE
+        binding.thirdCollege.visibility = if (thirdPoints == 0) View.GONE else View.VISIBLE
+
+        binding.collegeFirstName.visibility = if (firstPoints == 0) View.GONE else View.VISIBLE
+        binding.collegeSecondName.visibility = if (secondPoints == 0) View.GONE else View.VISIBLE
+        binding.collegeThirdName.visibility = if (thirdPoints == 0) View.GONE else View.VISIBLE
+
+        binding.collegeFirstImage.visibility = if (firstPoints == 0) View.GONE else View.VISIBLE
+        binding.collegeSecondImage.visibility = if (secondPoints == 0) View.GONE else View.VISIBLE
+        binding.collegeThirdImage.visibility = if (thirdPoints == 0) View.GONE else View.VISIBLE
 
         // Update RecyclerView Adapter
         val adapter = binding.recyclerView.adapter as? LeaderboardAdapter
@@ -74,7 +103,6 @@ class LeaderBoard : AppCompatActivity() {
             adapter.updateData(sortedLeaderboard)
         }
     }
-
 
     private fun getImageResource(collegeName: String?): Int {
         val mappedEntries = mapOf(
@@ -106,39 +134,21 @@ class LeaderBoard : AppCompatActivity() {
         return mappedEntries[collegeName] ?: R.drawable.iiitgwalior
     }
 
-
-    private fun navigation(){
+    private fun navigation() {
         binding.btnContact.setOnClickListener {
-            if (javaClass.simpleName != ContactActivity::class.java.simpleName) {
-                val intent = Intent(this, ContactActivity::class.java)
-                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                startActivity(intent)
-            }
+            startActivity(Intent(this, ContactActivity::class.java))
         }
 
         binding.btnEvents.setOnClickListener {
-            if (javaClass.simpleName != Events::class.java.simpleName) {
-                val intent = Intent(this, Events::class.java)
-                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                startActivity(intent)
-            }
+            startActivity(Intent(this, Events::class.java))
         }
 
         binding.btnLeaderboard.setOnClickListener {
-            if (javaClass.simpleName != LeaderBoard::class.java.simpleName) {
-                val intent = Intent(this, LeaderBoard::class.java)
-                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                startActivity(intent)
-            }
+            startActivity(Intent(this, LeaderBoard::class.java))
         }
 
         binding.btnMatches.setOnClickListener {
-            if (javaClass.simpleName != Sports::class.java.simpleName) {
-                val intent = Intent(this, Sports::class.java)
-                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                startActivity(intent)
-            }
+            startActivity(Intent(this, Sports::class.java))
         }
     }
-
 }

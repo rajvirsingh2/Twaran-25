@@ -1,29 +1,51 @@
 package com.example.twaran25.events
 
+import android.graphics.Color
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.twaran25.R
 import com.example.twaran25.data.models.Matches
+import java.text.ParseException
+import java.text.SimpleDateFormat
+import java.util.*
 
 class GameMatchAdapter(private var matchList: MutableList<Matches>) :
     RecyclerView.Adapter<GameMatchAdapter.GameMatchViewHolder>() {
 
     private val TAG = "GameMatchAdapter"
+    private val dateFormat = SimpleDateFormat("HH:mm", Locale.getDefault())
+    private val currentTime = Calendar.getInstance().time
 
     fun updateData(newList: List<Matches>) {
         Log.d(TAG, "Updating adapter data: ${newList.size} matches received")
+
+        val dateFormat = SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault())
+
+        val sortedList = newList.sortedWith(compareBy { match ->
+            try {
+                val dateTimeString = "${match.date.trim()} ${match.time.trim()}"
+                dateFormat.parse(dateTimeString) ?: Date() // Default to current date if parsing fails
+            } catch (e: ParseException) {
+                Log.e(TAG, "Error parsing date/time for match: ${match.date} ${match.time}", e)
+                Date() // Default fallback
+            }
+        })
+
         matchList.clear()
-        matchList.addAll(newList)
+        matchList.addAll(sortedList)
         notifyDataSetChanged()
     }
 
+
     private val mappedEntries = mapOf(
         R.drawable.iiitgwalior to "IIIT Gwalior",
+        R.drawable.college to "All",
         R.drawable.iiituna to "IIIT Una",
         R.drawable.iiitkota to "IIIT Kota",
         R.drawable.iiitpune to "IIIT Pune",
@@ -63,17 +85,17 @@ class GameMatchAdapter(private var matchList: MutableList<Matches>) :
         val logoOne: ImageView = view.findViewById(R.id.college_one_image)
         val logoTwo: ImageView = view.findViewById(R.id.college_two_image)
         val verticalLine: View = view.findViewById(R.id.vertical_line)
+        val dot: View = view.findViewById(R.id.dot)
+        val score: TextView = view.findViewById(R.id.score)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GameMatchViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.event_layout, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.event_layout, parent, false)
         return GameMatchViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: GameMatchViewHolder, position: Int) {
         val match = matchList[position]
-
         Log.d(TAG, "Binding match at position $position: ${match.sportsName} (${match.teamA} vs ${match.teamB})")
 
         holder.startTime.text = match.time
@@ -83,26 +105,46 @@ class GameMatchAdapter(private var matchList: MutableList<Matches>) :
         holder.collegeOne.text = match.teamA
         holder.collegeTwo.text = match.teamB
 
-        // Set images safely and log
-        val teamAImage = getImageResource(match.teamA)
-        val teamBImage = getImageResource(match.teamB)
-
-        if (teamAImage != null) {
-            holder.logoOne.setImageResource(teamAImage)
+        holder.score.text = if (match.teamAScore != 0 || match.teamBScore != 0) {
+            "${match.teamAScore} - ${match.teamBScore}"
         } else {
-            Log.w(TAG, "No image found for Team A: ${match.teamA}")
+            "V/S"
         }
 
-        if (teamBImage != null) {
-            holder.logoTwo.setImageResource(teamBImage)
-        } else {
-            Log.w(TAG, "No image found for Team B: ${match.teamB}")
+        val context = holder.itemView.context
+        holder.collegeOne.setTextColor(
+            when (match.teamAResult) {
+                1 -> ContextCompat.getColor(context, R.color.green)
+                -1 -> ContextCompat.getColor(context, R.color.red)
+                else -> ContextCompat.getColor(context, R.color.white)
+            }
+        )
+
+        holder.collegeTwo.setTextColor(
+            when (match.teamBResult) {
+                1 -> ContextCompat.getColor(context, R.color.green)
+                -1 -> ContextCompat.getColor(context, R.color.red)
+                else -> ContextCompat.getColor(context, R.color.white)
+            }
+        )
+
+        try {
+            val matchTime = dateFormat.parse(match.time)
+            val matchDate = dateFormat.parse(match.date)
+            val isPastMatch = matchTime?.before(currentTime) == true
+            val isPastMatchDate = matchTime?.before(matchDate) == true
+            holder.verticalLine.setBackgroundColor(if (isPastMatch && isPastMatchDate) Color.RED else Color.WHITE)
+            (if (isPastMatch && isPastMatchDate) holder.dot.setBackgroundResource(R.drawable.redcircle) else holder.dot.setBackgroundResource(R.drawable.circular_shape))
+            (if (isPastMatch && isPastMatchDate) holder.startTime.setTextColor(Color.RED) else holder.startTime.setTextColor(Color.WHITE))
+
+        } catch (e: Exception) {
+            Log.e(TAG, "Error parsing match time: ${match.time}", e)
         }
 
-        // Hide vertical line for the last item
-        val isLastItem = position == matchList.size - 1
-        holder.verticalLine.visibility = if (isLastItem) View.GONE else View.VISIBLE
-        Log.d(TAG, "Vertical line visibility set to: ${if (isLastItem) "GONE" else "VISIBLE"}")
+        holder.logoOne.setImageResource(getImageResource(match.teamA) ?: R.drawable.college)
+        holder.logoTwo.setImageResource(getImageResource(match.teamB) ?: R.drawable.college)
+
+        holder.verticalLine.visibility = if (position == matchList.size - 1) View.GONE else View.VISIBLE
     }
 
     override fun getItemCount(): Int = matchList.size
