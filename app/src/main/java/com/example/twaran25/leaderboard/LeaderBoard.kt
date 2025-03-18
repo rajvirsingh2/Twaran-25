@@ -37,10 +37,6 @@ class LeaderBoard : AppCompatActivity() {
 
         // Fetch leaderboard from Firebase
         leaderboardViewModel.fetchLeaderboard()
-        binding.leaderboard.visibility = View.GONE
-        if(firstPoints!=0 || secondPoints!=0 || thirdPoints!=0){
-            binding.leaderboard.visibility = View.VISIBLE
-        }
 
         // Observe LiveData and update UI
         leaderboardViewModel.leaderboardLiveData.observe(this) { leaderboard ->
@@ -90,6 +86,10 @@ class LeaderBoard : AppCompatActivity() {
         binding.firstCollege.visibility = if (firstPoints == 0) View.GONE else View.VISIBLE
         binding.secondCollege.visibility = if (secondPoints == 0) View.GONE else View.VISIBLE
         binding.thirdCollege.visibility = if (thirdPoints == 0) View.GONE else View.VISIBLE
+
+        binding.collegeFirstName.visibility = if (firstPoints == 0) View.GONE else View.VISIBLE
+        binding.collegeSecondName.visibility = if (secondPoints == 0) View.GONE else View.VISIBLE
+        binding.collegeThirdName.visibility = if (thirdPoints == 0) View.GONE else View.VISIBLE
 
         binding.collegeFirstImage.visibility = if (firstPoints == 0) View.GONE else View.VISIBLE
         binding.collegeSecondImage.visibility = if (secondPoints == 0) View.GONE else View.VISIBLE
