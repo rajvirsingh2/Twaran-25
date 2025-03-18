@@ -96,6 +96,7 @@
         android:id="@+id/game_type"
         android:textColor="@color/white"
         android:layout_width="wrap_content"
+        android:visibility="invisible"
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:text="100m"
