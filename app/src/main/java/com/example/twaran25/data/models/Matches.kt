@@ -5,7 +5,7 @@ import com.example.twaran25.games.Sports
 data class Matches(
     val matchId: String = "",
     val sportsName: String = "",
-    val sportsType="",
+    val sportsType: String="",
     val teamA: String = "",
     val teamB: String = "",
     val day: Int = 0,
