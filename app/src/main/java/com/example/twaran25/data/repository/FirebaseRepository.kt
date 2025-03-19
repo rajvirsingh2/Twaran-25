@@ -294,6 +294,18 @@ class FirebaseRepository {
                 }
             })
         }
-
-
+    fun deleteMatch(matchId: String, onResult: (Boolean) -> Unit) {
+        db.child("matches").child(matchId).removeValue()
+            .addOnSuccessListener {
+                Log.d("FirebaseRepository", "Match deleted successfully.")
+                onResult(true)
+            }
+            .addOnFailureListener { error ->
+                Log.e("FirebaseRepository", "Error deleting match: ${error.message}")
+                onResult(false)
+            }
     }
+
+
+
+}

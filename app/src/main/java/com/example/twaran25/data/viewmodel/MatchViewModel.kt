@@ -60,5 +60,15 @@ class MatchViewModel(private val repository: FirebaseRepository = FirebaseReposi
             _matches.postValue(fetchedMatches)
         }
     }
+    fun deleteMatch(matchId: String) {
+        repository.deleteMatch(matchId) { success ->
+            if (success) {
+                fetchMatches() // Refresh the list after deletion
+            } else {
+                Log.e("MatchViewModel", "Failed to delete match with ID: $matchId")
+            }
+        }
+    }
+
 
 }
