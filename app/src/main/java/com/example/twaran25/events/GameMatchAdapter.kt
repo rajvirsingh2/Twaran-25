@@ -57,7 +57,7 @@ class GameMatchAdapter(private var matchList: MutableList<Matches>) :
         R.drawable.iiitbhopal to "IIIT Bhopal",
         R.drawable.iiitdharwad to "IIIT Dharwad",
         R.drawable.iiitguwahati to "IIIT Guwahati",
-        R.drawable.iiithyderabad to "IIIT Hyderabad",
+        R.drawable.iiitkurnool to "IIIT kurnool",
         R.drawable.iiitjabalpur to "IIIT Jabalpur",
         R.drawable.iiitkancheepuram to "IIIT Kancheepuram",
         R.drawable.iiitkottatam to "IIIT Kottayam",
@@ -78,6 +78,7 @@ class GameMatchAdapter(private var matchList: MutableList<Matches>) :
     class GameMatchViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val startTime: TextView = view.findViewById(R.id.start_time)
         val gameName: TextView = view.findViewById(R.id.game_name)
+        val sportsType: TextView = view.findViewById(R.id.game_type)
         val date: TextView = view.findViewById(R.id.date)
         val place: TextView = view.findViewById(R.id.place)
         val collegeOne: TextView = view.findViewById(R.id.college_one)

@@ -164,11 +164,11 @@ class AddMatch : AppCompatActivity() {
 
     private fun setupCollegePopupMenu(view: View, editText: android.widget.EditText) {
         val colleges = listOf(
-            "All","IIIT Gwalior", "IIIT Hyderabad", "IIIT Allahabad", "IIIT Jabalpur", "IIIT Kancheepuram",
+            "All","IIIT Gwalior", "IIIT kurnool", "IIIT Allahabad", "IIIT Jabalpur", "IIIT Kancheepuram",
             "IIIT Guwahati", "IIIT Vadodara", "IIIT Kota", "IIIT Kalyani", "IIIT Una",
             "IIIT Sonepat", "IIIT Lucknow", "IIIT Dharwad", "IIIT Kottayam", "IIIT Manipur",
             "IIIT Tiruchirappalli", "IIIT Nagpur", "IIIT Pune", "IIIT Ranchi", "IIIT Bhagalpur",
-            "IIIT Bhopal", "IIIT Agartala", "IIIT Raichur", "IIIT Surat"
+            "IIIT Bhopal", "IIIT Agartala", "IIIT Raichur", "IIIT Surat", "IIIT Sricity"
         )
 
         val popupMenu = PopupMenu(view.context, view).apply {

@@ -113,7 +113,7 @@ class AdminLeaderboard : AppCompatActivity() {
             "IIIT Bhopal" to R.drawable.iiitbhopal,
             "IIIT Dharwad" to R.drawable.iiitdharwad,
             "IIIT Guwahati" to R.drawable.iiitguwahati,
-            "IIIT Hyderabad" to R.drawable.iiithyderabad,
+            "IIIT kurnool" to R.drawable.iiitkurnool,
             "IIIT Jabalpur" to R.drawable.iiitjabalpur,
             "IIIT Kancheepuram" to R.drawable.iiitkancheepuram,
             "IIIT Kottayam" to R.drawable.iiitkottatam,

@@ -7,7 +7,7 @@ import com.example.twaran25.games.Game
 object DataSource {
     val colleges = listOf(
         College(1, "IIIT Gwalior", R.drawable.iiitgwalior),
-        College(2, "IIIT Hyderabad", R.drawable.iiithyderabad),
+        College(2, "IIIT kurnool", R.drawable.iiitkurnool),
         College(3, "IIIT Allahabad", R.drawable.iiitallahabad),
         College(4, "IIIT Jabalpur", R.drawable.iiitjabalpur),
         College(5, "IIIT Kancheepuram", R.drawable.iiitkancheepuram),
@@ -45,7 +45,7 @@ object DataSource {
         Event("8:00 AM", "Football", "05.03.2025", "New Ground", "IIIT Gwalior", "IIIT Delhi"),
         Event("8:00 AM", "Football", "05.03.2025", "New Ground", "IIIT Gwalior", "IIIT Delhi"),
         Event(
-            "10:00 AM", "Basketball", "05.03.2025", "Old Ground", "IIIT Hyderabad", "IIIT Bangalore"
+            "10:00 AM", "Basketball", "05.03.2025", "Old Ground", "IIIT kurnool", "IIIT Bangalore"
         ),
         Event("2:00 PM", "Cricket", "06.03.2025", "Main Stadium", "IIIT Allahabad", "IIIT Pune")
     )

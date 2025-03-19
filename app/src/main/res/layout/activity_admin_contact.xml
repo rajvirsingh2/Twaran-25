@@ -32,6 +32,8 @@
             android:scrollbars="vertical" />
 
     </LinearLayout>
+
+
 </ScrollView>
     <androidx.cardview.widget.CardView
         android:id="@+id/cardViewDetails"
@@ -62,6 +64,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:boxBackgroundMode="none">
+
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/student_name"

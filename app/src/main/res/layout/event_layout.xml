@@ -92,15 +92,18 @@
         android:textSize="20sp"
         android:text="Football"/>
 
+    <View
+         android:layout_width="10dp"
+         android:layout_height="0dp"/>
+
     <TextView
         android:id="@+id/game_type"
         android:textColor="@color/white"
         android:layout_width="wrap_content"
         android:visibility="invisible"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:text="100m"
-        android:layout_marginLeft="auto"
+        android:textSize="16sp"
+        android:text="SportType"
         android:layout_marginRight="10dp"/>
 
 </LinearLayout>

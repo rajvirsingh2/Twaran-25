@@ -99,9 +99,8 @@
         android:layout_width="wrap_content"
         android:visibility="invisible"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:text="100m"
-        android:layout_marginLeft="auto"
+        android:textSize="15sp"
+        android:text="SportType"
         android:layout_marginRight="10dp"/>
 
 </LinearLayout>
@@ -126,15 +125,16 @@
                     android:text="05.03.2025"
                     android:textSize="13dp"
                     android:id="@+id/date"/>
+
                 <TextView
-                    android:layout_marginStart="40dp"
-                    android:textColor="@color/white"
                     android:layout_width="wrap_content"
-                    android:textSize="14dp"
-                    android:textStyle="bold"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="40dp"
                     android:text="Place : "
-                    />
+                    android:textColor="@color/white"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:textColor="@color/white"

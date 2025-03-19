@@ -58,7 +58,7 @@ class AdminMatchesAdapter(private val context: Context, private var matchList: M
         R.drawable.iiitbhopal to "IIIT Bhopal",
         R.drawable.iiitdharwad to "IIIT Dharwad",
         R.drawable.iiitguwahati to "IIIT Guwahati",
-        R.drawable.iiithyderabad to "IIIT Hyderabad",
+        R.drawable.iiitkurnool to "IIIT kurnool",
         R.drawable.iiitjabalpur to "IIIT Jabalpur",
         R.drawable.iiitkancheepuram to "IIIT Kancheepuram",
         R.drawable.iiitkottatam to "IIIT Kottayam",
@@ -80,6 +80,7 @@ class AdminMatchesAdapter(private val context: Context, private var matchList: M
         val startTime: TextView = view.findViewById(R.id.start_time)
         val gameName: TextView = view.findViewById(R.id.game_name)
         val date: TextView = view.findViewById(R.id.date)
+        val gameType: TextView = view.findViewById(R.id.game_type)
         val place: TextView = view.findViewById(R.id.place)
         val collegeOne: TextView = view.findViewById(R.id.college_one)
         val collegeTwo: TextView = view.findViewById(R.id.college_two)
@@ -118,11 +119,11 @@ class AdminMatchesAdapter(private val context: Context, private var matchList: M
         match.sportsName.equals("Powerlifting", ignoreCase = true || match.sportsName.equals("Athletics Women" , ignoreCase = true) || match.sportsName.equals("Aquatics Women", ignoreCase = true) || match.sportsName.equals("Powerlifting Women", ignoreCase = true) )) {
         
         // Make the sportsType TextView visible
-        holder.sportsType.visibility = View.VISIBLE
-        holder.sportsType.text = match.sportsType  // Set the sportsType text (you should ensure match has this field)
+        holder.gameType.visibility = View.VISIBLE
+        holder.gameType.text = match.sportsType  // Set the sportsType text (you should ensure match has this field)
     } else {
         // Hide the sportsType TextView if not applicable
-        holder.sportsType.visibility = View.INVISIBLE
+        holder.gameType.visibility = View.INVISIBLE
     }
 
         // Set images safely and log

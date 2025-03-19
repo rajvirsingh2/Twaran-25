@@ -36,7 +36,7 @@ class AdminAddLeaderboardCollege : AppCompatActivity() {
 
     private fun setupCollegePopupMenu(view: View, editText: android.widget.EditText) {
         val colleges = listOf(
-            "IIIT Gwalior", "IIIT Hyderabad", "IIIT Allahabad", "IIIT Jabalpur", "IIIT Kancheepuram",
+            "IIIT Gwalior", "IIIT kurnool", "IIIT Allahabad", "IIIT Jabalpur", "IIIT Kancheepuram",
             "IIIT Guwahati", "IIIT Vadodara", "IIIT Kota", "IIIT Kalyani", "IIIT Una",
             "IIIT Sonepat", "IIIT Lucknow", "IIIT Dharwad", "IIIT Kottayam", "IIIT Manipur",
             "IIIT Tiruchirappalli", "IIIT Nagpur", "IIIT Pune", "IIIT Ranchi", "IIIT Bhagalpur",

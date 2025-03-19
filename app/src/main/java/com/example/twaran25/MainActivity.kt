@@ -152,4 +152,12 @@ class MainActivity : AppCompatActivity() {
         }
         view.visibility = View.VISIBLE
     }
+
+    override fun onStart() {
+        super.onStart()
+        if(FirebaseAuth.getInstance().currentUser != null){
+            startActivity(Intent(this, AdminMatches::class.java))
+            finish()
+        }
+    }
 }
