@@ -23,6 +23,7 @@ class AdminLeaderboardAdapter(
 
     private val mappedEntries = mapOf(
         "All" to R.drawable.college,
+        "IIIT Sricity" to R.drawable.iiitsricity,
         "IIIT Gwalior" to R.drawable.iiitgwalior,
         "IIIT Una" to R.drawable.iiituna,
         "IIIT Kota" to R.drawable.iiitkota,
