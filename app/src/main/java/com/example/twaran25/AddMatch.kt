@@ -36,6 +36,7 @@ class AddMatch : AppCompatActivity() {
         }
 
         binding.sportName.setOnClickListener { setupSportsPopup(it, binding.sportName) }
+        binding.sportType.setOnClickListener { setupSportTypePopup(it, binding.sportType) }
         binding.teamA.setOnClickListener { setupCollegePopupMenu(it, binding.teamA) }
         binding.teamB.setOnClickListener { setupCollegePopupMenu(it, binding.teamB) }
         binding.daySelector.setEndIconOnClickListener {
@@ -48,6 +49,7 @@ class AddMatch : AppCompatActivity() {
             val match = Matches(
                 matchId = UUID.randomUUID().toString(),
                 sportsName = binding.sportName.text.toString(),
+                sportsType = binding.sportType.text.toString(),
                 teamA = binding.teamA.text.toString(),
                 teamB = binding.teamB.text.toString(),
                 day = binding.day.text.toString().toIntOrNull() ?: 0,
@@ -63,6 +65,7 @@ class AddMatch : AppCompatActivity() {
 
             // Clear input fields
             binding.sportName.text?.clear()
+            binding.sportType.text?.clear() 
             binding.teamA.text?.clear()
             binding.teamB.text?.clear()
             binding.day.text?.clear()
@@ -120,6 +123,43 @@ class AddMatch : AppCompatActivity() {
 
         popupMenu.show()
     }
+    private fun setupSportTypePopup(view: View, editText: EditText) {
+        val popupMenu = PopupMenu(view.context, view)
+
+        // Adding sport types to the menu
+        popupMenu.menu.add("100m")
+        popupMenu.menu.add("200m")
+        popupMenu.menu.add("400m")
+        popupMenu.menu.add("800m")
+        popupMenu.menu.add("1500m")
+        popupMenu.menu.add("5000m")
+        popupMenu.menu.add("4x100m")
+        popupMenu.menu.add("4x400m")
+        popupMenu.menu.add("Javelin Throw")
+        popupMenu.menu.add("Shotput")
+        popupMenu.menu.add("Discuss Throw")
+        popupMenu.menu.add("Long Jump")
+        popupMenu.menu.add("High Jump")
+        popupMenu.menu.add("Triple Jump")
+        popupMenu.menu.add("Hurdles(100m)")
+        popupMenu.menu.add("Freestyle")
+        popupMenu.menu.add("BreastStroke")
+        popupMenu.menu.add("BackStroke")
+        popupMenu.menu.add("Medley (50*4)")
+        popupMenu.menu.add("FreeStyle (50*4)")
+        popupMenu.menu.add("Bench Press")
+        popupMenu.menu.add("Deadlift")
+        popupMenu.menu.add("Squats")
+
+          // Handle menu item click
+        popupMenu.setOnMenuItemClickListener { item ->
+            editText.setText(item.title.toString())
+            true
+        }
+
+        popupMenu.show()
+    }
+
 
 
     private fun setupCollegePopupMenu(view: View, editText: android.widget.EditText) {

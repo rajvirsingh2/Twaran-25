@@ -47,6 +47,26 @@
                 android:enabled="false"/>
         </com.google.android.material.textfield.TextInputLayout>
 
+        <!--Sport Type-->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:boxBackgroundMode="none">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/sport_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/background"
+                    android:padding="8dp"
+                    android:textColor="#FFFFFF"
+                    android:textColorHint="#fff"
+                    android:hint="Sport Type:"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:singleLine="true"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
         <!-- Team A (Non-editable) -->
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"

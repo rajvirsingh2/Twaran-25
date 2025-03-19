@@ -78,13 +78,33 @@
                     android:layout_height="1dp"/>
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/game_name"
-                android:textColor="@color/white"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:text="Foootball"/>
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    android:gravity="start">
+
+    <TextView
+        android:id="@+id/game_name"
+        android:textColor="@color/white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="Football"/>
+
+    <TextView
+        android:id="@+id/game_type"
+        android:textColor="@color/white"
+        android:layout_width="wrap_content"
+        android:visibility="invisible"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="100m"
+        android:layout_marginLeft="auto"
+        android:layout_marginRight="10dp"/>
+
+</LinearLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"
