@@ -52,7 +52,7 @@ class AdminEvents : AppCompatActivity() {
         val eventRecyclerView: RecyclerView = eventsBinding.eventsRecycler
         eventRecyclerView.layoutManager = LinearLayoutManager(this)
 
-        adapter = AdminMatchesAdapter(this , mutableListOf())
+        adapter = AdminMatchesAdapter(viewModel,this , mutableListOf())
         eventRecyclerView.adapter = adapter
 
         // Observe LiveData and update RecyclerView

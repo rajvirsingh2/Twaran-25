@@ -1,5 +1,6 @@
 package com.example.twaran25.events
 
+import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.util.Log
@@ -12,13 +13,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.twaran25.AdminEditMatch
 import com.example.twaran25.R
 import com.example.twaran25.data.models.Matches
+import com.example.twaran25.data.viewmodel.MatchViewModel
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
 
-class AdminMatchesAdapter(private val context: Context, private var matchList: MutableList<Matches>) :
+class AdminMatchesAdapter(private val matchViewModel: MatchViewModel,private val context: Context, private var matchList: MutableList<Matches>) :
     RecyclerView.Adapter<AdminMatchesAdapter.GameMatchViewHolder>() {
 
     private val TAG = "AdminMatchesAdapter"
@@ -77,6 +79,8 @@ class AdminMatchesAdapter(private val context: Context, private var matchList: M
         return mappedEntries.entries.find { it.value == collegeName }?.key
     }
 
+
+
     class GameMatchViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val startTime: TextView = view.findViewById(R.id.start_time)
         val gameName: TextView = view.findViewById(R.id.game_name)
@@ -89,6 +93,7 @@ class AdminMatchesAdapter(private val context: Context, private var matchList: M
         val logoTwo: ImageView = view.findViewById(R.id.college_two_image)
         val verticalLine: View = view.findViewById(R.id.vertical_line)
         val btnEdit: TextView = view.findViewById(R.id.btnEdit)
+        val btnDelete: TextView = view.findViewById(R.id.btndelete)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GameMatchViewHolder {
@@ -115,7 +120,21 @@ class AdminMatchesAdapter(private val context: Context, private var matchList: M
 
             context.startActivity(intent)
         }
-         if (match.sportsName.equals("Aquatics", ignoreCase = true) ||
+        holder.btnDelete.setOnClickListener {
+            AlertDialog.Builder(context)
+                .setTitle("Delete Match")
+                .setMessage("Are you sure you want to delete this match?")
+                .setPositiveButton("Yes") { _, _ ->
+                    matchViewModel.deleteMatch(match.matchId) // Call ViewModel to delete match
+                    matchList.removeAt(position) // Remove item from local list
+                    notifyItemRemoved(position) // Notify RecyclerView
+                }
+                .setNegativeButton("No", null)
+                .show()
+        }
+
+
+        if (match.sportsName.equals("Aquatics", ignoreCase = true) ||
         match.sportsName.equals("Athletics", ignoreCase = true) ||
         match.sportsName.equals("Powerlifting", ignoreCase = true || match.sportsName.equals("Athletics Women" , ignoreCase = true) || match.sportsName.equals("Aquatics Women", ignoreCase = true) || match.sportsName.equals("Powerlifting Women", ignoreCase = true) )) {
         

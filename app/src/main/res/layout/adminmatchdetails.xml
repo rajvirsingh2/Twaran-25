@@ -212,6 +212,7 @@
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:layout_weight="1"/>
+
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="100dp"
                     android:layout_height="50dp"
@@ -236,6 +237,34 @@
                         android:padding="8dp"
                         android:singleLine="true"
                         android:text="Edit"
+                        android:textAlignment="center"
+                        android:textColor="#FFFFFF"
+                        android:textColorHint="#737373" />
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    app:boxCornerRadiusTopStart="25dp"
+                    app:boxCornerRadiusBottomEnd="25dp"
+                    app:boxCornerRadiusTopEnd="25dp"
+
+                    app:boxCornerRadiusBottomStart="25dp"
+                    android:layout_gravity="end"
+                    android:layout_marginTop="20dp"
+                    app:boxBackgroundMode="none">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/rounder_btn_bg"
+                        android:clickable="true"
+                        android:id="@+id/btndelete"
+                        android:cursorVisible="false"
+                        android:focusable="false"
+                        android:gravity="center"
+                        android:padding="8dp"
+                        android:singleLine="true"
+                        android:text="Delete"
                         android:textAlignment="center"
                         android:textColor="#FFFFFF"
                         android:textColorHint="#737373" />

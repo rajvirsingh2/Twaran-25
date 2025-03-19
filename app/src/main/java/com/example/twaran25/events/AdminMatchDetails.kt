@@ -36,7 +36,7 @@ class AdminMatchDetails : AppCompatActivity() {
 
         binding.eventsRecycler.layoutManager = LinearLayoutManager(this)
 
-        adapter = AdminMatchesAdapter(this,mutableListOf())
+        adapter = AdminMatchesAdapter(viewModel,this,mutableListOf())
         binding.eventsRecycler.adapter = adapter
         val sportName = intent.getStringExtra("SPORT_NAME") ?: ""
         Log.d("matcheslist", "Received Sport Name: $sportName")

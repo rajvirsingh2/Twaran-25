@@ -29,8 +29,7 @@ object DataSource {
         College(21, "IIIT Bhopal", R.drawable.iiitbhopal),
         College(22, "IIIT Agartala", R.drawable.iiitagartala),
         College(23, "IIIT Raichur", R.drawable.iiitraichur),
-        College(24, "IIIT Surat", R.drawable.iiitsurat),
-        College(25, "IIIT Sricity", R.drawable.iiitsricity)
+        College(24, "IIIT Surat", R.drawable.iiitsurat)
     )
 
 
