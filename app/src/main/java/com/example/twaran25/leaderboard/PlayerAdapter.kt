@@ -20,6 +20,7 @@ class LeaderboardAdapter : RecyclerView.Adapter<LeaderboardAdapter.LeaderboardVi
     }
 
     private val mappedEntries = mapOf(
+        "IIIT Sricity" to R.drawable.iiitsricity,
         "IIIT Gwalior" to R.drawable.iiitgwalior,
         "IIIT Una" to R.drawable.iiituna,
         "IIIT Kota" to R.drawable.iiitkota,

@@ -106,6 +106,7 @@ class LeaderBoard : AppCompatActivity() {
 
     private fun getImageResource(collegeName: String?): Int {
         val mappedEntries = mapOf(
+            "IIIT Sricity" to R.drawable.iiitsricity,
             "IIIT Gwalior" to R.drawable.iiitgwalior,
             "IIIT Una" to R.drawable.iiituna,
             "IIIT Kota" to R.drawable.iiitkota,

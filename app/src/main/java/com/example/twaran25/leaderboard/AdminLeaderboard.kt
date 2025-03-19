@@ -101,6 +101,7 @@ class AdminLeaderboard : AppCompatActivity() {
     // Function to fetch college image from a predefined map
     private fun getImageResource(collegeName: String?): Int {
         val mappedEntries = mapOf(
+            "IIIT Sricity" to R.drawable.iiitsricity,
             "IIIT Gwalior" to R.drawable.iiitgwalior,
             "IIIT Una" to R.drawable.iiituna,
             "IIIT Kota" to R.drawable.iiitkota,

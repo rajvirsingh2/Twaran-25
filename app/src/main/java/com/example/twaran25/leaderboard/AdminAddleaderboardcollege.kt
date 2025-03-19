@@ -40,7 +40,7 @@ class AdminAddLeaderboardCollege : AppCompatActivity() {
             "IIIT Guwahati", "IIIT Vadodara", "IIIT Kota", "IIIT Kalyani", "IIIT Una",
             "IIIT Sonepat", "IIIT Lucknow", "IIIT Dharwad", "IIIT Kottayam", "IIIT Manipur",
             "IIIT Tiruchirappalli", "IIIT Nagpur", "IIIT Pune", "IIIT Ranchi", "IIIT Bhagalpur",
-            "IIIT Bhopal", "IIIT Agartala", "IIIT Raichur", "IIIT Surat"
+            "IIIT Bhopal", "IIIT Agartala", "IIIT Raichur", "IIIT Surat", "IIIT Sricity"
         )
 
         val popupMenu = PopupMenu(view.context, view).apply {

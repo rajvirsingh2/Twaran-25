@@ -47,6 +47,7 @@ class AdminMatchesAdapter(private val context: Context, private var matchList: M
     private val mappedEntries = mapOf(
         R.drawable.college to "All",
         R.drawable.iiitgwalior to "IIIT Gwalior",
+        R.drawable.iiitsricity to "IIIT Sricity",
         R.drawable.iiituna to "IIIT Una",
         R.drawable.iiitkota to "IIIT Kota",
         R.drawable.iiitpune to "IIIT Pune",

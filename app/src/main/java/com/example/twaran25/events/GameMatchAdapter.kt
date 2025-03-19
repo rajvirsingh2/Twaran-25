@@ -44,6 +44,7 @@ class GameMatchAdapter(private var matchList: MutableList<Matches>) :
 
 
     private val mappedEntries = mapOf(
+        R.drawable.iiitsricity to "IIIT Sricity",
         R.drawable.iiitgwalior to "IIIT Gwalior",
         R.drawable.college to "All",
         R.drawable.iiituna to "IIIT Una",
