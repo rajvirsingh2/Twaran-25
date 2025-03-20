@@ -107,7 +107,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     // Apply glitch effect to a view (photos)
-    private fun applyGlitchEffect(photo: View) {
+    private fun 
+            applyGlitchEffect(photo: View) {
         val randomX = (Math.random() * 10 - 5).toFloat()
         val randomY = (Math.random() * 10 - 5).toFloat()
         val positionX = ObjectAnimator.ofFloat(photo, "translationX", 0f, randomX, 0f)

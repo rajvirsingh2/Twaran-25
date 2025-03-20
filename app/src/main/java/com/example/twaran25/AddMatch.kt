@@ -113,7 +113,7 @@ class AddMatch : AppCompatActivity() {
         popupMenu.menu.add("Kho-Kho Women")
 
         // Combined sports (Men & Women Combined)
-        popupMenu.menu.add("Chess Men Combined")
+        popupMenu.menu.add("Chess Combined")
 
         // Handle menu item click
         popupMenu.setOnMenuItemClickListener { item ->
